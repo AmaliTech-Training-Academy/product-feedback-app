@@ -1,0 +1,56 @@
+.plan-box{
+    border-top: 5px solid #f49f85 ;
+    width: 31.53%;
+    border-radius: 5px;
+}
+.plan-inner{
+    margin-left:9.14%;
+    margin-right: 9.14%;
+
+}
+
+.sub-faded{
+    margin-top: 25px;
+    display: flex;
+    flex-direction: row;
+}
+
+.round-plan{
+    border-radius: 50%;
+    background-color: #f49f85;
+    width: 2.29%;
+    height: 8px;
+    margin-right: 4.57%;
+    margin-top: 0;
+}
+
+.plan-title-1{
+    margin-top: 0;
+}
+
+
+.tag{
+    
+    background-color:#f2f4ff ;
+    width: 22%;
+    border-radius: 10px;
+    text-align: center;
+    
+}
+
+.up{
+    background-color:#f2f4ff ;
+    border-radius: 10px;
+    width: 19.71%;
+    height: 40px;
+    margin-right: 49.71%;
+}
+
+.plan-text-bold{
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.plan-text-normal{
+    margin: 0;
+}
