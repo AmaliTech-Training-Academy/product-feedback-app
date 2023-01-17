@@ -1,8 +1,12 @@
 import React from 'react'
+import { RoadMap } from '../SidebarStyles'
+
 
 function Roadmap() {
   return (
-    <div>Roadmap</div>
+    <RoadMap>
+      
+    </RoadMap>
   )
 }
 
