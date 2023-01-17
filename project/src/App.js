@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import SuggestionHome from './Pages/Home/SuggestionHome'
-
+import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
 
 function App() {
   return (
     <div className="App">
-      <SuggestionHome />
+      <FeedbackDetails/>
+
     </div>
   );
 }
