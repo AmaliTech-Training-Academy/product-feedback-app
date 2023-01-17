@@ -15,7 +15,7 @@ const Planned = (props)=> {
                  <p className='plan-title-1 body-1'>Planned</p>
             </div>
             <h3 className='plan-text-bold'>{props.title}</h3>
-            <p className='plan-text-normal'>{props.text}</p>
+            <p className='plan-text-normal body-1'>{props.text}</p>
 
             <Bottom
             tag="Feature"
