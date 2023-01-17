@@ -48,6 +48,7 @@
     text-align: center;
     color:#4661e6 ;
     font-weight: 600;
+    height: 30px;
 }
 
 .up{
@@ -61,6 +62,12 @@
 }
 #inner-up{
     margin: 11px 30.86% 10px 39.51%;
+}
+
+.inner-box-up{
+    margin: 11px 30.86% 10px 39.51%;
+
+
 }
 
 .plan-text-bold{
