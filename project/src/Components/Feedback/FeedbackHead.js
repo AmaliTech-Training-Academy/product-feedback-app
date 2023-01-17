@@ -1,14 +1,13 @@
 import React from 'react'
 import {
     Nav,
-} from './FeedbackHeadStyles'
+} from './FeedbackStyles'
 
 function FeedbackHead() {
   return (
     <Nav>
-      <img src='' alt='' />
-      {/* <span className='body-1'>get</span> */}
-      <h4>Go Back</h4>
+      <img src='./assets/shared/icon-arrow-left.svg' alt='' />
+      <span className='h4 back'>Go Back</span>
     </Nav>
   )
 }
