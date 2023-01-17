@@ -12,29 +12,29 @@ body {
   justify-content: center;
 }
 
-h1, h2, h3, h4 {
+.h1, .h2, .h3, .h4 {
   font-weight: bold;
 }
 
-h1 {
+.h1 {
   font-size: 24px;
   line-height: 35px;
   letter-spacing: 0.33em;
 }
 
-h2 {
+.h2 {
   font-size: 20px;
   line-height: 29PX;
   letter-spacing: 0.25em;
 }
 
-h3 {
+.h3 {
   font-size: 18px;
   line-height: 26PX;
   letter-spacing: 0.25em;
 }
 
-h4 {
+.h4 {
   font-size: 14px;
   line-height: 20PX;
   letter-spacing: 0.2em;
