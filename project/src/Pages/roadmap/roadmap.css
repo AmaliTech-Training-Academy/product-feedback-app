@@ -42,12 +42,12 @@
 
 
 .tag{
-    
     background-color:#f2f4ff ;
     width: 22%;
     border-radius: 10px;
     text-align: center;
-    
+    color:#4661e6 ;
+    font-weight: 600;
 }
 
 .up{
@@ -56,13 +56,25 @@
     width: 19.71%;
     height: 40px;
     margin-right: 49.71%;
+    text-align: center;
+    font-weight: 600;
+}
+#inner-up{
+    margin: 11px 30.86% 10px 39.51%;
 }
 
 .plan-text-bold{
     margin-top: 0;
     margin-bottom: 4px;
+    font-weight: 700;
 }
 
 .plan-text-normal{
     margin: 0;
+}
+
+.last-line{
+    display: flex;
+    flex-direction: row;
+    
 }
