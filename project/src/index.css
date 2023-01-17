@@ -33,3 +33,64 @@ h4 {
   line-height: 20PX;
   letter-spacing: 0.2em;
 }
+
+.body-1 {
+  font-size: 16px;
+  line-height: 23px;
+}
+
+.body-2 {
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.body-3 {
+  font-size: 13px;
+  line-height: 19px;
+}
+
+button {
+  height: 44px;
+  width: 158px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #F2F4FE;
+  cursor: pointer;
+}
+.button-1-default{
+  background: #AD1FEA;
+}
+.button-2-default{
+  background: #4661E6;
+}
+.button-3-default{
+  background: #3A4374;
+}
+.button-4-default{
+  background: #D73737;
+}
+.button-1-default:hover{
+  background: #C75AF6;
+}
+.button-2-default:hover{
+  background: #7C91F9;
+}
+.button-3-default:hover{
+  background: #656EA3;
+}
+.button-4-default:hover{
+  background: #E98888;
+}
+
+.go-back {
+  height: 53px;
+  background: #373F68;
+}
+
+.go-back:hover {
+  text-decoration: underline;
+}
