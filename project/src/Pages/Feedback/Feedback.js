@@ -2,6 +2,8 @@ import React from 'react'
 import FeedbackCategory from '../../Components/Feedback/FeedbackCategory'
 import FeedbackHead from '../../Components/Feedback/FeedbackHead'
 import FeedbackTitle from '../../Components/Feedback/FeedbackTitle'
+import UpdateStatus from '../../Components/Feedback/UpdateStatus'
+import FeedbackDetails from '../../Components/Feedback/FeedbackDetails'
 import {
     Container
 } from './FeedbackStyles'
@@ -31,6 +33,8 @@ function Feedback() {
         <FeedbackHead />
         <FeedbackTitle />
         <FeedbackCategory />
+        <UpdateStatus />
+        <FeedbackDetails />
     </Container>
   )
 }

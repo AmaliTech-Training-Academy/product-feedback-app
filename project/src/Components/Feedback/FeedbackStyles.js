@@ -15,6 +15,7 @@ export const Nav = styled.div`
 `
 
 export const Container = styled.div`
+    position: relative;
     width: 456px;
     height: 106px;
     /* background-color: red; */
@@ -24,7 +25,7 @@ export const Container = styled.div`
     /* justify-content: space-between; */
 
     .input {
-        position: relative;
+        /* position: relative; */
         width: 100%;
         height: 48px;
         background: #F7F8FD;
@@ -45,21 +46,62 @@ export const Container = styled.div`
             margin-right: 24px;
         }
 
-        .select {
-            position: absolute;
-            top: 64px;
-            width: 100%;
-            height: 240px;
-            background: #FFFFFF;
-            box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
-            border-radius: 10px;
-            /* background-color: red; */
+        &:hover {
+            border: 2px solid #4661E6;
+        }
 
-            .options {
-                width: 100%;
-                height: 48px;
-                border-bottom: 2px solid #F2F4FF;
+    }
+
+    .details {
+        height: 96px;
+    }
+
+    .select {
+        position: absolute;
+        top: 122px;
+        width: 100%;
+        /* height: 240px; */
+        background: #FFFFFF;
+        box-shadow: 0px 10px 40px -7px rgba(55, 63, 104, 0.350492);
+        border-radius: 10px;
+        z-index: 7;
+        /* background-color: red; */
+
+        .options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            height: 48px;
+            border-bottom: 2px solid #F2F4FF;
+            cursor: pointer;
+
+            &:hover {
+                    span {
+                        color: #AD1FEA;
+                    }
+                }
+                
+
+            .option {
+                margin-left: 24px;
+                color: #647196;
             }
+
+            .check {
+                margin-right: 24px;
+                /* display: none; */
+            }
+
+            &:hover {
+                img {
+                    display: block;
+                }
+            }
+        }
+
+        .last {
+            border-bottom: none;
         }
     }
 
