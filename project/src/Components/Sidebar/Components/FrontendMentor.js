@@ -4,7 +4,7 @@ import { FrontendMentors } from '../SidebarStyles'
 function FrontendMentor() {
   return (
     <FrontendMentors>
-      <h2>Frontend Mentor</h2>
+      <span className="h2">Frontend Mentor</span>
       <span className="body-2">Feedback Board</span>
     </FrontendMentors>
   )
