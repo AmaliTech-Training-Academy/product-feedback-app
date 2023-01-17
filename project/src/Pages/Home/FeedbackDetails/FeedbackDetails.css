@@ -1,0 +1,57 @@
+main{
+    width: 60vw;
+    margin-top: 81px;
+    /* background-color: aqua; */
+}
+.navigation{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.h4{
+    font-weight: 700;
+    color: #647196;
+
+}
+span{
+    margin-left: 19.67px;
+}
+.edit-button{
+    background: #4661E6;
+
+}
+
+.dark-theme{
+    background-color: #ffff;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 12px;
+    margin-top: 24px;
+    height: 151px;
+}
+.increase-theme{
+   color: #3A4374;
+   height: 58px;
+    width: 40px;
+    margin-block: auto;
+    
+}
+.up-arrow{
+    margin-bottom: -10px;
+
+}
+.comment{
+   margin-block: auto;
+}
+.number{
+    margin-bottom: 8px;
+}
+.title{
+    color: #3A4374;
+
+}
+.feature-button{
+    color: #4661E6;
+    width: 77px;
+    /* padding: 5px; */
+}
