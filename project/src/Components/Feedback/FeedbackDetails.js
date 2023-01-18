@@ -5,7 +5,7 @@ import {
 
 function FeedbackTitle() {
   return (
-    <Container>
+    <Container type='details'>
         <span className='h4 title'>Feedback Details</span>
         <span className='h4 description'>Include any specific comments on what should be improved, added, etc.</span>
         <div contenteditable="true" className='input details'>

@@ -17,7 +17,7 @@ export const Nav = styled.div`
 export const Container = styled.div`
     position: relative;
     width: 456px;
-    height: 106px;
+    height: ${(props) => props.type === 'details' ? "154px" : "106px"};
     /* background-color: red; */
     display: flex;
     flex-direction: column;
@@ -25,11 +25,9 @@ export const Container = styled.div`
     /* justify-content: space-between; */
 
     .input {
-        /* position: relative; */
         width: 100%;
         height: 48px;
         background: #F7F8FD;
-        /* border: none; */
         border-radius: 5px;
         margin-top: 14px;
         display: flex;
@@ -51,10 +49,10 @@ export const Container = styled.div`
         }
 
     }
-
     .details {
         height: 96px;
     }
+
 
     .select {
         position: absolute;
