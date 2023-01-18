@@ -28,12 +28,19 @@ export const Container = styled.div`
         width: 100%;
         height: 48px;
         background: #F7F8FD;
+        border: none;
         border-radius: 5px;
         margin-top: 14px;
         display: flex;
         align-items: center;
         justify-content: space-between;
         cursor: pointer;
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 19px;
+        color: #3A4374;
+        padding-left: 16px;
+        resize: none;
 
         .placeholder {
             margin-left: 24px;
@@ -44,13 +51,15 @@ export const Container = styled.div`
             margin-right: 24px;
         }
 
-        &:hover {
-            border: 2px solid #4661E6;
+        &:hover, &:focus {
+            outline: 2px solid #4661E6;
+            /* border: ; */
         }
 
     }
     .details {
         height: 96px;
+        padding-top: 16px;
     }
 
 
@@ -112,5 +121,9 @@ export const Container = styled.div`
     .description {
         font-weight: 400;
         color: #647196;
+    }
+
+    @media (max-width: 450px) {
+        width: 279px;
     }
 `
