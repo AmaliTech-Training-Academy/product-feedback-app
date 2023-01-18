@@ -9,10 +9,30 @@ p,h3{
 }
 
 .plan-box{
-    border-top: 5px solid #f49f85 ;
+    /* border-top: 5px solid #f49f85 ; */
     width: 100%;
     border-radius: 5px;
     background-color:#ffffff ;
+}
+#plan{
+    border-top: 5px solid #f49f85 ;
+
+}
+#progress{
+    border-top: 5px solid #ad1fea;
+}
+
+#live{
+    border-top: 5px solid #62bcfa;
+}
+#plan-round{
+    background-color: #f49f85;
+}
+#progress-round{
+    background-color: #ad1fea;
+}
+#live-round{
+    background-color: #62bcfa;
 }
 .plan-inner{
     margin-left:9.14%;
@@ -31,7 +51,7 @@ p,h3{
 
 .round-plan{
     border-radius: 50%;
-    background-color: #f49f85;
+    /* background-color: #f49f85; */
     width: 8px;
     height: 8px;
     margin-right: 4.57%;

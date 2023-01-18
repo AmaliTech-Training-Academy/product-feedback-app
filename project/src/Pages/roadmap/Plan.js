@@ -1,5 +1,5 @@
 import React from "react";
-import Planned from "./Planned";
+import ComponentBox from "./Planned";
 import './roadmap.css'
 
 
@@ -14,13 +14,42 @@ function Plan(){
         <h3>Planned(2)</h3>
         <p>Ideas prioritized for research</p>
         </div>
-             <Planned
+             <ComponentBox
+             subtitle="Planned"
+             border="plan"
+             round="plan-round"
             number="3"
             title="More Comprehensive reports"
             text="It would be great to see a more detailed breakdown of solutions."
             />
-            
-
+      </div>
+      <div className="plan-st">
+      <div>
+        <h3>Planned(2)</h3>
+        <p>Ideas prioritized for research</p>
+        </div>
+             <ComponentBox
+             subtitle="Progress"
+             border="progress"
+             round="progress-round"
+            number="3"
+            title="More Comprehensive reports"
+            text="It would be great to see a more detailed breakdown of solutions."
+            />
+      </div>
+      <div className="plan-st">
+      <div>
+        <h3>Planned(2)</h3>
+        <p>Ideas prioritized for research</p>
+        </div>
+             <ComponentBox
+             subtitle="Live"
+             border="live"
+             round="live-round"
+            number="3"
+            title="More Comprehensive reports"
+            text="It would be great to see a more detailed breakdown of solutions."
+            />
       </div>
 </div>
         </>
