@@ -3,18 +3,32 @@ import styled from "styled-components";
 export const Container = styled.div`
 width: 255px; 
 height: 529px; 
-background-color: red;
+// background-color: red;
 display: flex;
 flex-direction: column;
-// position: absolute;
-// top: 94px;
+
+
+
+// Tablet view
+@media screen and (max-width: 950px) {
+  width: 689px;
+  height: 178px;
+  display: flex;
+  flex-direction: row;
+  // background-color: yellow;
+}
+
+@media screen and (max-width: 450px) {
+  display: none;
+}
 `
 
 export const FrontendMentors = styled(Container)`
 color: black; 
 height: 137px;
 border-radius: 10px;
-background-color: blue;
+background: white;
+// background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
 
 div {
   margin: 0 24px;
@@ -27,28 +41,55 @@ div {
 
 .h2 {
   background-color: green;
-  letter-spacing: 2px;
   height: 29px;
-  // margin-top: 62px;
+  // color: #FFFFFF;
 }
 
 .body-2 {
   background-color: yellow;
   width: 108px:
   height: 22px;
+  // color: #FFFFFF;
+  opacity: 0.75;
 }
+
+@media screen and (max-width: 950px) {
+  color: black; 
+  width: 223px;
+  height: 178px;
+  background: #FFFFFF;
+
+  div {
+    width: 153px;
+    height: 51px;
+    position: relative;
+    top: 103px;
+  }
+
+  .h2 {
+    background-color: green;
+    letter-spacing: -0.25px;
+    font-size: 20px;
+  }
+  
+  .body-2 {
+    background-color: yellow;
+    font-size: 15px;
+  }
+}
+
+
 `
 
 export const Tag = styled(Container)`
 height: 166px;
-background-color: blue;
+background-color: #FFFFFF;
 margin-top: 24px;
 border-radius: 10px;
 
 .tag-container {
   margin: 24px;
-  background-color: yellow;
-
+  // background-color: yellow;
 }
 
 .upper-tag{
@@ -60,6 +101,15 @@ border-radius: 10px;
   display: flex;
   flex-direction: row;
   margin-top: 14px;
+}
+
+
+@media screen and (max-width: 950px) {
+  height: 178px;
+  width: 223px;
+  background: #FFFFFF;
+  margin-left: 10px;
+  margin-top: 0;
 }
 `
 
@@ -110,7 +160,7 @@ margin-top: 14px;
 
 export const RoadMap = styled(Container)`
 height: 178px;
-background-color: blue;
+background-color: #FFFFFF;
 margin-top: 24px;
 border-radius: 10px;
 
@@ -118,29 +168,31 @@ border-radius: 10px;
   width: 80%;
   height: 100%;
   margin: 19px 24px 24px;
-  background-color: yellow;
+  // background-color: yellow;
 }
 
 .roadmap-view {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: orange;
+  // background-color: orange;
   height: 26px;
 }
 
 .roadmap-view .h3{
-  background-color: green;
+  // background-color: green;
+  color: #4661E6;
 }
 
 .roadmap-view .body-3{
-  background-color: green;
-  text-decoration: underline;  
+  // background-color: green;
+  text-decoration: underline; 
+  color: #4661E6;
 }
 
 .roadmap-planned {
   height: 23px;
-  background-color: orange;
+  // background-color: orange;
   margin-top: 24px;
   display: flex;
   justify-content: space-between;
@@ -148,7 +200,7 @@ border-radius: 10px;
 }
 
 .roadmap-planned div{
-  background-color: green;
+  // background-color: green;
   width: 79px;
   display: flex;
   justify-content: space-between;
@@ -159,7 +211,7 @@ border-radius: 10px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: white;
+  background: #F49F85;
 }
 
 .roadmap-planned .body-1 {
@@ -168,13 +220,15 @@ border-radius: 10px;
 
 .roadmap-planned .num {
   font-size: 16px;
-  background-color: green;
+  // background-color: green;
   width: 11px;
+  color: #4661E6;
+  font-weight: 700;
 }
 
 .roadmap-progress {
   height: 23px;
-  background-color: orange;
+  // background-color: orange;
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
@@ -182,7 +236,7 @@ border-radius: 10px;
 }
 
 .roadmap-progress div{
-  background-color: green;
+  // background-color: green;
   width: 98px;
   display: flex;
   justify-content: space-between;
@@ -193,18 +247,20 @@ border-radius: 10px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: white;
+  background: #AD1FEA;
 }
 
 .roadmap-progress .num {
   font-size: 16px;
-  background-color: green;
+  // background-color: green;
   width: 11px;
+  color: #4661E6;
+  font-weight: 700;
 }
 
 .roadmap-live {
   height: 23px;
-  background-color: orange;
+  // background-color: orange;
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
@@ -212,7 +268,7 @@ border-radius: 10px;
 }
 
 .roadmap-live div{
-  background-color: green;
+  // background-color: green;
   width: 51px;
   display: flex;
   justify-content: space-between;
@@ -223,12 +279,30 @@ border-radius: 10px;
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: white;
+  background: #62BCFA;
 }
 
 .roadmap-live .num {
   font-size: 16px;
-  background-color: green;
+  // background-color: green;
   width: 11px;
+  color: #4661E6;
+  font-weight: 700;
+}
+
+
+@media screen and (max-width: 950px) {
+  height: 178px;
+  width: 223px;
+  background: #FFFFFF;
+  margin-top: 0;
+  margin-left: 10px;
+}
+
+.roadmap-container {
+  width: 80%;
+  height: 75%;
+  margin: 19px 24px 24px;
+  // background-color: yellow;
 }
 `
