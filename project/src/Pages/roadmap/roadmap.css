@@ -9,7 +9,8 @@ p,h3{
 }
 
 .plan-box{
-    /* border-top: 5px solid #f49f85 ; */
+   margin-top: 32px;
+   margin-bottom: 24px;
     width: 100%;
     border-radius: 5px;
     background-color:#ffffff ;
@@ -41,6 +42,7 @@ p,h3{
 .plan-st{
     display: flex;
     flex-direction: column;
+    margin-right: 2.72%;
 }
 
 .sub-faded{

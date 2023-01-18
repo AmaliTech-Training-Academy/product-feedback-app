@@ -25,8 +25,8 @@ function Plan(){
       </div>
       <div className="plan-st">
       <div>
-        <h3>Planned(2)</h3>
-        <p>Ideas prioritized for research</p>
+        <h3>Progress(3)</h3>
+        <p>Currently being developed</p>
         </div>
              <ComponentBox
              subtitle="Progress"
@@ -39,8 +39,8 @@ function Plan(){
       </div>
       <div className="plan-st">
       <div>
-        <h3>Planned(2)</h3>
-        <p>Ideas prioritized for research</p>
+        <h3>Live(1)</h3>
+        <p>Released features</p>
         </div>
              <ComponentBox
              subtitle="Live"
