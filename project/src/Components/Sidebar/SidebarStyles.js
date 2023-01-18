@@ -27,8 +27,8 @@ export const FrontendMentors = styled(Container)`
 color: black; 
 height: 137px;
 border-radius: 10px;
-background: white;
-// background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+// background: white;
+background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
 
 div {
   margin: 0 24px;
@@ -40,16 +40,16 @@ div {
 }
 
 .h2 {
-  background-color: green;
+  // background-color: green;
   height: 29px;
-  // color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 .body-2 {
-  background-color: yellow;
+  // background-color: yellow;
   width: 108px:
   height: 22px;
-  // color: #FFFFFF;
+  color: #FFFFFF;
   opacity: 0.75;
 }
 
@@ -124,38 +124,61 @@ justify-content: center;
 align-items: center;
 font-size: 13px;
 font-weight: 600;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const UI = styled(All)`
-background-color: #F2F4FF;
+background-color: #F7F8FD;
 color: #4661E6;
 margin-left: 8px;
+  &:hover {
+    cursor: pointer;
+    background: #F2F4FF; 
+  }
 `
 
 export const UX = styled(All)`
-background-color: #F2F4FF;
+background-color: #F7F8FD;
 color: #4661E6;
 margin-left: 8px;
+  &:hover {
+    cursor: pointer;
+    background: #F2F4FF; 
+  }
 `
 
 export const Enhancement = styled(All)`
 width: 111px;
-background-color: #F2F4FF;
+background-color: #F7F8FD;
 color: #4661E6;
+  &:hover {
+    cursor: pointer;
+    background: #F2F4FF; 
+  }
 `
 
 export const Bug = styled(All)`
 width: 56px;
 margin-left: 13px;
-background-color: #F2F4FF;
+background-color: #F7F8FD;
 color: #4661E6;
+  &:hover {
+    cursor: pointer;
+    background: #F2F4FF; 
+  }
 `
 
 export const Feature = styled(All)`
 width: 77px;
-background-color: #F2F4FF;
+background-color: #F7F8FD;
 color: #4661E6;
 margin-top: 14px;
+  &:hover {
+    cursor: pointer;
+    background: #F2F4FF; 
+  }
 `
 
 export const RoadMap = styled(Container)`
@@ -179,6 +202,8 @@ border-radius: 10px;
   height: 26px;
 }
 
+
+
 .roadmap-view .h3{
   // background-color: green;
   color: #4661E6;
@@ -188,6 +213,10 @@ border-radius: 10px;
   // background-color: green;
   text-decoration: underline; 
   color: #4661E6;
+}
+
+.roadmap-view .body-3:hover {
+  cursor: pointer;
 }
 
 .roadmap-planned {
