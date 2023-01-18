@@ -1,56 +1,69 @@
 import React from "react";
 import ComponentBox from "./Planned";
 import './roadmap.css'
-
+import productdata from '../../data/data.json'
+import { useState,useEffect } from "react";
+import ProductRequest from "../../Components/Header/ProductRequest";
 
 function Plan(){
+    const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
+    const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
+    const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
+
+
+    const groupData=()=>{
+        let planned=[]
+        let progress =[]
+        let live =[]
+        
+
+        productdata.productRequests.map((productRequest)=>{
+            if(productRequest.status==='planned'){
+                planned.push(productRequest);
+
+            }
+            if(productRequest.status==='in-progress'){
+                progress.push(productRequest);
+                
+            }
+            if(productRequest.status==='live'){
+                live.push(productRequest);
+                
+            }
+        })
+
+       setPlannedRequestProduct(planned);
+       setProgressRequestProduct(progress);
+       setLiveRequestProduct(live);
+
+    }
+    useEffect(()=>{
+        groupData()
+
+    },[])
+    
     return(
         <>
         <div className="roadmap-main">
         
        
-      <div className="plan-st">
-      <div>
-        <h3>Planned(2)</h3>
-        <p>Ideas prioritized for research</p>
-        </div>
-             <ComponentBox
-             subtitle="Planned"
-             border="plan"
-             round="plan-round"
-            number="3"
-            title="More Comprehensive reports"
-            text="It would be great to see a more detailed breakdown of solutions."
-            />
-      </div>
-      <div className="plan-st">
-      <div>
-        <h3>In-Progress(3)</h3>
-        <p>Currently being developed</p>
-        </div>
-             <ComponentBox
-             subtitle="In Progress"
-             border="progress"
-             round="progress-round"
-            number="3"
-            title="More Comprehensive reports"
-            text="It would be great to see a more detailed breakdown of solutions."
-            />
-      </div>
-      <div className="plan-st">
-      <div>
-        <h3>Live(1)</h3>
-        <p>Released features</p>
-        </div>
-             <ComponentBox
-             subtitle="Live"
-             border="live"
-             round="live-round"
-            number="3"
-            title="More Comprehensive reports"
-            text="It would be great to see a more detailed breakdown of solutions."
-            />
-      </div>
+      <ProductRequest
+      title="Planned"
+      subtitle="More Comprehensive reports"
+      productRequests={PlannedRequestProducts}/>
+
+      <ProductRequest
+      title="In-Progress"
+      subtitle="Currently being developed"
+      productRequests={ProgressRequestProducts}/>
+
+       <ProductRequest
+      title="Live"
+      subtitle="Released features"
+      productRequests={LiveRequestProducts}/>
+
+      
+     
 </div>
         </>
     );
