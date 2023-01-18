@@ -15,6 +15,7 @@ flex-direction: column;
   height: 178px;
   display: flex;
   flex-direction: row;
+  margin-bottom: 40px;
   // background-color: yellow;
 }
 
