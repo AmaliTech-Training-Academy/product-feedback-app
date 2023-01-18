@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
+import Header from './Components/Header/Header';
+// import Feedback from './Pages/Feedback/Feedback'
 
 function App() {
   return (
     <div className="App">
-      <FeedbackDetails/>
-
+      {/* <Feedback /> */}
+      <Header />
     </div>
   );
 }
