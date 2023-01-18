@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
-import Sidebar from './Components/Sidebar/Sidebar';
-import Home from './Pages/Home/Home';
+import Header from './Components/Header/Header';
+// import Feedback from './Pages/Feedback/Feedback'
 
 function App() {
   return (
     <div className="App">
-      {/* <Sidebar /> */}
-      <Home />
+      {/* <Feedback /> */}
+      <Header />
     </div>
   );
 }
