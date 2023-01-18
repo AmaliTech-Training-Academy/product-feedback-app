@@ -6,20 +6,10 @@
   justify-content: space-between;
   /* align-items: center; */
   margin-top: 94px;
-  background: red;
+  margin-bottom: 129px;
+  /* background: red; */
 }
 
-.sidebar {
-  height: 529px;
-  width: 255px;
-  background: orange;
-}
-
-.header{
-  width: 825px;
-  height: 72px;
-  background: green;
-}
 .empty-page {
   width: 825px;
   height: 600px;
@@ -71,7 +61,7 @@
   font-weight: 400;
 }
 
-button {
+.button-1-default.empty {
   margin-top: 48px;
   font-weight: 700;
 }
