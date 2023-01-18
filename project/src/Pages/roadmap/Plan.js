@@ -45,12 +45,11 @@ function Plan(){
     return(
         <>
         <div className="roadmap-main">
-        
-       
       <ProductRequest
       title="Planned"
       subtitle="More Comprehensive reports"
-      productRequests={PlannedRequestProducts}/>
+      productRequests={PlannedRequestProducts}
+      />
 
       <ProductRequest
       title="In-Progress"

@@ -11,22 +11,17 @@ const ProductRequest = ({title, productRequests, subtitle})=>{
             <p>{subtitle}</p>
         </div>
             {productRequests.map((data, key) => {
-                
-                
                     return(
-                    
                         <ComponentBox key={key}
                         subtitle={data.status}
                         border="plan"
                         round="plan-round"
-                        number="3"
                        title={data.title}
                        text={data.description}
                        tag={data.category}
                        up={data.upvotes}
                     comments={data.comments?.length}
                     />
-                    
                     )
 
             })
