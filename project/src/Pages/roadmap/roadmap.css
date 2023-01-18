@@ -84,6 +84,13 @@ p,h3{
     margin-right: 49.71%;
 }
 
+.up:hover{
+    background-color:#cfd7ff ;
+}
+.up:active{
+    background-color:#4661e6 ;
+}
+
 
 .inner-box-up{
     height: 19px;
@@ -128,6 +135,10 @@ p,h3{
     margin-top: 0;
     margin-bottom: 4px;
     font-weight: 700;
+}
+
+.plan-text-bold:hover{
+    color: #4661e6;
 }
 
 .plan-text-normal{

@@ -25,11 +25,11 @@ function Plan(){
       </div>
       <div className="plan-st">
       <div>
-        <h3>Progress(3)</h3>
+        <h3>In-Progress(3)</h3>
         <p>Currently being developed</p>
         </div>
              <ComponentBox
-             subtitle="Progress"
+             subtitle="In Progress"
              border="progress"
              round="progress-round"
             number="3"
