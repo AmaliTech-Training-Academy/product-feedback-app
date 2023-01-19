@@ -96,40 +96,48 @@
   .empty-page {
     width: 327px;
     height: 460px;
-    background: yellow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* background: yellow; */
+    margin-inline: 24px;
   }
 
   .empty-page-component {
     width: 278px;
     height: 308px;
-    background: blue;
+    /* background: blue; */
   }
 
   .empty-page-component img {
     transform: translateX(90%);
-    background: white;
+    /* background: white; */
   }
 
   .text-container {
-    width: 410px;
+    width: 278px;
     height: 189px;
-    margin-top: 53.26px;
-    display: flex;
+    margin-top: 39px;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: green;
+    /* background: green; */
   }
 
   .text-container .h1 {
     width: 278px;
     height: 35px;
-    text-align: center;
-    background: orange;
+    font-size: 18px;
+    /* background: orange; */
     color: #3A4374;
-  
+  }
+
+  .text-container .body-1 {
+    width: 278px;
+    height: 57px;
+    margin-top: 14px;
+    font-size: 13px;
+    /* background: orange; */
+    color: #647196;
+    line-height: 19px;
+  }
+
+  .button-1-default.empty {
+    margin-top: 24px;
   }
 }
