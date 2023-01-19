@@ -8,6 +8,7 @@ import Header from './Components/Header/Header';
 import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
 // import Feedback from './Pages/Feedback/Feedback'
 import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
+import EditFeedback from './Pages/Edit Feedback/EditFeedback';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 
       
       
+      <EditFeedback />
     </div>
   );
 }

@@ -58,6 +58,8 @@ function Feedback(props) {
             <button className='button-1-default' onClick={handleClick}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>
+        <span>{title}</span>
+        <span>{details}</span>
     </Container>
   )
 }
