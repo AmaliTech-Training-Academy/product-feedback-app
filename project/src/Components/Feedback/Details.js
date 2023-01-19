@@ -3,7 +3,7 @@ import {
     Container
 } from './FeedbackStyles'
 
-function FeedbackTitle() {
+function Details() {
   return (
     <Container type='details'>
         <span className='h4 title'>Feedback Details</span>
@@ -13,4 +13,4 @@ function FeedbackTitle() {
   )
 }
 
-export default FeedbackTitle
+export default Details
