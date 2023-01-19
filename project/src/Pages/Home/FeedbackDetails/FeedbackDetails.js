@@ -2,6 +2,7 @@ import React from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import './FeedbackDetails.css'
+import AddDarkTheme from './AddDarkTheme';
 
 
 const FeedbackDetails = () => {
@@ -18,7 +19,7 @@ const FeedbackDetails = () => {
             <button className='btn btn-primary button-text edit-button'>Edit Feedback</button>
          </section>
 
-        <section className='card dark-theme '>
+        {/* <section className='card dark-theme '>
             <button className='increase-theme '>
                 <img src='./assets/shared/icon-arrow-up.svg' className='up-arrow'/>
                 <p className='number'>99</p>
@@ -32,7 +33,9 @@ const FeedbackDetails = () => {
                 <img src='./assets/shared/icon-comments.svg' />
                 <span>4</span>
             </div>
-        </section>
+        </section> */}
+
+        <AddDarkTheme/>
 
         <section className='comment card'></section>
 
