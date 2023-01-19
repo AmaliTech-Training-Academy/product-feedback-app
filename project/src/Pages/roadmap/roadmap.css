@@ -62,6 +62,7 @@ p,h3{
 
 .plan-title-1{
     margin-top: 0;
+    text-transform: lowercase;
 }
 
 
@@ -148,4 +149,7 @@ p,h3{
 .last-line{
     display: flex;
     flex-direction: row;   
+}
+.plan-title-1::first-letter{
+    text-transform: capitalize;
 }
