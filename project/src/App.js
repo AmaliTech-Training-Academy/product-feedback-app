@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import Feedback from './Pages/Feedback/Feedback'
+import EditFeedback from './Pages/Edit Feedback/EditFeedback';
 
 function App() {
   return (
     <div className="App">
-      <Feedback />
-      <Feedback type='Edit' />
+      <EditFeedback />
     </div>
   );
 }
