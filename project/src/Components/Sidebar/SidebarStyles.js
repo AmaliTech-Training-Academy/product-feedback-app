@@ -28,8 +28,7 @@ export const FrontendMentors = styled(Container)`
 color: black; 
 height: 137px;
 border-radius: 10px;
-// background: white;
-background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+background-image: url('./assets/suggestions/desktop/background-header.png');
 
 div {
   margin: 0 24px;
@@ -58,8 +57,7 @@ div {
   color: black; 
   width: 223px;
   height: 178px;
-  // background: #FFFFFF;
-  background: radial-gradient(128.88% 128.88% at 103.9% -10.39%, #E84D70 0%, #A337F6 53.09%, #28A7ED 100%);
+  background-image: url('./assets/suggestions/tablet/background-header.png');
 
   div {
     width: 153px;
@@ -79,8 +77,6 @@ div {
     font-size: 15px;
   }
 }
-
-
 `
 
 export const Tag = styled(Container)`

@@ -17,7 +17,10 @@ function Suggestions() {
             <Enhancement>Enhancement</Enhancement>
           </div>
         </div>
-
+        <div className="left-components">
+          <img src="./assets/shared/icon-comments.svg"/>
+          <span>2</span>
+        </div>
       </div>
     </SuggestionContainer>
   )
