@@ -47,7 +47,7 @@ function Plan(){
         <div className="roadmap-main">
       <ProductRequest
       title="Planned"
-      subtitle="More Comprehensive reports"
+      subtitle="Ideas prioritized for research"
       productRequests={PlannedRequestProducts}
       />
 
