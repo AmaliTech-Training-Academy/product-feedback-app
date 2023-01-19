@@ -45,6 +45,10 @@ span{
    margin-block: auto;
     
 }
+.comment{
+    padding: 10%;
+}
+
 .comment-tag{
     font-family: Jost;
     font-size: 16px;
@@ -53,6 +57,12 @@ span{
     letter-spacing: -0.2222222238779068px;
 
 
+}
+hr{
+    width: 95%;
+    margin: auto;
+    margin-top: 32px;
+    margin-bottom: 32px;
 }
 .up-arrow{
     margin-bottom: -10px;
@@ -73,6 +83,38 @@ span{
     width: 77px;
     
 }
+.comment-profile{
+    display: flex;
+    justify-content: space-between;
+}
+.profile-image{
+    height: 50%;
+    border-radius: 50%;
+}
+.user-account{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+
+    
+}
+
+.user-detail{
+    margin-right: 54.5%;
+    align-self: flex-end;
+}
+
+.users-comment{
+    width: 82%;
+    margin-left: auto;
+}
+
+.reply{
+    color: #4661E6;
+    align-self: center;
+}
+
 .back:hover{
     cursor: pointer;
     
@@ -84,6 +126,7 @@ span{
 
 .add-comment{
     padding: 5%;
+    margin-bottom: 129px;
 }
 .form-label{
     color: #3A4374;
@@ -120,7 +163,6 @@ form:hover{
 }
 @media (max-width: 1024px) {
     .theme-decription{
-        /* width: 100%; */
         margin-left: 5%;
         margin-right: 5%;
     }
