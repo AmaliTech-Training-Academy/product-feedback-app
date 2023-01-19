@@ -7,6 +7,8 @@ function App() {
     <div className="App">
       <FeedbackDetails/>
 
+      
+      
     </div>
   );
 }
