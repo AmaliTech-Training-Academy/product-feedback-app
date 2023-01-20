@@ -163,3 +163,10 @@ p,h3{
 .tag::first-letter{
     text-transform: uppercase;
 }
+
+
+
+/* TABLET VIEW */
+@media only screen and (max-width:768px){
+    
+}
