@@ -99,3 +99,10 @@ button {
 .go-back:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 450px) {
+  button {
+    width: 279px;
+    height: 40px;
+  }
+}

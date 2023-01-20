@@ -2,19 +2,19 @@ import React from 'react'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
 import Sidebar from '../../Components/Sidebar/Sidebar'
-import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
+import Suggestions from '../../Components/Suggestions/Suggestions'
 
-function Home() {
+
+function SuggestionHome() {
   return (
     <div className='main-page'>
       <Sidebar /> 
       <div>
         <Header />
-        <EmptyComponent />
-        
+        <Suggestions />
       </div>
-    </div>
+   </div>
   )
 }
 
-export default Home
+export default SuggestionHome
