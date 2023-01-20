@@ -13,6 +13,9 @@ import MobileNav from './Components/Header/Mobile nav/MobileNav';
 // import EditFeedback from './Pages/Edit Feedback/EditFeedback';
 // import Feedback from './Pages/Feedback/Feedback';
 import EditFeedback from './Pages/Edit Feedback/EditFeedback';
+import MobileNav from './Components/Header/Mobile nav/MobileNav';
+// import EditFeedback from './Pages/Edit Feedback/EditFeedback';
+import Feedback from './Pages/Feedback/Feedback';
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
       {/* <Feedback /> */}
       <Suggestions />
       <EditFeedback />
+      {/* <EditFeedback /> */}
+      {/* <MobileNav /> */}
+      <Feedback />
     </div>
   );
 }
