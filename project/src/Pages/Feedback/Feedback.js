@@ -23,17 +23,23 @@ function Feedback(props) {
     setDetails(details)
   }
 
-  const post = (e) => {
+  const handleClick = (e) => {
     e.preventDefault()
-    axios.post('http://localhost:8000/feedback', {
-      title: title,
-      category: option,
-      status: detailOption,
-      detail: details
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+    if (props.type === 'Edit') { 
+      axios.post('http://localhost:8000/feedback', {
+        title: title,
+        category: option,
+        status: detailOption,
+        detail: details
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+    }
+    axios.get('http://localhost:8000/feedback')
+      .then(response => {
+        console.log(response)
+      })
   }
 
   return (
@@ -49,11 +55,9 @@ function Feedback(props) {
           <div className='buttons'>
             {(props.type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
             <button className='button-3-default cancel'>Cancel</button>
-            <button className='button-1-default' onClick={post}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
+            <button className='button-1-default' onClick={handleClick}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>
-        <span>{title}</span>
-        <span>{details}</span>
     </Container>
   )
 }
