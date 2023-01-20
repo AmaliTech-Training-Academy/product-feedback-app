@@ -4,7 +4,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   font-family: 'Jost';
   background: #F2F2F2;
   display: flex;
@@ -98,4 +98,11 @@ button {
 
 .go-back:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 450px) {
+  button {
+    width: 279px;
+    height: 40px;
+  }
 }
