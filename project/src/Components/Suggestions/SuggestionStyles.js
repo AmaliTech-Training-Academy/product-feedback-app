@@ -9,7 +9,9 @@ border-radius: 10px;
 display: flex;
 align-items: center;
 justify-content: center;
-
+&:hover {
+  cursor: pointer;
+}
 .suggestion-board {
   width: 761px;
   height: 95px;
@@ -37,6 +39,11 @@ justify-content: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.top-arrow:hover {
+  cursor: pointer;
+  background: #F2F4FF;
 }
 
 .top-arrow span {
