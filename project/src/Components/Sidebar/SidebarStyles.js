@@ -47,7 +47,7 @@ div {
 
 .body-2 {
   // background-color: yellow;
-  width: 108px:
+  width: 108px;
   height: 22px;
   color: #FFFFFF;
   opacity: 0.75;
@@ -115,68 +115,66 @@ export const All = styled.div`
 width: 48px;
 height: 30px;
 border-radius: 10px;
-background-color: #4661E6;
-color: #FFFFFF;
+background-color: ${(props) => props.type === 'All' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'All' ? '#FFFFFF' : '#4661E6'};
 display: flex;
 justify-content: center;
 align-items: center;
 font-size: 13px;
 font-weight: 600;
-  &:hover {
-    cursor: pointer;
-  }
+cursor: pointer;
 `
 
 export const UI = styled(All)`
-background-color: #F7F8FD;
-color: #4661E6;
+background-color: ${(props) => props.type === 'UI' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'UI' ? '#FFFFFF' : '#4661E6'};
 margin-left: 8px;
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const UX = styled(All)`
-background-color: #F7F8FD;
-color: #4661E6;
+background-color: ${(props) => props.type === 'UX' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'UX' ? '#FFFFFF' : '#4661E6'};
 margin-left: 8px;
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Enhancement = styled(All)`
 width: 111px;
-background-color: #F7F8FD;
-color: #4661E6;
-  &:hover {
+background-color: ${(props) => props.type === 'Enhancement' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Enhancement' ? '#FFFFFF' : '#4661E6'};
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Bug = styled(All)`
 width: 56px;
 margin-left: 13px;
-background-color: #F7F8FD;
-color: #4661E6;
-  &:hover {
+background-color: ${(props) => props.type === 'Bug' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Bug' ? '#FFFFFF' : '#4661E6'};
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Feature = styled(All)`
 width: 77px;
-background-color: #F7F8FD;
-color: #4661E6;
+background-color: ${(props) => props.type === 'Feature' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Feature' ? '#FFFFFF' : '#4661E6'};
 margin-top: 14px;
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const RoadMap = styled(Container)`

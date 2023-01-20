@@ -26,20 +26,27 @@ function Feedback(props) {
   const handleClick = (e) => {
     e.preventDefault()
     if (props.type === 'Edit') { 
-      axios.post('http://localhost:8000/feedback', {
+      axios.patch('http://localhost:8000/productRequests', {
         title: title,
         category: option,
         status: detailOption,
-        detail: details
+        description: details
       })
       .catch((e) => {
         console.log(e)
       })
     }
-    axios.get('http://localhost:8000/feedback')
-      .then(response => {
-        console.log(response)
-      })
+    axios.post('http://localhost:8000/productRequests', {
+      title: title,
+      category: option,
+      upvotes: '0',
+      status: detailOption,
+      description: details,
+      comments: []
+    })
+    .catch((e) => {
+      console.log(e)
+    })
   }
 
   return (

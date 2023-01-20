@@ -9,8 +9,9 @@ function App() {
     <div className="App">
       {/* <Home />  */}
       <SuggestionHome />
-      <Feedback />
-      <Feedback type='Edit' />
+      {/* {/* <Feedback /> */}
+      {/* <Feedback type='Edit' /> */}
+
     </div>
   );
 }
