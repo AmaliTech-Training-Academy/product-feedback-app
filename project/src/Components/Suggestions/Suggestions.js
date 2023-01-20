@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { SuggestionContainer } from './SuggestionStyles'
 import { Enhancement } from '../Sidebar/SidebarStyles'
 import axios from 'axios'
+import EmptyComponent from '../EmptyComponent/EmptyComponent'
 
 function Suggestions() {
 
@@ -15,7 +16,7 @@ function Suggestions() {
   }, [])
   return (
     <>
-    {data && data.map((item) => {
+    {data ? data.map((item) => {
       return (
         <SuggestionContainer>
         <div className="suggestion-board">
@@ -37,7 +38,8 @@ function Suggestions() {
         </div>
       </SuggestionContainer>
       )
-    })
+    }) 
+    : <EmptyComponent /> 
   }
     </>
   )
