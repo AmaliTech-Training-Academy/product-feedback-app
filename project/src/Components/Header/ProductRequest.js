@@ -17,10 +17,8 @@ const ProductRequest = ({title, productRequests, subtitle})=>{
     return(
         <>
          <div className="plan-st">
-        <div>   
-                
+        <div className="top-part">       
             <h3>{`${title}(${productRequests.length})`}</h3>
-            
             <p>{subtitle}</p>
         </div>
             {productRequests.map((data, key) => {

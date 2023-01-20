@@ -15,7 +15,7 @@ const ComponentBox = (props)=> {
                  <p className='plan-title-1 body-1'>{props.subtitle}</p>
             </div>
             <h3 className='plan-text-bold'>{props.title}</h3>
-            <p className='plan-text-normal body-1'>{props.text}</p>
+            <p className='plan-text-normal '>{props.text}</p>
 
               <div>
             <p className="tag body-3">{props.tag}</p>
