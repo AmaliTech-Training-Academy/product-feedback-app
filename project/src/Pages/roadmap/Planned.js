@@ -24,7 +24,7 @@ const ComponentBox = (props)=> {
               <div className="up">
                 <div className="inner-box-up">
                 {/* <img className="arrow-up" src="../../assets/shared/icon-arrow-up.svg"/> */}
-                <svg  className="arrow-up"width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
+                <svg  className="arrow-up"width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
                 <p className=" up-votes body-3">{props.up}</p>
               </div>
             </div>

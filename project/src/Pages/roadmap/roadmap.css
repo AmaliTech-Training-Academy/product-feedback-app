@@ -87,9 +87,9 @@ nav{
 .up{
     background-color:#f2f4ff ;
     border-radius: 10px;
-    width: 19.71%;
+    width: 24.04%;
     height: 40px;
-    margin-right: 49.71%;
+    margin-right: 60.63%;
 }
 
 .up:hover{
@@ -163,7 +163,8 @@ nav{
 
 .last-line{
     display: flex;
-    flex-direction: row;   
+    flex-direction: row;  
+    width: 100%; 
 }
 .plan-title-1::first-letter{
     text-transform: capitalize;
@@ -176,6 +177,15 @@ nav{
 
 /* TABLET VIEW */
 @media only screen and (min-width: 508px) and (max-width:920px){
+    .top-part h3{
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.2px;
+    }
+    .top-part p{
+        font-size:14px;
+        line-height: 20px;
+    }
     .plan-box{
         width: 100%;
         max-height: 251px;
