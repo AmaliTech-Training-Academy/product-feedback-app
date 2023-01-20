@@ -9,7 +9,9 @@ border-radius: 10px;
 display: flex;
 align-items: center;
 justify-content: center;
-
+&:hover {
+  cursor: pointer;
+}
 .suggestion-board {
   width: 761px;
   height: 95px;
@@ -21,11 +23,12 @@ justify-content: center;
 }
 
 .right-components {
-  width: 454px;
+  // width: 700px;
   height:95px;
   // background: orange;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  gap: 40px;
 }
 
 .top-arrow {
@@ -39,6 +42,11 @@ justify-content: center;
   align-items: center;
 }
 
+.top-arrow:hover {
+  cursor: pointer;
+  background: #F2F4FF;
+}
+
 .top-arrow span {
   font-size: 13px;
   font-weight: 700;
@@ -49,21 +57,22 @@ justify-content: center;
 .text {
   display: flex;
   flex-direction: column;
+  // margin-right: 40px;
 }
 .text .h3 {
   color: #3A4374;
   font-weight: 700;
-  width: 180px;
+  // width: 180px;
   height: 26px;
-  // background-color: white;
+  background-color: white;
 }
 
 .text .body-1 {
   color: #3A4374;
   font-weight: 400;
-  width: 374px;
+  // width: 374px;
   height: 23px;
-  // background-color: white;
+  background-color: white;
   margin-top: 4px;
   margin-bottom: 12px;
 }
@@ -104,7 +113,7 @@ justify-content: center;
   }
 
   .right-components {
-    width: 327px;
+    // width: 327px;
     height:152px;
     // background: orange;
     display: flex;
@@ -125,13 +134,13 @@ justify-content: center;
   }
   
   .text .h3 {
-    width: 278px;
+    // width: 278px;
     height: 19px;
     // background-color: white;
   }
 
   .text .body-1 {
-    width: 278px;
+    // width: 278px;
     height: 38px;
     margin-top: 9px;
     font-size: 13px;
