@@ -9,6 +9,11 @@ function Plan(){
     const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
+    // const [toggle1, setToggle1] = useState(true);
+    // const [toggle2, setToggle2] = useState(true);
+    // const [toggle3, setToggle4] = useState(true);
+
+
 
 
     const groupData=()=>{
@@ -41,25 +46,46 @@ function Plan(){
         groupData()
 
     },[])
+
+    // const handleClick = () => {
+    //     setToggle1(!toggle1);
+    //   };
+      
+
     
     return(
         <>
+        <nav>
+          <ul>
+            <li >Planned</li>
+            <li>In-Progress</li>
+            <li>Live</li>
+          </ul>
+        </nav>
+    
         <div className="roadmap-main">
-      <ProductRequest
+      <ProductRequest 
       title="Planned"
       subtitle="Ideas prioritized for research"
       productRequests={PlannedRequestProducts}
+      border1="plan"
+      round1="plan-round"
       />
 
       <ProductRequest
       title="In-Progress"
       subtitle="Currently being developed"
-      productRequests={ProgressRequestProducts}/>
+      productRequests={ProgressRequestProducts}
+      border1="progress"
+      round1="progress-round"
+      />
 
        <ProductRequest
       title="Live"
       subtitle="Released features"
-      productRequests={LiveRequestProducts}/>
+      productRequests={LiveRequestProducts}
+      border1="live"
+      round1="live-round"/>
 
       
      

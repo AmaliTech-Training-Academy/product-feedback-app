@@ -3,7 +3,7 @@ import ComponentBox from "../../Pages/roadmap/Planned";
 
 
 
-const ProductRequest = ({title, productRequests, subtitle})=>{
+const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
     const [myProduct, fetchMyProduct] = useState([])
     useEffect(() => {
         fetch('http://localhost:3000/productRequests')
@@ -26,8 +26,8 @@ const ProductRequest = ({title, productRequests, subtitle})=>{
                     return(
                         <ComponentBox key={key}
                         subtitle={data.status}
-                        border="plan"
-                        round="plan-round"
+                        border={border1}
+                        round={round1}
                        title={data.title}
                        text={data.description}
                        tag={data.category}

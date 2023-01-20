@@ -5,8 +5,9 @@ import '../../index.css'
 
 const ComponentBox = (props)=> {
     return(
-        <>
+        <> 
         <div className=''>
+           
        
         <div className='plan-box' id={props.border}>
             <div className='plan-inner'>

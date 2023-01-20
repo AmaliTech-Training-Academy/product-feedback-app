@@ -7,6 +7,9 @@
 p,h3{
     color: #647196;
 }
+nav{
+    display: none;
+}
 
 .plan-box{
    
@@ -221,4 +224,15 @@ p,h3{
     }
 
 
+}
+
+/*LARGE MOBILE SCREENS*/
+@media only screen and (min-width:265px)and (max-width:450px)  {
+    nav{
+        display: block;
+    }
+     li{
+        list-style-type: none;
+        display: inline;
+    }
 }
