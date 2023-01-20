@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
+import AddComment from "./AddComment";
 
 const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
@@ -11,12 +12,11 @@ const FeedbackDetails = () => {
   const getData = async () => {
     const results = await axios.get("http://localhost:8000/productRequests");
     setFeed(results.data[1]);
-    console.log(results.data);
+    console.log(results.data[1].comments);
   };
 
   useEffect(() => {
     getData();
-    
   }, []);
 
   return (
@@ -50,57 +50,61 @@ const FeedbackDetails = () => {
               <span>{feed.comments.length}</span>
             </div>
           </section>
-        
+
           <section className="comment card">
             <h3 className="card-body">{feed.comments.length} comments</h3>
             {feed.comments.map((comment) => {
-            return (
-              <div key={`comment ${comment.id}`}>
-                <div className="card-body ">
-                  <div className="comment-profile">
-                    <img
-                      src={comment.user.image}
-                      alt="progile image"
-                      className="profile-image"
-                    />
-                    <div className="user-detail">
-                      <h4>{comment.user.name}</h4>
-                      <h4 className="user-account">@{comment.user.username}</h4>
+              return (
+                <div key={`comment ${comment.id}`}>
+                  <div className="card-body  comment-section">
+                    <div className="comment-profile">
+                      <img
+                        src={comment.user.image}
+                        alt="profile image"
+                        className="profile-image"
+                      />
+                      <div className="user-detail">
+                        <h4>{comment.user.name}</h4>
+                        <h4 className="user-account">
+                          @{comment.user.username}
+                        </h4>
+                      </div>
+                      <div className="reply body-3">
+                        Reply
+                        {onclick}
+                      </div>
                     </div>
-                    <div className="reply body-3">Reply</div>
+
+                    <div className="body-2 users-comment">
+                      {comment.content}
+                    </div>
                   </div>
 
-                  <div className="body-2 users-comment">{comment.content}
-                  </div>
+                  {/* <div className="user-reply card-body">
+                    <div className="comment-profile">
+                      <img
+                        src="./assets/user-images/image-anne.jpg"
+                        className="profile-image"
+                      />
+                      <div className="user-detail">
+                        <h4>{comment.user.name} </h4>
+                        <h4 className="user-account"> @annev1990</h4>
+                      </div>
+                      <div className="body-3 reply">Reply</div>
+                    </div>
+                    <div>
+                      @hummingbird1 While waiting for dark mode, there are
+                      browser extensions that will also do the job. Search for
+                      "dark theme” followed by your browser. There might be a
+                      need to turn off the extension for sites with naturally
+                      black backgrounds though.
+                    </div>
+                  </div> */}
                 </div>
-
-                <hr />
-              </div>
-            );
-          })}
+              );
+            })}
           </section>
-          <form className="card add-comment">
-            <div className="card-body">
-              <label htmlFor="add-comment" className="form-label">
-                <h3>Add comment</h3>
-              </label>
-              <textarea
-                type="text"
-                className="form-control body-2"
-                id="add-comment"
-                placeholder="Type your comment here"
-                max="250"
-                min="200"
-                step="250"
-              />
-            </div>
-            <div className="share-comment card-body body-2">
-              <p className="body-2">250 Characters left</p>
-              <button type="submit" className="btn post-comment button-text">
-                Post Comment
-              </button>
-            </div>
-          </form>
+          <AddComment/>
         </>
       ) : (
         <p>no feed yet</p>
