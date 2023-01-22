@@ -22,7 +22,7 @@ function Suggestions() {
     <>
       {data && data.map((item) => {
         return (
-        <SuggestionContainer>
+        <SuggestionContainer >
           <div className="suggestion-board">
             <div className="right-components">
               <div className="top-arrow">

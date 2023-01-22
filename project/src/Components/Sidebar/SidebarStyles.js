@@ -91,13 +91,14 @@ export const Tag = styled(Container)`
   //   justify-content: center;
   //   align-items: center;
 
-  .tag-container {
-    margin: 24px;
-    /* background-color: yellow; */
+.tag-container {
+  margin: 24px;
+  // background-color: yellow;
 
-  //   @media screen and (max-width: 450px) {
-  //     margin: 0;
-   }
+  @media screen and (max-width: 450px) {
+    margin: 0;
+}
+}
 
   .upper-tag{
     display: flex;
@@ -111,6 +112,18 @@ export const Tag = styled(Container)`
   }
 
 
+@media screen and (max-width: 950px) {
+  height: 178px;
+  width: 223px;
+  background: #FFFFFF;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin-top: 24px;
+}
   @media screen and (max-width: 950px) {
     height: 178px;
     width: 223px;
@@ -340,6 +353,17 @@ export const RoadMap = styled(Container)`
     // margin-left: 10px;
   }
 
+.roadmap-container {
+  width: 80%;
+  height: 75%;
+  margin: 19px 24px 24px;
+  // background-color: yellow;
+}
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin: 0;
+}
   .roadmap-container {
     width: 80%;
     height: 75%;
