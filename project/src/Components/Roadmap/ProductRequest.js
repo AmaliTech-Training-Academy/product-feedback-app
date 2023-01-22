@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ComponentBox from "../Pages/roadmap/Planned";
+import ComponentBox from "../../Pages/roadmap/Planned";
 
 
 

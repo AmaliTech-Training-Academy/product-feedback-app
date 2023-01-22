@@ -3,7 +3,7 @@ import ComponentBox from "./Planned";
 import './roadmap.css'
 import productdata from '../../data/data.json'
 import { useState,useEffect } from "react";
-import ProductRequest from "../../Components/ProductRequest";
+import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Tab";
 import TabContent from "../../Components/TabContent";
 
