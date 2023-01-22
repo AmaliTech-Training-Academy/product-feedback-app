@@ -11,7 +11,7 @@ function Suggestions() {
   useEffect(() => {
     axios.get('http://localhost:8000/productRequests')
     .then(res => {
-      // setData(res.data )
+      setData(res.data )
     })
 
   }, [])
@@ -19,7 +19,7 @@ function Suggestions() {
     <>
       {data ? data.map((item) => {
         return (
-        <SuggestionContainer>
+        <SuggestionContainer >
           <div className="suggestion-board">
             <div className="right-components">
               <div className="top-arrow">

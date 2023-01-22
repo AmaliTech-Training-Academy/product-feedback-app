@@ -88,6 +88,10 @@ border-radius: 10px;
 .tag-container {
   margin: 24px;
   // background-color: yellow;
+
+  @media screen and (max-width: 450px) {
+    margin: 0;
+}
 }
 
 .upper-tag{
@@ -108,6 +112,11 @@ border-radius: 10px;
   background: #FFFFFF;
   margin-left: 10px;
   margin-top: 0;
+}
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin-top: 24px;
 }
 `
 
@@ -329,5 +338,10 @@ border-radius: 10px;
   height: 75%;
   margin: 19px 24px 24px;
   // background-color: yellow;
+}
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin: 0;
 }
 `
