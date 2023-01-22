@@ -118,19 +118,12 @@ border-radius: 10px;
 // background-color: #F7F8FD;
 background-color: ${props => props.type === 'All' ? '#4661E6' : '#F7F8FD' };
 color:  ${props => props.type === 'All' ? '#FFFFFF' : '#4661E6' };
-
+cursor: pointer;
 display: flex;
 justify-content: center;
 align-items: center;
 font-size: 13px;
 font-weight: 600;
-  &:hover {
-    cursor: pointer;
-  }
-    &:active {
-      background-color: #4661E6;
-      color: #FFFFFF;
-    }
 `
 
 export const UI = styled(All)`
@@ -139,7 +132,7 @@ color: ${props => props.type === 'UI' ? '#FFFFFF' : '#4661E6' };
 margin-left: 8px;
   &:hover {
     cursor: pointer;
-    background: #F2F4FF; 
+    // background: #F2F4FF; 
   }
 `
 
@@ -149,7 +142,7 @@ color: ${props => props.type === 'UX' ? '#FFFFFF' : '#4661E6' };
 margin-left: 8px;
   &:hover {
     cursor: pointer;
-    background: #F2F4FF; 
+    // background: #F2F4FF; 
   }
 `
 
@@ -159,7 +152,7 @@ background-color: ${props => props.type === 'Enhancement' ? '#4661E6' : '#F7F8FD
 color: ${props => props.type === 'Enhancement' ? '#FFFFFF' : '#4661E6' };
   &:hover {
     cursor: pointer;
-    background: #F2F4FF; 
+    // background: #F2F4FF; 
   }
 `
 
@@ -170,7 +163,7 @@ background-color: ${props => props.type === 'Bug' ? '#4661E6' : '#F7F8FD' };
 color: ${props => props.type === 'Bug' ? '#FFFFFF' : '#4661E6' };
   &:hover {
     cursor: pointer;
-    background: #F2F4FF; 
+    // background: #F2F4FF; 
   }
 `
 
@@ -181,7 +174,7 @@ color: ${props => props.type === 'Feature' ? '#FFFFFF' : '#4661E6' };
 margin-top: 14px;
   &:hover {
     cursor: pointer;
-    background: #F2F4FF; 
+    // background: #F2F4FF; 
   }
 `
 

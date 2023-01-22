@@ -11,6 +11,7 @@ function Suggestions() {
   useEffect(()=> {
     axios.get('http://localhost:8000/productRequests')
     .then(response => {
+      console.log(response)
       setData(response.data)
     })
   }, [])
