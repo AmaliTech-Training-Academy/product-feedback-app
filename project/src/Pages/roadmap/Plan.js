@@ -5,6 +5,7 @@ import productdata from '../../data/data.json'
 import { useState,useEffect } from "react";
 import ProductRequest from "../../Components/ProductRequest";
 import TabNavItem from "../../Components/Tab";
+import TabContent from "../../Components/TabContent";
 
 
 function Plan(){
@@ -73,16 +74,16 @@ function Plan(){
     
         <div className="roadmap-main">
         {/* {activeTab === "tab1" ? <PlannedRequestProducts/> : <ProgressRequestProducts/>} */}
+        <TabContent id="tab1" activeTab={activeTab}>
       <ProductRequest
-      id="tab1" 
-      activeTab={activeTab}
       title="Planned"
       subtitle="Ideas prioritized for research"
       productRequests={PlannedRequestProducts}
       border1="plan"
       round1="plan-round"
-      />
+      /></TabContent>
 
+     <TabContent id="tab2" activeTab={activeTab}>
       <ProductRequest
       id="tab2" 
       activeTab={activeTab}
@@ -91,8 +92,9 @@ function Plan(){
       productRequests={ProgressRequestProducts}
       border1="progress"
       round1="progress-round"
-      />
+      /></TabContent>
 
+        <TabContent id="tab3" activeTab={activeTab}>
        <ProductRequest
        id="tab3" 
        activeTab={activeTab}
@@ -101,6 +103,7 @@ function Plan(){
       productRequests={LiveRequestProducts}
       border1="live"
       round1="live-round"/>
+      </TabContent>
 
       
      
