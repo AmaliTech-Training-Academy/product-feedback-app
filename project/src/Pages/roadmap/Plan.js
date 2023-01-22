@@ -3,15 +3,15 @@ import ComponentBox from "./Planned";
 import './roadmap.css'
 import productdata from '../../data/data.json'
 import { useState,useEffect } from "react";
-import ProductRequest from "../../Components/Header/ProductRequest";
+import ProductRequest from "../../Components/ProductRequest";
+import TabNavItem from "../../Components/Tab";
+
 
 function Plan(){
     const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
-    // const [toggle1, setToggle1] = useState(true);
-    // const [toggle2, setToggle2] = useState(true);
-    // const [toggle3, setToggle4] = useState(true);
+    const [activeTab, setActiveTab] = useState("tab1");
 
 
 
@@ -46,10 +46,15 @@ function Plan(){
         groupData()
 
     },[])
-
-    // const handleClick = () => {
-    //     setToggle1(!toggle1);
-    //   };
+  //  Functions to handle Tab Switching
+  const handleTab1 = () => {
+    // update the state to tab1
+    setActiveTab("tab1");
+  };
+  const handleTab2 = () => {
+    // update the state to tab2
+    setActiveTab("tab2");
+  };
       
 
     
@@ -57,14 +62,20 @@ function Plan(){
         <>
         <nav>
           <ul>
-            <li >Planned</li>
-            <li>In-Progress</li>
-            <li>Live</li>
+            {/* <li className={activeTab === "tab1" ? "active" : ""} >Planned</li>
+            <li className={activeTab === "tab2" ? "active" : ""} >In-Progress</li>
+            <li className={activeTab === "tab3" ? "active" : ""} >Live</li> */}
+            <TabNavItem title="Planned" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem title="In-Progress" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem title="Live" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
           </ul>
         </nav>
     
         <div className="roadmap-main">
-      <ProductRequest 
+        {/* {activeTab === "tab1" ? <PlannedRequestProducts/> : <ProgressRequestProducts/>} */}
+      <ProductRequest
+      id="tab1" 
+      activeTab={activeTab}
       title="Planned"
       subtitle="Ideas prioritized for research"
       productRequests={PlannedRequestProducts}
@@ -73,6 +84,8 @@ function Plan(){
       />
 
       <ProductRequest
+      id="tab2" 
+      activeTab={activeTab}
       title="In-Progress"
       subtitle="Currently being developed"
       productRequests={ProgressRequestProducts}
@@ -81,6 +94,8 @@ function Plan(){
       />
 
        <ProductRequest
+       id="tab3" 
+       activeTab={activeTab}
       title="Live"
       subtitle="Released features"
       productRequests={LiveRequestProducts}

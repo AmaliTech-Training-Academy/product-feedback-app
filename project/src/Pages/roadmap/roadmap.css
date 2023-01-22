@@ -245,4 +245,7 @@ nav{
         list-style-type: none;
         display: inline;
     }
+    .active{
+        background-color: #4661e6;
+    }
 }

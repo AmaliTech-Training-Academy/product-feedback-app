@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ComponentBox from "../../Pages/roadmap/Planned";
+import ComponentBox from "../Pages/roadmap/Planned";
 
 
 
-const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
+const ProductRequest = ({title, productRequests, subtitle,border1,round1,id,activeTab})=>{
     const [myProduct, fetchMyProduct] = useState([])
     useEffect(() => {
         fetch('http://localhost:3000/productRequests')
