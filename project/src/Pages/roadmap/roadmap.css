@@ -7,7 +7,14 @@
 p,h3{
     color: #647196;
 }
+
+#tab1,#tab2,#tab3{
+    display: none;
+}
 nav{
+    display: none;
+}
+ .small-screen{
     display: none;
 }
 
@@ -248,4 +255,10 @@ nav{
     .active{
         background-color: #4661e6;
     }
+   .big-screen{
+    display: none;
+   }
+   .small-screen{
+    display: block;
+   }
 }
