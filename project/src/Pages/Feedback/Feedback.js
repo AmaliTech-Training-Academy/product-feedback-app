@@ -55,7 +55,7 @@ function Feedback(props) {
           <div className='buttons'>
             {(props.type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
             <button className='button-3-default cancel'>Cancel</button>
-            <button className='button-1-default' onClick={handleClick}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
+            <button className='button-1-default save' onClick={handleClick}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>
     </Container>

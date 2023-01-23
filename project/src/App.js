@@ -47,8 +47,8 @@ function App() {
       {/* <Home />  */}
       <MobileNav />
       <SuggestionHome />
-      {/* {/* <Feedback /> */}
-      {/* <Feedback type='Edit' /> */}
+      <Feedback />
+     <Feedback type='Edit' />
 
     </div>
   );
