@@ -46,6 +46,13 @@ export const Container = styled.div`
             }
         }
 
+        .error {
+            margin-top: -16px;
+            align-self: baseline;
+            color: #D73737;
+            font-weight: 400;
+        }
+
         .buttons {
             width: 456px;
             margin-top: 8px;
