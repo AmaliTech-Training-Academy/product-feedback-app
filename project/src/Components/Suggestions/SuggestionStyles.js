@@ -106,6 +106,7 @@ justify-content: center;
 
   .suggestion-board {
     width: 278px;
+    // width: 80%;
     height: 190px;
     // background: blue;
     display: flex;
@@ -113,7 +114,7 @@ justify-content: center;
   }
 
   .right-components {
-    // width: 327px;
+    width: 327px;
     height:152px;
     // background: orange;
     display: flex;

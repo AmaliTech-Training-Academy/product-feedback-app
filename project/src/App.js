@@ -1,17 +1,12 @@
 import React from 'react';
 import './App.css';
-import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
-// import Feedback from './Pages/Feedback/Feedback'
-import Home from './Pages/Home/Home'
+import SuggestionHome from './Pages/Home/SuggestionHome'
 
 
 function App() {
   return (
     <div className="App">
-      {/* <Feedback />
-      <Feedback type='Edit' /> */}
-      <FeedbackDetails/>
-      <Home />
+      <SuggestionHome />
     </div>
   );
 }
