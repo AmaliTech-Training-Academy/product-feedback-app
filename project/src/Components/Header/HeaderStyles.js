@@ -40,10 +40,10 @@ export const Head = styled.div`
 
         /* @media (max-width: 950px) {
             margin-right: 141px;
-        }
-        @media (max-width: 450px) {
-            margin-right: 44px;
         } */
+        @media (max-width: 450px) {
+            margin-left: 24px;
+        }
     }
 
     button {
@@ -111,6 +111,7 @@ export const Head = styled.div`
     @media (max-width: 450px) {
         .add-feedback {
         width: 134px;
+        margin-right: 8px;
     }
         width: 100vw;
         border-radius: 0;

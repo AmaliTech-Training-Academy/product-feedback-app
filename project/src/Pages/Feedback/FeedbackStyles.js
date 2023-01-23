@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 540px;
     /* height: ${(props) => props.type === "Edit" ? '910px' : '745px'}; */
-    margin: 92px 0px 192px;
+    margin: 92px auto 192px;
     /* background-color: red; */
     display: flex;
     flex-direction: column;
@@ -83,6 +83,12 @@ export const Container = styled.div`
             }
         }
 
+        .save {
+            @media (max-width: 450px) {
+                width: 279px;
+            } 
+        }
+
         @media (max-width: 450px) {
             /* height: ${(props) => props.type === 'Edit' ? '893px' : '708px'}; */
         }
@@ -91,6 +97,6 @@ export const Container = styled.div`
     @media (max-width: 450px) {
         width: 327px;
         /* height: 782px; */
-        margin-top: 34px;
+        /* margin: 34px auto 192px; */
     }
 `

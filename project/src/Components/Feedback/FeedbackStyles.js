@@ -56,6 +56,10 @@ export const Container = styled.div`
             /* border: ; */
         }
 
+        @media (max-width: 450px) {
+            padding: unset;
+        }
+
     }
     .details {
         height: 96px;
