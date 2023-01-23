@@ -102,7 +102,7 @@ justify-content: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-inline: 24px;
+  margin: 24px auto 0;
 
   .suggestion-board {
     width: 278px;
