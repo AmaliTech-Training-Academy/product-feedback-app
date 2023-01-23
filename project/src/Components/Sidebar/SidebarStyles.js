@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
 width: 255px; 
 height: 529px; 
-// background-color: red;
+/* background-color: red;  */
 display: flex;
 flex-direction: column;
 
@@ -89,9 +89,9 @@ border-radius: 10px;
   margin: 24px;
   // background-color: yellow;
 
-  @media screen and (max-width: 450px) {
+  /* @media screen and (max-width: 450px) {
     margin: 0;
-}
+} */
 }
 
 .upper-tag{

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    position: relative;
-    width: 100vw;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
     height: 72px;
     background-image: url('./assets/suggestions/mobile/background-header.png');
     /* background-color: black; */
     /* opacity: 0.6; */
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: fixed;
-    /* z-index: 5; */
+    /* background-position: fixed; */
+    z-index: 1;
     display: none;
 
     .topic {
