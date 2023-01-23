@@ -7,6 +7,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 24px;
+width: 255px; 
+height: 529px; 
+/* background-color: red;  */
+display: flex;
+flex-direction: column;
+
 
 
   // Tablet view
@@ -95,9 +101,9 @@ export const Tag = styled(Container)`
   margin: 24px;
   // background-color: yellow;
 
-  @media screen and (max-width: 450px) {
+  /* @media screen and (max-width: 450px) {
     margin: 0;
-}
+} */
 }
 
   .upper-tag{

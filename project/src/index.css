@@ -103,6 +103,9 @@ button {
 }
 
 @media (max-width: 450px) {
+  /* body {
+    width: 375px;
+  } */
   button {
     /* width: 279px; */
     height: 40px;
