@@ -102,7 +102,7 @@ button {
 
 @media (max-width: 450px) {
   button {
-    width: 279px;
+    /* width: 279px; */
     height: 40px;
   }
 }
