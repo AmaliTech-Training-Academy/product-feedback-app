@@ -5,6 +5,8 @@ import {useState,useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
 
 
@@ -47,11 +49,17 @@ function Plan(){
     return(
         <>
         <nav>
+          {/* <Tabs>
+            <Tab label="Planned (2)"/>
+            <Tab label="In-Progress (3)"/>
+            <Tab label="Live (1)"/>
+            
+          </Tabs> */}
    
           <ul className="list1">
-            <TabNavItem className="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem className="progress-tag"title="In-Progress (3)" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem className="live-tag" title="Live (1)" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="progress-tag"title="In-Progress (3)" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="live-tag" title="Live (1)" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
           </ul>
         </nav>
     <div className="small-screen">

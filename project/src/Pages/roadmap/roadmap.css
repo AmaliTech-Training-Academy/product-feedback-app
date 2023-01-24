@@ -80,7 +80,6 @@ nav{
 
 
 .tag{
-    
     background-color:#f2f4ff ;
     padding: 5px 16px;
     max-width: fit-content;
@@ -122,8 +121,6 @@ nav{
 }
 
 .arrow-up{
-    /* width: 8px;
-    height: 4px; */
     font-weight: 600;
     margin-right: 23.46%;
     margin-top: 5px;
@@ -248,22 +245,30 @@ nav{
     nav{
         display: block;
     }
+    .active{
+        color: #3a4374;
+
+    }
      li{
         list-style-type: none;
         display: inline-block;
         width: 33.33%;
         font-weight: 700;
         font-size: 13px;
-        color: #647196;
         letter-spacing: -0.18px;
         text-align: center;
         line-height: 19px;
-        
-        margin-top: 20px;margin-bottom: 16;
-       
+        margin-top: 20px;
+        margin-bottom: 16px;   
     }
-    .active{
-        /* background-color: #4661e6; */
+    /* ul :first-child{
+         border-bottom: 5px solid #4661e6; 
+    } */
+    ul:nth-child(2){
+        border-bottom: 5px solid #ad1fea;
+    }
+    .active :first-child{
+        background-color: #4661e6;
         
     }
    .big-screen{
@@ -278,9 +283,14 @@ nav{
     margin: 0;
    }
 
-   .plan-tag :active{
-    border: 5px #f49f85;
-
+   #plan-tag {
+    border-bottom: 4.5px solid #f49f85;
+   }
+   #progress-tag {
+    border-bottom: 4.5px solid #ad1fea;
+   }
+   #live-tag {
+    border-bottom: 4.5px solid #62bcfa;
    }
   
 }
