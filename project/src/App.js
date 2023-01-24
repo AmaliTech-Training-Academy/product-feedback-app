@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Routes, Route } from 'react-router'
 import './App.css';
-import Home from './Pages/Home/Home'; 
-import SuggestionHome from './Pages/Home/SuggestionHome';
-import Feedback from './Pages/Feedback/Feedback'
-import MobileNav from './Components/Header/Mobile nav/MobileNav';
+import Feedback from './Pages/Feedback/Feedback';
+import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
+import Home from './Pages/Home/Home'
 
 function App() {
+  const [item, setItem] = useState(null)
   return (
     <div className="App">
-      {/* <Home />  */}
-      <MobileNav />
-      <SuggestionHome />
+      <Routes>
+        <Route path='/' element={<Home setItem={setItem}/>} />
+        <Route path='/feedback-details' element={<FeedbackDetails item={item}/>} />
+      </Routes>
       <Feedback />
-     <Feedback type='Edit' />
-
     </div>
   );
 }

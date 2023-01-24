@@ -5,8 +5,10 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
 import AddComment from "./AddComment";
+import Suggestions from "../../../Components/Suggestions/Suggestions";
+import Head from "../../../Components/Feedback/Head";
 
-const FeedbackDetails = () => {
+const FeedbackDetails = ({item}) => {
   const [feed, setFeed] = useState(null);
 
   const getData = async () => {
@@ -24,15 +26,17 @@ const FeedbackDetails = () => {
       {feed ? (
         <>
           <section className="navigation">
-            <div className="back">
+            <Head />
+            {/* <div className="back">
               <img src="./assets/shared/icon-arrow-left.svg" />
               <span className="h4">Go Back</span>
-            </div>
+            </div> */}
             <button className="btn btn-primary button-text edit-button">
               Edit Feedback
             </button>
           </section>
-          <section className="card dark-theme ">
+          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
+          {/* <section className="card dark-theme ">
             <button className="increase-theme ">
               <img
                 src="./assets/shared/icon-arrow-up.svg"
@@ -49,7 +53,7 @@ const FeedbackDetails = () => {
               <img src="./assets/shared/icon-comments.svg" />
               <span>{feed.comments.length}</span>
             </div>
-          </section>
+          </section> */}
 
           <section className="comment card">
             <h3 className="card-body">{feed.comments.length} comments</h3>

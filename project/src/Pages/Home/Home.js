@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
 import Sidebar from '../../Components/Sidebar/Sidebar'
@@ -7,7 +8,7 @@ import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
 
 
-function Home() {
+function Home({setItem}) {
 
   const [data, setData] = useState(null)
 
@@ -15,6 +16,7 @@ function Home() {
     axios.get('http://localhost:8000/productRequests')
     .then(res => {
       setData(res.data )
+      console.log(res.data)
     })
 
   }, [])
@@ -26,7 +28,11 @@ function Home() {
           <Header />
           {data ? data.map((item) => {
             return (
-              <Suggestions />
+              <>
+                <Link to='/feedback-details' onClick={() => setItem(item)}>
+                  <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} />
+                </Link>
+              </>
             )
           }) : <EmptyComponent />}
         </div>
