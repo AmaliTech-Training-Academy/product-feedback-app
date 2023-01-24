@@ -27,7 +27,7 @@ export const Head = styled.div`
 
     .sort {
         font-weight: 500;
-        margin: 0 273px 0 22px;
+        /* margin: 0 273px 0 22px; */
         cursor: pointer;
 
         svg {
@@ -38,17 +38,19 @@ export const Head = styled.div`
             stroke: #FFF;
         }
 
-        @media (max-width: 950px) {
+        /* @media (max-width: 950px) {
             margin-right: 141px;
-        }
+        } */
         @media (max-width: 450px) {
-            margin-right: 44px;
+            margin-left: 24px;
         }
     }
 
     button {
-        flex: 1;
-        margin-right: 16px;
+        position: absolute;
+        right: 16px;
+        /* flex: 1;
+        margin-right: 16px; */
     }
 
     .select {
@@ -107,7 +109,13 @@ export const Head = styled.div`
     }
 
     @media (max-width: 450px) {
-        width: 100%;
-        border-radius: 0;
+        .add-feedback {
+        width: 134px;
+        margin-right: 8px;
     }
+        width: 100vw;
+        border-radius: 0;
+        margin-top: 71px;
+    }
+
 `
