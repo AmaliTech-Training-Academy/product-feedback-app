@@ -42,7 +42,7 @@ function Header() {
             {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
         </div>}
-        <button className='button-1-default'>+ Add Feedback</button>
+        <button className='button-1-default add-feedback'>+ Add Feedback</button>
     </Head>
   )
 }
