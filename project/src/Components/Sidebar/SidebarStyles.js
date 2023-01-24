@@ -104,10 +104,6 @@ export const Tag = styled(Container)`
 .tag-container {
   margin: 24px;
   // background-color: yellow;
-
-  /* @media screen and (max-width: 450px) {
-    margin: 0;
-} */
 }
 
   .upper-tag{

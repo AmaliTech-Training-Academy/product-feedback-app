@@ -9,9 +9,10 @@ border-radius: 10px;
 display: flex;
 align-items: center;
 justify-content: center;
-&:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+  } 
+
 .suggestion-board {
   width: 761px;
   height: 95px;
@@ -60,14 +61,13 @@ justify-content: center;
   color: #3A4374;
   font-weight: 700;
   height: 26px;
-  background-color: white;
 }
 
 .text .body-1 {
   color: #3A4374;
   font-weight: 400;
   height: 23px;
-  background-color: white;
+  /* background-color: blue; */
   margin-top: 4px;
   margin-bottom: 12px;
 }
@@ -104,7 +104,7 @@ justify-content: center;
     display: flex;
     align-items: center;
     height: 152px;
-    background: blue;
+    /* background: blue; */
     margin: 24px;
   }
 
@@ -121,15 +121,15 @@ justify-content: center;
     height: 32px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
     margin-top: -24px;
+    /* background: green; */
   }
 
   .top-arrow span {
-    margin: 5px 0 0 8px;
+    margin: 2px -2px 0 8px;
   }
-  
+
   .text .h3 {
     height: 19px;
     /* background-color: green; */
