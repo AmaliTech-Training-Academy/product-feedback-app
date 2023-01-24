@@ -245,14 +245,11 @@ nav{
     nav{
         display: block;
     }
-    .active{
-        color: #3a4374;
-
-    }
      li{
         list-style-type: none;
         display: inline-block;
         width: 33.33%;
+        color: #3a4374;
         font-weight: 700;
         font-size: 13px;
         letter-spacing: -0.18px;
@@ -261,16 +258,7 @@ nav{
         margin-top: 20px;
         margin-bottom: 16px;   
     }
-    /* ul :first-child{
-         border-bottom: 5px solid #4661e6; 
-    } */
-    ul:nth-child(2){
-        border-bottom: 5px solid #ad1fea;
-    }
-    .active :first-child{
-        background-color: #4661e6;
-        
-    }
+
    .big-screen{
     display: none;
    }
@@ -283,14 +271,18 @@ nav{
     margin: 0;
    }
 
-   #plan-tag {
+   .plan-tag {
     border-bottom: 4.5px solid #f49f85;
    }
-   #progress-tag {
+   .progress-tag {
     border-bottom: 4.5px solid #ad1fea;
    }
-   #live-tag {
+   .live-tag {
     border-bottom: 4.5px solid #62bcfa;
    }
+   .disabled{
+    opacity: 40%;
+   }
+
   
 }
