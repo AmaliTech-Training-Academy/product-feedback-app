@@ -206,12 +206,10 @@ nav{
         width: 32.37%;
         margin-right: 1.45%;
     }
-
     .plan-inner{
         margin-right: 8.97%;
         margin-left: 8.97%;
     }
-
     .sub-faded{
         margin-top: 20px;
         height: 19px;
@@ -228,13 +226,11 @@ nav{
         font-weight: 400;
         line-height: 19px;
     }
-
     .up{
         width: 30.94%;
         height: 32px;
         /* margin-right: 40.44%; */
     }
-
     .inner-box-up{
         margin: 6px 18.12% 7px 23.19%;
     }
@@ -263,9 +259,12 @@ nav{
         text-align: center;
         line-height: 19px;
         margin-top: 20px;
-        margin-bottom: 16px;   
+        padding-bottom: 16px; 
+        border-bottom: 1px solid #3a4374;   
     }
-
+    ul{
+        width: 100%;
+    }
    .big-screen{
     display: none;
    }
@@ -277,7 +276,6 @@ nav{
     height: 55px;
     margin: 0;
    }
-
    .plan-tag {
     border-bottom: 4.5px solid #f49f85;
    }
@@ -289,6 +287,17 @@ nav{
    }
    .disabled{
     opacity: 40%;
+   }
+   .top-part{
+    margin-bottom: 24px;
+    margin-top: 24px;
+    
+   }
+   h3{
+    margin: 0px 0px 4px 0px ;
+   }
+   p{
+    margin: 0;
    }
 
   

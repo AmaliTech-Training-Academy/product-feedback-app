@@ -5,17 +5,13 @@ import {useState,useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-
-
 
 
 function Plan(){
     const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
-    const [activeTab, setActiveTab] = useState("tab1");
+    const [activeTab, setActiveTab] = useState("tab2");
    
 
     const groupData=()=>{
@@ -49,13 +45,6 @@ function Plan(){
     return(
         <>
         <nav>
-          {/* <Tabs>
-            <Tab label="Planned (2)"/>
-            <Tab label="In-Progress (3)"/>
-            <Tab label="Live (1)"/>
-            
-          </Tabs> */}
-   
           <ul className="list1">
             <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
             <TabNavItem theStyle="progress-tag"title="In-Progress (3)" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
