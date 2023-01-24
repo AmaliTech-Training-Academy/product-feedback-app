@@ -29,6 +29,10 @@ flex-direction: column;
   @media screen and (max-width: 450px) {
     display: none;
   }
+@media screen and (max-width: 450px) {
+  display: none;
+  margin: unset;
+}
 `
 
 export const FrontendMentors = styled(Container)`
