@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SuggestionContainer = styled.div`
-width: 825px;
+width: 100%;
 height: 151px;
 background: #FFFFFF;
 margin-top: 24px;
