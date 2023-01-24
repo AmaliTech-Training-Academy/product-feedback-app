@@ -11,7 +11,7 @@ function FeedbackTitle(props) {
     <Container>
         <span className='h4 title'>Feedback Title</span>
         <span className='h4 description'>Add a short, descriptive headline</span>
-        <input className='input' type='text' name='title' onChange={titleValue}/>
+        <input className='input' type='text' name='title' onChange={titleValue} onClick={() => props.setTitleError(false)}/>
     </Container>
   )
 }
