@@ -250,10 +250,21 @@ nav{
     }
      li{
         list-style-type: none;
-        display: inline;
+        display: inline-block;
+        width: 33.33%;
+        font-weight: 700;
+        font-size: 13px;
+        color: #647196;
+        letter-spacing: -0.18px;
+        text-align: center;
+        line-height: 19px;
+        
+        margin-top: 20px;margin-bottom: 16;
+       
     }
     .active{
-        background-color: #4661e6;
+        /* background-color: #4661e6; */
+        
     }
    .big-screen{
     display: none;
@@ -261,4 +272,15 @@ nav{
    .small-screen{
     display: block;
    }
+   .list1{
+    padding: 0;
+    height: 55px;
+    margin: 0;
+   }
+
+   .plan-tag :active{
+    border: 5px #f49f85;
+
+   }
+  
 }
