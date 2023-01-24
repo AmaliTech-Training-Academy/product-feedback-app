@@ -21,6 +21,7 @@ flex-direction: column;
 
 @media screen and (max-width: 450px) {
   display: none;
+  margin: unset;
 }
 `
 
