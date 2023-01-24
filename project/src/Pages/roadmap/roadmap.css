@@ -260,11 +260,10 @@ nav{
         line-height: 19px;
         margin-top: 20px;
         padding-bottom: 16px; 
-        border-bottom: 1px solid #3a4374;   
+        border-bottom: 1px solid rgb(58,67,116,.4);
+         
     }
-    ul{
-        width: 100%;
-    }
+
    .big-screen{
     display: none;
    }
@@ -277,13 +276,13 @@ nav{
     margin: 0;
    }
    .plan-tag {
-    border-bottom: 4.5px solid #f49f85;
+    border-bottom: 4px solid #f49f85;
    }
    .progress-tag {
-    border-bottom: 4.5px solid #ad1fea;
+    border-bottom: 4px solid #ad1fea;
    }
    .live-tag {
-    border-bottom: 4.5px solid #62bcfa;
+    border-bottom: 4px solid #62bcfa;
    }
    .disabled{
     opacity: 40%;
@@ -298,6 +297,9 @@ nav{
    }
    p{
     margin: 0;
+   }
+   .last-line{
+    margin-top: 16px;
    }
 
   
