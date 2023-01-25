@@ -1,14 +1,11 @@
 import React from 'react'
 import './roadmap.css'
-import Bottom from './bottom';
 import '../../index.css'
 
 const ComponentBox = (props)=> {
     return(
         <> 
         <div className=''>
-           
-       
         <div className='plan-box' id={props.border}>
             <div className='plan-inner'>
             <div className='sub-faded'>
@@ -18,7 +15,7 @@ const ComponentBox = (props)=> {
             <h3 className='plan-text-bold'>{props.title}</h3>
             <p className='plan-text-normal '>{props.text}</p>
 
-              <div>
+              <div className='bottom-1'>
             <p className="tag body-3">{props.tag}</p>
            <div className="last-line">
               <div className="up">
