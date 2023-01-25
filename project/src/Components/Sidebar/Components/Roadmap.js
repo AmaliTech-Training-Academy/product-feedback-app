@@ -1,5 +1,6 @@
 import React from 'react'
 import { RoadMap } from '../SidebarStyles'
+import { Link } from 'react-router-dom'
 
 
 function Roadmap() {
@@ -8,7 +9,9 @@ function Roadmap() {
       <div className='roadmap-container'>
         <div className='roadmap-view'>
           <span className='h3'>Roadmap</span>
-          <span className='body-3'>View</span>
+          <Link to='/roadmap'>
+            <span className='body-3'>View</span>
+          </Link>
         </div>
         <div className='roadmap-planned'>
           <div>
