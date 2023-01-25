@@ -35,6 +35,7 @@ justify-content: center;
   height: 53px;
   border-radius: 10px;
   background: #F7F8FD;
+  // background-color: ${props => props.type === 'UI' ? '#F7F8FD' : '#4661E6'}
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -77,7 +78,7 @@ justify-content: center;
   height: 23px;
   // background: green;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -142,7 +143,7 @@ justify-content: center;
   .left-components {
     width: 44px;
     height: 23px;
-    /* background: green; */
+    // background: blue;
     position: absolute;
     transform: translate(235px, 64px);
   }
