@@ -4,7 +4,7 @@ import { Enhancement } from '../Sidebar/SidebarStyles'
 
 
 
-function Suggestions({title, category, status, upvote, description}) {
+function Suggestions({title, category, status, upvote, description, comments}) {
   return (
   <SuggestionContainer >
     <div className="suggestion-board">
@@ -21,8 +21,8 @@ function Suggestions({title, category, status, upvote, description}) {
       </div>
       <div className="left-components">
         <img src="./assets/shared/icon-comments.svg" alt=''/>
-        <span>2</span>
-        {/* <span>{comments ? comments.length : '0'}</span> */}
+        {/* <span>2</span> */}
+        <span>{comments ? comments.length : '0'}</span>
       </div>
     </div>
   </SuggestionContainer>

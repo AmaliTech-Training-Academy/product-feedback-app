@@ -1,6 +1,7 @@
 import React from 'react'
 import './EmptyComponentStyles.css'
 
+
 function EmptyComponent() {
   return (
     <div className='empty-page'>

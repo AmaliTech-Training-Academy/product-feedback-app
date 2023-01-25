@@ -30,7 +30,7 @@ function Home({setItem}) {
             return (
               <>
                 <Link to='/feedback-detail' onClick={() => setItem(item)}>
-                  <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} />
+                  <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
                 </Link>
               </>
             )
