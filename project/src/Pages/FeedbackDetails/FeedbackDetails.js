@@ -1,12 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
 import AddComment from "./AddComment";
-import Suggestions from "../../../Components/Suggestions/Suggestions";
-import Head from "../../../Components/Feedback/Head";
+import Suggestions from "../../Components/Suggestions/Suggestions";
+import Head from "../../Components/Feedback/Head";
 
 const FeedbackDetails = ({item}) => {
   const [feed, setFeed] = useState(null);
@@ -64,7 +62,7 @@ const FeedbackDetails = ({item}) => {
                     <div className="comment-profile">
                       <img
                         src={comment.user.image}
-                        alt="profile image"
+                        alt="profile_image"
                         className="profile-image"
                       />
                       <div className="user-detail">
