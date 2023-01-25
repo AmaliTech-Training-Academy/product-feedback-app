@@ -11,7 +11,7 @@ function Details({value, error}) {
     <Container type='details' error={error}>
         <span className='h4 title'>Feedback Details</span>
         <span className='h4 description'>Include any specific comments on what should be improved, added, etc.</span>
-        <textarea type='text' className='input details' onChange={getDetails} onClick={() => props.setDetailsError(false)}/>
+        <textarea type='text' className='input details' onChange={getDetails}/>
     </Container>
   )
 }
