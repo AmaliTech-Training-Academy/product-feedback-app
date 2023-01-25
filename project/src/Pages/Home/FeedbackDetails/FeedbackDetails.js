@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
 import AddComment from "./AddComment";
