@@ -85,7 +85,7 @@
     width: 86%;
     height: 460px;
     /* background: yellow; */
-    margin-inline: 24px;
+    margin: 32px auto 0;
   }
 
   .empty-page-component {

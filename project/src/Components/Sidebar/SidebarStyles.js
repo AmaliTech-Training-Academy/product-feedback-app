@@ -21,6 +21,7 @@ flex-direction: column;
 
 @media screen and (max-width: 450px) {
   display: none;
+  margin: unset;
 }
 `
 
@@ -88,10 +89,6 @@ border-radius: 10px;
 .tag-container {
   margin: 24px;
   // background-color: yellow;
-
-  /* @media screen and (max-width: 450px) {
-    margin: 0;
-} */
 }
 
 .upper-tag{
@@ -138,10 +135,10 @@ export const UI = styled(All)`
 background-color: ${(props) => props.type === 'UI' ? '#4661E6' : '#F7F8FD'};
 color: ${(props) => props.type === 'UI' ? '#FFFFFF' : '#4661E6'};
 margin-left: 8px;
-  /* &:hover {
-    cursor: pointer;
-    background: #F2F4FF; 
-  } */
+  &:hover {
+    /* cursor: pointer; */
+    /* background: #F2F4FF;  */
+  }
 `
 
 export const UX = styled(All)`
