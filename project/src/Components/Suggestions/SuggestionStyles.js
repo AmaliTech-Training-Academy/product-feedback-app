@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SuggestionContainer = styled.div`
-width: 825px;
+width: 100%;
 height: 151px;
 background: #FFFFFF;
 margin-top: 24px;
@@ -9,9 +9,10 @@ border-radius: 10px;
 display: flex;
 align-items: center;
 justify-content: center;
-&:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+  } 
+
 .suggestion-board {
   width: 761px;
   height: 95px;
@@ -23,11 +24,9 @@ justify-content: center;
 }
 
 .right-components {
-  // width: 700px;
   height:95px;
   // background: orange;
   display: flex;
-  // justify-content: space-between;
   gap: 40px;
 }
 
@@ -57,22 +56,18 @@ justify-content: center;
 .text {
   display: flex;
   flex-direction: column;
-  // margin-right: 40px;
 }
 .text .h3 {
   color: #3A4374;
   font-weight: 700;
-  // width: 180px;
   height: 26px;
-  background-color: white;
 }
 
 .text .body-1 {
   color: #3A4374;
   font-weight: 400;
-  // width: 374px;
   height: 23px;
-  background-color: white;
+  /* background-color: blue; */
   margin-top: 4px;
   margin-bottom: 12px;
 }
@@ -99,23 +94,17 @@ justify-content: center;
 @media screen and (max-width: 450px) {
   width: 327px;
   height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-inline: 24px;
+  margin: 24px auto 0;
 
   .suggestion-board {
-    width: 278px;
-    height: 190px;
-    // background: blue;
-    display: flex;
-    align-items: center;
+    height: 152px;
+    /* background: blue; */
+    margin: 24px;
   }
 
   .right-components {
-    // width: 327px;
     height:152px;
-    // background: orange;
+    /* background: orange; */
     display: flex;
     flex-direction: column-reverse;
   }
@@ -125,35 +114,37 @@ justify-content: center;
     height: 32px;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
     align-items: center;
+    margin-top: -24px;
+    /* background: green; */
   }
 
   .top-arrow span {
-    margin: 5px 0 0 8px;
+    margin: 2px -2px 0 8px;
   }
-  
+
   .text .h3 {
-    // width: 278px;
     height: 19px;
-    // background-color: white;
+    /* background-color: green; */
+    font-size: 13px;
+    line-height: 19px;
+
   }
 
   .text .body-1 {
-    // width: 278px;
     height: 38px;
     margin-top: 9px;
     font-size: 13px;
     line-height: 19px;
+    /* background-color: green; */
   }
 
   .left-components {
     width: 44px;
     height: 23px;
-    // background: green;
+    /* background: green; */
     position: absolute;
-    top: 250px;
-    left: 300px;
+    transform: translate(235px, 64px);
   }
 
 }

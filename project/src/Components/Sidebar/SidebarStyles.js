@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
 width: 255px; 
 height: 529px; 
-// background-color: red;
+/* background-color: red;  */
 display: flex;
 flex-direction: column;
 
@@ -21,6 +21,7 @@ flex-direction: column;
 
 @media screen and (max-width: 450px) {
   display: none;
+  margin: unset;
 }
 `
 
@@ -109,80 +110,77 @@ border-radius: 10px;
   margin-left: 10px;
   margin-top: 0;
 }
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin-top: 24px;
+}
 `
 
 export const All = styled.div`
 width: 48px;
 height: 30px;
 border-radius: 10px;
-// background-color: #F7F8FD;
-background-color: ${props => props.type === 'All' ? '#4661E6' : '#F7F8FD' };
-color:  ${props => props.type === 'All' ? '#FFFFFF' : '#4661E6' };
-
+background-color: ${(props) => props.type === 'All' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'All' ? '#FFFFFF' : '#4661E6'};
 display: flex;
 justify-content: center;
 align-items: center;
 font-size: 13px;
 font-weight: 600;
-  &:hover {
-    cursor: pointer;
-  }
-    &:active {
-      background-color: #4661E6;
-      color: #FFFFFF;
-    }
+cursor: pointer;
 `
 
 export const UI = styled(All)`
-background-color: ${props => props.type === 'UI' ? '#4661E6' : '#F7F8FD' };
-color: ${props => props.type === 'UI' ? '#FFFFFF' : '#4661E6' };
+background-color: ${(props) => props.type === 'UI' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'UI' ? '#FFFFFF' : '#4661E6'};
 margin-left: 8px;
   &:hover {
-    cursor: pointer;
-    background: #F2F4FF; 
+    /* cursor: pointer; */
+    /* background: #F2F4FF;  */
   }
 `
 
 export const UX = styled(All)`
-background-color: ${props => props.type === 'UX' ? '#4661E6' : '#F7F8FD' };
-color: ${props => props.type === 'UX' ? '#FFFFFF' : '#4661E6' };
+background-color: ${(props) => props.type === 'UX' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'UX' ? '#FFFFFF' : '#4661E6'};
 margin-left: 8px;
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Enhancement = styled(All)`
 width: 111px;
-background-color: ${props => props.type === 'Enhancement' ? '#4661E6' : '#F7F8FD' };
-color: ${props => props.type === 'Enhancement' ? '#FFFFFF' : '#4661E6' };
-  &:hover {
+background-color: ${(props) => props.type === 'Enhancement' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Enhancement' ? '#FFFFFF' : '#4661E6'};
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Bug = styled(All)`
 width: 56px;
 margin-left: 13px;
-background-color: ${props => props.type === 'Bug' ? '#4661E6' : '#F7F8FD' };
-color: ${props => props.type === 'Bug' ? '#FFFFFF' : '#4661E6' };
-  &:hover {
+background-color: ${(props) => props.type === 'Bug' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Bug' ? '#FFFFFF' : '#4661E6'};
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const Feature = styled(All)`
 width: 77px;
-background-color: ${props => props.type === 'Feature' ? '#4661E6' : '#F7F8FD' };
-color: ${props => props.type === 'Feature' ? '#FFFFFF' : '#4661E6' };
+background-color: ${(props) => props.type === 'Feature' ? '#4661E6' : '#F7F8FD'};
+color: ${(props) => props.type === 'Feature' ? '#FFFFFF' : '#4661E6'};
 margin-top: 14px;
-  &:hover {
+  /* &:hover {
     cursor: pointer;
     background: #F2F4FF; 
-  }
+  } */
 `
 
 export const RoadMap = styled(Container)`
@@ -337,5 +335,10 @@ border-radius: 10px;
   height: 75%;
   margin: 19px 24px 24px;
   // background-color: yellow;
+}
+
+@media screen and (max-width: 450px) {
+  display: block;
+  margin: 0;
 }
 `

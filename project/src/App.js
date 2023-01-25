@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
-import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
-// import Feedback from './Pages/Feedback/Feedback'
-import Home from './Pages/Home/Home'
-
+import Home from './Pages/Home/Home'; 
+import SuggestionHome from './Pages/Home/SuggestionHome';
+import Feedback from './Pages/Feedback/Feedback'
+import MobileNav from './Components/Header/Mobile nav/MobileNav';
 
 function App() {
   return (
     <div className="App">
-      {/* <Feedback />
-      <Feedback type='Edit' /> */}
-      <FeedbackDetails/>
-      <Home />
+      {/* <Home />  */}
+      <MobileNav />
+      <SuggestionHome />
+      <Feedback />
+     <Feedback type='Edit' />
+
     </div>
   );
 }
