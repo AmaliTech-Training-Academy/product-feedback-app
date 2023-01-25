@@ -29,7 +29,7 @@ function Home({setItem}) {
           {data ? data.map((item) => {
             return (
               <>
-                <Link to='/feedback-details' onClick={() => setItem(item)}>
+                <Link to='/feedback-detail' onClick={() => setItem(item)}>
                   <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} />
                 </Link>
               </>
