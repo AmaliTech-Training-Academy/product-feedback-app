@@ -70,7 +70,7 @@ function Feedback(props) {
 
   return (
     <Container type={props.type}>
-        <FeedbackHead />
+        <Head />
         <form className='content' onSubmit={handleSubmit}>
           <img src={props.type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
           <span className='h1 head'>{props.type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
