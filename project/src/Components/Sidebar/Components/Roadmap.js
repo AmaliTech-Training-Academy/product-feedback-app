@@ -9,7 +9,9 @@ function Roadmap() {
       <div className='roadmap-container'>
         <div className='roadmap-view'>
           <span className='h3'>Roadmap</span>
-          <Link to='/roadmap' span className='body-3'>View</Link>
+          <Link to='/roadmap'>
+            <span className='body-3'>View</span>
+          </Link>
         </div>
         <div className='roadmap-planned'>
           <div>
