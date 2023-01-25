@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Routes, Route } from 'react-router'
 import './App.css';
-// import Home from './Pages/Home/Home'; 
-import SuggestionHome from './Pages/Home/SuggestionHome';
+import Home from './Pages/Home/Home';
 import Feedback from './Pages/Feedback/Feedback'
-import MobileNav from './Components/Header/Mobile nav/MobileNav';
+import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
 
 function App() {
   const [item, setItem] = useState(null)
