@@ -18,7 +18,10 @@ import MobileNav from './Components/Header/Mobile nav/MobileNav';
 import Feedback from './Pages/Feedback/Feedback';
 import Home from './Pages/Home/Home'; 
 import SuggestionHome from './Pages/Home/SuggestionHome';
+import Home from './Pages/Home/Home'; 
+import SuggestionHome from './Pages/Home/SuggestionHome';
 import Feedback from './Pages/Feedback/Feedback'
+import MobileNav from './Components/Header/Mobile nav/MobileNav';
 import MobileNav from './Components/Header/Mobile nav/MobileNav';
 
 function App() {
@@ -47,7 +50,12 @@ function App() {
       {/* <Home />  */}
       <MobileNav />
       <SuggestionHome />
+      {/* <Home />  */}
+      <MobileNav />
+      <SuggestionHome />
       <Feedback />
+     <Feedback type='Edit' />
+
      <Feedback type='Edit' />
 
     </div>

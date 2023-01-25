@@ -97,19 +97,12 @@ justify-content: center;
   margin: 24px auto 0;
 
   .suggestion-board {
-    width: 278px;
-    // width: 80%;
-    height: 190px;
-    // background: blue;
-    display: flex;
-    align-items: center;
     height: 152px;
     /* background: blue; */
     margin: 24px;
   }
 
   .right-components {
-    width: 327px;
     height:152px;
     /* background: orange; */
     display: flex;

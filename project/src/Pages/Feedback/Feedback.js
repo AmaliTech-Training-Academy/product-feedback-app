@@ -29,21 +29,6 @@ function Feedback(props) {
 
   const handleClick = (e) => {
     e.preventDefault()
-    if (props.type === 'Edit') { 
-      axios.post('http://localhost:8000/feedback', {
-        title: title,
-        category: option,
-        status: detailOption,
-        detail: details
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-    }
-    axios.get('http://localhost:8000/feedback')
-      .then(response => {
-        console.log(response)
-      })
     if(title.length === 0) {
       setError({
         errorTitle: true,
