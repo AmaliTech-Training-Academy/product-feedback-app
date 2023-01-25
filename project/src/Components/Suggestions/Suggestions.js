@@ -5,6 +5,8 @@ import { Enhancement } from '../Sidebar/SidebarStyles'
 
 
 function Suggestions() {
+  // const [isClicked, setIsClicked] = useState('UI')
+
   return (
   <SuggestionContainer >
     <div className="suggestion-board">
