@@ -9,7 +9,6 @@ import { RoadMap } from "../Components/Sidebar/SidebarStyles";
 
 
 function ProductApp(){
-
     return(
         <>
         <Routes>
@@ -21,7 +20,6 @@ function ProductApp(){
             <Route path="/roadmap" element={<RoadMap/>}/>
         </Routes>
         </>
-
     );
 
 
