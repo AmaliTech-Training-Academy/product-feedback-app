@@ -28,7 +28,7 @@ export const Container = styled.div`
         width: 100%;
         height: 48px;
         background: #F7F8FD;
-        border: none;
+        border: ${(props) => props.error ? '1px solid #D73737' : 'none'};
         border-radius: 5px;
         margin-top: 14px;
         display: flex;
@@ -52,7 +52,7 @@ export const Container = styled.div`
         }
 
         &:hover, &:focus {
-            outline: 2px solid #4661E6;
+            outline: 1px solid #4661E6;
             /* border: ; */
         }
 
