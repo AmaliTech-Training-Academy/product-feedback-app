@@ -1,6 +1,5 @@
 import React from "react";
 import './roadmap.css'
-// import productdata from '../../data/data.json'
 import {useState,useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
@@ -20,6 +19,7 @@ function Plan(){
         let planned=[]
         let progress =[]
         let live =[]
+        let allData =[]
         
 
         axios.get('http://localhost:8000/productRequests')
@@ -27,28 +27,28 @@ function Plan(){
           let productdata = res.data;
           setProductData({productdata })
 
-          // console.log(productdata) 
+          productdata.map((productRequest)=>{
+              if(productRequest.status==='planned'){
+                  planned.push(productRequest);
+              }
+              if(productRequest.status==='in-progress'){
+                  progress.push(productRequest);   
+              }
+              if(productRequest.status==='live'){
+                  live.push(productRequest);   
+              }
+          })
+          setPlannedRequestProduct(planned);
+          setProgressRequestProduct(progress);
+          setLiveRequestProduct(live);
           
         })
         
           
 
-        productdata && productdata.productRequests?.map((productRequest)=>{
-          console.log(productdata)
-            if(productRequest.status==='planned'){
-                planned.push(productRequest);
-            }
-            if(productRequest.status==='in-progress'){
-                progress.push(productRequest);   
-            }
-            if(productRequest.status==='live'){
-                live.push(productRequest);   
-            }
-        })
+       
 
-       setPlannedRequestProduct(planned);
-       setProgressRequestProduct(progress);
-       setLiveRequestProduct(live);
+      
 
     }
     useEffect(()=>{
@@ -59,15 +59,6 @@ function Plan(){
     return(
 
         <>
-        {
-          productdata && productdata.map(product=>{
-            return(
-              <div>
-                product
-              </div>
-            )
-          })
-        }
         <nav>
           <ul className="list1">
             <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>

@@ -5,27 +5,7 @@ import axios from 'axios'
 
 
 const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
-    // const [myProduct, fetchMyProduct] = useState([])
-    const [data, setData] = useState([])
-  
-    // useEffect(() => {
-    //     fetch('http://localhost:8000/productRequests')
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //         fetchMyProduct(res.productRequests)
-    //         // console.log(res)
-             
-    //     })
-    // }, []); 
-    // useEffect(()=>{
-    //     axios.get('http://localhost:8000/productRequests')
-    //     .then((res)=>{
-    //       setData(res.data)
-    //     //   console.log(res.data) 
-    //     })
-          
-  
-    //   },[])
+   
     return(
         <>
          <div className="plan-st">
@@ -35,7 +15,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
             <p>{subtitle}</p>
         </div>
             {productRequests.map((data, key) => {
-                console.log(productRequests.length)
+               
                     return(
                         <ComponentBox key={key}
                         subtitle={data.status}
