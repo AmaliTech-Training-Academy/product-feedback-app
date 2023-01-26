@@ -5,10 +5,10 @@ import {
 
 function Head() {
   return (
-      <Nav>
-        <img src='./assets/shared/icon-arrow-left.svg' alt='' />
-        <span className='h4 back'>Go Back</span>
-      </Nav>
+    <Nav>
+      <img src='./assets/shared/icon-arrow-left.svg' alt='' />
+      <span className='h4 back'>Go Back</span>
+    </Nav>
   )
 }
 

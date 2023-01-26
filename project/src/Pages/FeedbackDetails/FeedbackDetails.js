@@ -48,6 +48,13 @@ const FeedbackDetails = ({item}) => {
               Edit Feedback
             </button>
           </section>
+              <span className="h4">Go Back</span>
+            </div> */}
+            <button className="btn btn-primary button-text edit-button">
+              Edit Feedback
+            </button>
+          </section>
+          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
           {/* <section className="card dark-theme ">
             <button className="increase-theme ">
               <img
