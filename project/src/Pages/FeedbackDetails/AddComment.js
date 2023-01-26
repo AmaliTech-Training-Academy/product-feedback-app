@@ -9,7 +9,7 @@ const AddComment = () => {
               </label>
               <textarea
                 type="text"
-                className="form-control body-2"
+                className="form-control body-2 "
                 id="add-comment"
                 placeholder="Type your comment here"
                 max="250"

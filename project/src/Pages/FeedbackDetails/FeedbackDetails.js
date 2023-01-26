@@ -87,7 +87,7 @@ const FeedbackDetails = ({item}) => {
                         className="profile-image"
                       />
                       <div className="user-detail">
-                        <h4>{comment.user.name}</h4>
+                        <h4 className="username">{comment.user.name}</h4>
                         <h4 className="user-account">
                           @{comment.user.username}
                         </h4>
@@ -104,7 +104,7 @@ const FeedbackDetails = ({item}) => {
                       input &&
                       (<div className="reply-input">
                       <textarea className="reply-textarea"></textarea>
-                      <button className="post-comment button-text ">
+                      <button className="post-comment button-text  post-reply">
                         Post Reply
                       </button>
                     </div>)
