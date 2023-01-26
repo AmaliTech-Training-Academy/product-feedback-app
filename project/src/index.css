@@ -9,6 +9,7 @@ body {
   font-family: 'Jost';
   background: #F2F2F2;
   display: flex;
+  /* align-items: center; */
   justify-content: center;
 }
 

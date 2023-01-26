@@ -1,32 +1,140 @@
-main{
-    width: 60vw;
-    margin-top: 81px;
-    color: #3A4374;
+main {
+  width: 51.35vw;
+  margin-top: 81px;
+  color: #3a4374;
 }
-.button-text{
-    color: #F2F4FE;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 20px;
-    letter-spacing: 0px;
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: none;
 }
-.navigation{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-}
-.h4{
-    font-weight: 700;
-    color: #647196;
 
+.edit-button {
+  background: #4661e6;
 }
-span{
-    margin-left: 19.67px;
+.back-text {
+  margin-left: 19.67px;
+  font-weight: 700;
+  color: #647196;
 }
-.edit-button{
-    background: #4661E6;
 
+.sections {
+  background-color: #ffffff;
+  padding: 24px 34px;
+  border-radius: 10px;
+  margin-top: 23px;
 }
+.comment-section {
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.comment-section::after {
+  content: "";
+  display: block;
+  margin: auto;
+  width: 95%;
+  padding-top: 32px;
+  border-bottom: 2px solid #f2f2f2;
+}
+.comment-profile {
+  display: flex;
+  justify-content: space-between;
+}
+.profile-image {
+  height: 50%;
+  border-radius: 50%;
+}
+.user-account {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+
+.user-detail {
+  width: 70%;
+  align-self: flex-end;
+}
+
+.reply {
+  color: #4661e6;
+  align-self: center;
+}
+.reply:hover {
+  cursor: pointer;
+}
+.users-comment {
+  width: 82%;
+  margin-left: auto;
+}
+textarea {
+  background-color: #f7f8fd;
+  border: none;
+}
+.post-comment {
+  background-color: #ad1fea;
+
+  color: #f2f4fe;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0px;
+}
+.reply-input {
+  display: flex;
+  justify-content: space-between;
+  width: 82%;
+  margin-top: 17px;
+  margin-left: auto;
+}
+
+.reply-textarea {
+  width: 70%;
+  height: 60px;
+  resize: vertical;
+}
+
+.add-comment {
+  margin-top: 24px;
+  margin-bottom: 133px;
+}
+.form-control {
+  background-color: #f7f8fd;
+  border: none;
+  width: 100%;
+  height: 80px;
+}
+.share-comment {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.post-reply {
+  align-self: flex-end;
+}
+
+.back-text:hover{
+    text-decoration: underline 2px #647196;
+ }
+ 
+ textarea:active{
+     background-color: #F7F8FD;
+     border: none;
+ }
+ .edit-button:hover{
+     background-color: #7C91F9;
+     border: none;
+ }
+ .post-comment:hover{
+     background-color: #C75AF6;
+ }
+/*
+
+
+ 
+
 .card{
     border: none;
 }
@@ -58,14 +166,7 @@ span{
 
 
 }
-.comment-section::after{
-    content: ""; 
-    display: block; 
-    margin:  auto; 
-    width: 95%; 
-    padding-top: 32px; 
-    border-bottom: 2px solid #F2F2F2; 
-}
+
 
 
 .up-arrow{
@@ -91,34 +192,12 @@ span{
     display: flex;
     justify-content: space-around;
 }
-.profile-image{
-    height: 50%;
-    border-radius: 50%;
-}
-.user-account{
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 20px;
-    letter-spacing: 0px;
 
-    
-}
 
-.user-detail{
-    /* margin-right: 54.5%; */
-    width: 70%;
-    align-self: flex-end;
-}
 
-.users-comment{
-    width: 82%;
-    margin-left: auto;
-}
 
-.reply{
-    color: #4661E6;
-    align-self: center;
-}
+
+
 .user-reply{
     width: 95%;
     margin-left: auto;
@@ -142,53 +221,15 @@ span{
     color: #3A4374;
 
 }
-textarea{
-    background-color: #F7F8FD;
-    border: none;
-}
+
 .form-control {
     background-color: #F7F8FD;
     border: none;
 }
-.post-comment{
-    background-color: #AD1FEA;  
 
-}
-.share-comment{
-    display: flex;
-    justify-content: space-between;
-}
-.reply-textarea{
-    /* width: 461px; */
-    width: 60%;
-    height: 60px;
-}
-.reply-input{
-    display: flex;
-    justify-content: space-between;
-    width: 82%;
-    margin-top: 17px ;
-    margin-left: auto;
-}
-.post-reply{
-    align-self: flex-end;
-}
 
-.h4:hover{
-   text-decoration: underline 2px #647196;
-}
 
-textarea:active{
-    background-color: #F7F8FD;
-    border: none;
-}
-.edit-button:hover{
-    background-color: #7C91F9;
-    border: none;
-}
-.post-comment:hover{
-    background-color: #C75AF6;
-}
+
 @media (max-width: 1024px) {
     .theme-decription{
         margin-left: 5%;
@@ -255,4 +296,4 @@ textarea:active{
         width: 100%;
       
     }
-}
+} */
