@@ -1,13 +1,12 @@
 import React from 'react';
 import './App.css';
-import FeedbackDetails from './Pages/Home/FeedbackDetails/FeedbackDetails';
+import ProductApp from './Routes/routes';
 
 
 function App() {
   return (
     <div className="App">
-      <FeedbackDetails/>
-    
+      <ProductApp/>
     </div>
   );
 }

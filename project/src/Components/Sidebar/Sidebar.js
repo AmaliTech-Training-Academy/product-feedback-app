@@ -4,11 +4,11 @@ import Tags from './Components/Tags'
 import RoadMap from './Components/Roadmap'
 import { Container } from './SidebarStyles'
 
-function Sidebar() {
+function Sidebar({data, setData}) {
   return (
     <Container>
       <FrontendMentor />
-      <Tags />
+      <Tags data={data} setData={setData}/>
       <RoadMap />
     </Container>
   )

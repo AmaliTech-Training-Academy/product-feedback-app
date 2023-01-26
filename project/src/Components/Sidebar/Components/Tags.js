@@ -1,8 +1,14 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import { Tag, All, UI, UX, Enhancement, Bug, Feature } from '../SidebarStyles'
 
-function Tags() {
+function Tags({data, setData}) {
   const [isClicked, setIsClicked] = useState('All')
+
+  const handleUIClick = (upper, lower) => {
+    setIsClicked('Feature')
+      setData(data.filter(item => item.category === 'feature'))
+  }
   return (
     <Tag>
       <div className='tag-container'>
@@ -25,7 +31,7 @@ function Tags() {
             Bug
           </Bug>
         </div>
-        <Feature type={isClicked} onClick={() => setIsClicked('Feature')}>
+        <Feature type={isClicked} onClick={handleUIClick}>
           Feature
         </Feature>
       </div>

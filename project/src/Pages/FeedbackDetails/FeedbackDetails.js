@@ -1,11 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
 import AddComment from "./AddComment";
+import Suggestions from "../../Components/Suggestions/Suggestions";
+import Head from "../../Components/Feedback/Head";
 
-
-const FeedbackDetails = () => {
+const FeedbackDetails = ({item}) => {
   const [feed, setFeed] = useState(null);
 
   const getData = async () => {
@@ -36,7 +39,8 @@ const FeedbackDetails = () => {
       {feed ? (
         <>
           <section className="navigation">
-            <div className="back">
+            <Head />
+            {/* <div className="back">
               <img src="./assets/shared/icon-arrow-left.svg" />
               <span className="h4 back-text">Go Back</span>
             </div>
@@ -44,6 +48,13 @@ const FeedbackDetails = () => {
               Edit Feedback
             </button>
           </section>
+              <span className="h4">Go Back</span>
+            </div> */}
+            <button className="btn btn-primary button-text edit-button">
+              Edit Feedback
+            </button>
+          </section>
+          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
           {/* <section className="card dark-theme ">
             <button className="increase-theme ">
               <img
@@ -72,7 +83,7 @@ const FeedbackDetails = () => {
                     <div className="comment-profile">
                       <img
                         src={comment.user.image}
-                        alt="profile image"
+                        alt="profile_image"
                         className="profile-image"
                       />
                       <div className="user-detail">
@@ -105,8 +116,8 @@ const FeedbackDetails = () => {
           </section>
           <AddComment/>
         </>
-      ) : (
-        <p>no feed yet</p>
+        ) : (
+            <p>no feed yet</p>
       )}
     </main>
   );

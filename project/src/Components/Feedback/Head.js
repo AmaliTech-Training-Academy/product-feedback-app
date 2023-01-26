@@ -3,7 +3,7 @@ import {
     Nav,
 } from './FeedbackStyles'
 
-function FeedbackHead() {
+function Head() {
   return (
     <Nav>
       <img src='./assets/shared/icon-arrow-left.svg' alt='' />
@@ -12,4 +12,4 @@ function FeedbackHead() {
   )
 }
 
-export default FeedbackHead
+export default Head
