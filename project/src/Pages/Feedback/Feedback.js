@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import FeedbackCategory from '../../Components/Feedback/FeedbackCategory'
-import FeedbackHead from '../../Components/Feedback/FeedbackHead'
+import Head from '../../Components/Feedback/Head'
 import FeedbackTitle from '../../Components/Feedback/FeedbackTitle'
 import UpdateStatus from '../../Components/Feedback/UpdateStatus'
 import Details from '../../Components/Feedback/Details'
@@ -70,7 +70,7 @@ function Feedback(props) {
 
   return (
     <Container type={props.type}>
-        <FeedbackHead />
+        <Head />
         <form className='content'>
           <img src={props.type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
           <span className='h1 head'>{props.type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
