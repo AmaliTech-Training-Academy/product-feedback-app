@@ -1,10 +1,11 @@
 import React from "react";
 import './roadmap.css'
-import productdata from '../../data/data.json'
+// import productdata from '../../data/data.json'
 import {useState,useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
+import axios from 'axios'
 
 
 function Plan(){
@@ -12,6 +13,7 @@ function Plan(){
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
     const [activeTab, setActiveTab] = useState("tab2");
+    const [productdata, setProductData] = useState([])
    
 
     const groupData=()=>{
@@ -20,7 +22,19 @@ function Plan(){
         let live =[]
         
 
-        productdata.productRequests.map((productRequest)=>{
+        axios.get('http://localhost:8000/productRequests')
+        .then((res)=>{
+          let productdata = res.data;
+          setProductData({productdata })
+
+          // console.log(productdata) 
+          
+        })
+        
+          
+
+        productdata && productdata.productRequests?.map((productRequest)=>{
+          console.log(productdata)
             if(productRequest.status==='planned'){
                 planned.push(productRequest);
             }
@@ -43,7 +57,17 @@ function Plan(){
     },[])
  
     return(
+
         <>
+        {
+          productdata && productdata.map(product=>{
+            return(
+              <div>
+                product
+              </div>
+            )
+          })
+        }
         <nav>
           <ul className="list1">
             <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>

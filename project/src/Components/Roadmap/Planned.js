@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../Pages/roadmap/raodmap.css'
+import '../../Pages/roadmap/roadmap.css'
 import '../../index.css'
 
 const ComponentBox = (props)=> {
