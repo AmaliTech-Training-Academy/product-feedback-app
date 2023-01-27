@@ -10,28 +10,70 @@ import axios from 'axios'
 
 function Home({setItem}) {
 
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([])
+  const [filteredData, setFilteredData] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [selectedSortMethod, setSelectedSortMethod] = useState('')
+
+  useEffect(() => {
+    if(selectedCategory === 'all') {
+      setFilteredData(data)
+    } else {
+      setFilteredData(data.filter(item => item.category === selectedCategory))
+    }
+  }, [selectedCategory])
+
+  useEffect(() => {
+    if(selectedSortMethod === 'Most Upvotes') {
+      const sortedData = [...filteredData];
+      sortedData.sort((a, b) => a.upvotes < b.upvotes ? 1 : -1)
+      setFilteredData(sortedData)
+      console.log(filteredData)
+    }
+    else if(selectedSortMethod === 'Least Upvotes') {
+      const sortedData = [...filteredData]
+      sortedData.sort((a, b) => a.upvotes > b.upvotes ? 1 : -1)
+      setFilteredData(sortedData)
+    }
+    else if(selectedSortMethod === 'Most Comments') {
+      const dataWithComments = data.filter(item => item.comments)
+      const dataWithoutComments = data.filter(item => !item.comments)
+      dataWithComments.sort((a, b) => a.comments.length < b.comments.length ? 1 : -1)
+      const sortedData = [...dataWithComments, ...dataWithoutComments]
+      console.log(sortedData)
+      setFilteredData(sortedData)
+    }
+    else if(selectedSortMethod === 'Least Comments') {
+      const dataWithComments = data.filter(item => item.comments)
+      const dataWithoutComments = data.filter(item => !item.comments)
+      dataWithComments.sort((a, b) => a.comments.length > b.comments.length ? 1 : -1)
+      const sortedData = [...dataWithoutComments, ...dataWithComments]
+      setFilteredData(sortedData)
+    }
+  }, [selectedSortMethod])
 
   useEffect(() => {
     axios.get('http://localhost:8000/productRequests')
     .then(res => {
       setData(res.data)
+      setFilteredData(res.data)
       // console.log(res.data)
     })
 
   }, [])
+
+  // console.log(filteredData)
+  // console.log(selectedSortMethod)
   return (
     <>
       <div className='main-page'>
-        <Sidebar data={data} setData={setData}/> 
+        <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
-          <Header />
-          {data ? data.map((item) => {
+          <Header setSelectedSortMethod={setSelectedSortMethod}/>
+          {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>
-                <Link to='/feedback-detail' onClick={() => setItem(item)}>
-                  <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
-                </Link>
+                  <Suggestions setItem={setItem} item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
               </>
             )
           }) : <EmptyComponent />}

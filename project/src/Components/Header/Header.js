@@ -9,13 +9,14 @@ import {
 } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Most Upvotes')
 
   const handleOption = (name) => {
     setOption(name)
     setIsOpen(!isOpen)
+    setSelectedSortMethod(name)
   }
   return (
     <Head>
