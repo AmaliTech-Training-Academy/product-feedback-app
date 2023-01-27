@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 body {
+  /* position: relative; */
   margin: 0;
   padding: 0;
   width: 100%;
@@ -8,7 +9,12 @@ body {
   font-family: 'Jost';
   background: #F2F2F2;
   display: flex;
+  /* align-items: center; */
   justify-content: center;
+}
+
+a {
+  text-decoration: none;
 }
 
 .h1, .h2, .h3, .h4 {
@@ -101,8 +107,11 @@ button {
 }
 
 @media (max-width: 450px) {
+  /* body {
+    width: 375px;
+  } */
   button {
-    width: 279px;
+    width: 134px;
     height: 40px;
   }
 }

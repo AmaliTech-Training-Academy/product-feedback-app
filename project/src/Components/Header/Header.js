@@ -7,6 +7,7 @@ import {
     arrowDown, arrowUp,
     // arrowUp
 } from '../../Components/svgs'
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ function Header() {
             {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
         </div>}
-        <button className='button-1-default'>+ Add Feedback</button>
+        <Link to='/new-feedback'><button className='button-1-default add-feedback'>+ Add Feedback</button></Link>
     </Head>
   )
 }
