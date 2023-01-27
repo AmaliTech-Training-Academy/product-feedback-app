@@ -19,7 +19,7 @@ function Plan(){
         let planned=[]
         let progress =[]
         let live =[]
-        let allData =[]
+       
         
 
         axios.get('http://localhost:8000/productRequests')
