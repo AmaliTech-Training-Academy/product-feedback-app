@@ -3,12 +3,12 @@ import {
     Container
 } from './FeedbackStyles'
 
-function FeedbackTitle(props) {
+function FeedbackTitle({value, error}) {
   const titleValue = (e) => {
-    props.value(e.target.value)
+    value(e.target.value)
   }
   return (
-    <Container>
+    <Container error={error}>
         <span className='h4 title'>Feedback Title</span>
         <span className='h4 description'>Add a short, descriptive headline</span>
         <input className='input' type='text' name='title' onChange={titleValue}/>
