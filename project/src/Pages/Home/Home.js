@@ -69,7 +69,7 @@ function Home({setItem}) {
       <div className='main-page'>
         <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
-          <Header setSelectedSortMethod={setSelectedSortMethod}/>
+          <Header data={data} setSelectedSortMethod={setSelectedSortMethod}/>
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>

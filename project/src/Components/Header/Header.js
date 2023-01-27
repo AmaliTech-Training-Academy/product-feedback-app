@@ -9,7 +9,7 @@ import {
 } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
-function Header({setSelectedSortMethod}) {
+function Header({data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Most Upvotes')
 
@@ -21,7 +21,7 @@ function Header({setSelectedSortMethod}) {
   return (
     <Head>
         <img src='./assets/suggestions/icon-suggestions.svg' alt='' />
-        <span className='h3 suggestions'>6 Suggestions</span>
+        <span className='h3 suggestions'>{data.length} Suggestions</span>
         <span className='h4 sort' onClick={() => setIsOpen(!isOpen)}>
             Sort by : <b>{option}</b>
             {isOpen ? arrowUp : arrowDown}
