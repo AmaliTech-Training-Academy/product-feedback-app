@@ -1,17 +1,12 @@
 import React from 'react';
 import './App.css';
-import ProductRequest from './Components/Roadmap/ProductRequest';
-import Plan from './Pages/roadmap/roadmap';
+import ProductApp from './Routes/routes';
 
 
 function App() {
   return (
     <div className="App">
-      <Plan/>
-     
-      
-     
-
+      <ProductApp/>
     </div>
   );
 }
