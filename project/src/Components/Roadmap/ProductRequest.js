@@ -1,28 +1,21 @@
 import React, { useEffect, useState } from "react";
-import ComponentBox from "../../Pages/roadmap/Planned";
+import ComponentBox from "./Planned";
+import axios from 'axios'
 
 
 
 const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
-    const [myProduct, fetchMyProduct] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:3000/productRequests')
-        .then((res) => res.json())
-        .then((res) => {
-            fetchMyProduct(res)
-            // console.log(res);
-        })
-    }, []);
-    // console.log(myProduct);   
+   
     return(
         <>
          <div className="plan-st">
-        <div className="top-part">       
+        <div className="top-part"> 
+           
             <h3>{`${title} (${productRequests.length})`}</h3>
             <p>{subtitle}</p>
         </div>
             {productRequests.map((data, key) => {
-                // console.log(myProduct)
+               
                     return(
                         <ComponentBox key={key}
                         subtitle={data.status}

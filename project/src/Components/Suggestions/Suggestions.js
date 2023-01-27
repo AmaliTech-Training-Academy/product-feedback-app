@@ -16,7 +16,7 @@ function Suggestions({title, category, status, upvote, description, comments}) {
         <div className="text">
           <span className='h3'>{title}</span>
           <span className='body-1'>{description}</span>
-          <Enhancement>{category[0].toUpperCase() + category.slice(1)}</Enhancement>
+          <Enhancement>{(category ? (category[0].toUpperCase() + category.slice(1)) : 0 )}</Enhancement>
         </div>
       </div>
       <div className="left-components">
