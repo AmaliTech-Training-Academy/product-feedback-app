@@ -45,7 +45,7 @@ function Feedback(props) {
       if (props.type === 'Edit') { 
         axios.patch('http://localhost:8000/productRequests', {
           title: title,
-          category: option,
+          category: option.toLowerCase(),
           status: detailOption,
           description: details
         })
@@ -55,7 +55,7 @@ function Feedback(props) {
       }
       axios.post('http://localhost:8000/productRequests', {
         title: title,
-        category: option,
+        category: option.toLowerCase(),
         upvotes: '0',
         status: detailOption,
         description: details,
