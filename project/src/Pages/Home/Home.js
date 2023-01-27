@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
@@ -10,23 +10,32 @@ import axios from 'axios'
 
 function Home({setItem}) {
 
-  const [data, setData] = useState(null)
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
+
+  useEffect(() => {
+    if (selectedCategory === 'All') setFilteredData(data);
+    else setFilteredData(data.filter((item) => item.category === selectedCategory.toLowerCase()));
+  }, [selectedCategory])
 
   useEffect(() => {
     axios.get('http://localhost:8000/productRequests')
     .then(res => {
-      setData(res.data)
-      // console.log(res.data)
+      setData(res.data);
+      setFilteredData(res.data);
+      console.log(res.data)
     })
 
-  }, [])
+  }, []);
+
   return (
     <>
       <div className='main-page'>
-        <Sidebar data={data} setData={setData}/> 
+        <Sidebar data={data} setData={setSelectedCategory}/> 
         <div>
           <Header />
-          {data ? data.map((item) => {
+          {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>
                 <Link to='/feedback-detail' onClick={() => setItem(item)}>
@@ -34,7 +43,7 @@ function Home({setItem}) {
                 </Link>
               </>
             )
-          }) : <EmptyComponent />}
+          }): <EmptyComponent/>}
         </div>
       </div>
     </>
