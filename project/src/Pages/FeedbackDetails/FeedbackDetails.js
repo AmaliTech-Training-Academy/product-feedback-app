@@ -1,12 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
-// import "bootstrap/dist/css/bootstrap.min.css";
-// import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./FeedbackDetails.css";
 import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
+import { Link } from "@mui/material";
 
 const FeedbackDetails = ({item}) => {
   const [feed, setFeed] = useState(null);
@@ -39,20 +38,15 @@ const FeedbackDetails = ({item}) => {
       {feed ? (
         <>
           <section className="navigation">
+            <Link to="/">
             <Head />
-            {/* <div className="back">
-              <img src="./assets/shared/icon-arrow-left.svg" />
-              <span className="h4 back-text">Go Back</span>
-            </div>
-            <button className="button-text edit-button">
-              Edit Feedback
-            </button>
-          </section>
-              <span className="h4">Go Back</span>
-            </div> */}
+            </Link>
+            <Link to="/edit-feedback">
             <button className="btn btn-primary button-text edit-button">
               Edit Feedback
             </button>
+            </Link>
+            
           </section>
           <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
           {/* <section className="card dark-theme ">
