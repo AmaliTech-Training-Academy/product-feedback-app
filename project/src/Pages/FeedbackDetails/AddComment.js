@@ -1,6 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const AddComment = () => {
+const App = () => {
+  const [commentInput, setCommentInput]=useState("");
+
+
+  
   return (
     <form className="add-comment sections">
             <div className="card-body">
@@ -12,13 +16,18 @@ const AddComment = () => {
                 className="form-control body-2 "
                 id="add-comment"
                 placeholder="Type your comment here"
-                max="250"
+                maxLength="250"
                 min="200"
                 step="250"
+                value={commentInput}
+                onChange={(e)=>{
+                  setCommentInput(e.target.value)
+                }}
+                
               />
             </div>
             <div className="share-comment  body-2">
-              <p className="body-2">250 Characters left</p>
+              <p className="body-2"><span className='characterCounter' >{250-commentInput.length}</span> Characters left</p>
               <button type="submit" className=" post-comment button-text">
                 Post Comment
               </button>
@@ -27,4 +36,4 @@ const AddComment = () => {
   )
 }
 
-export default AddComment
+export default App
