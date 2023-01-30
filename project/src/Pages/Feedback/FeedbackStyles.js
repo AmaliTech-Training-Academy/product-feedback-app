@@ -2,26 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 540px;
-    /* height: ${(props) => props.type === "Edit" ? '910px' : '745px'}; */
     margin: 92px auto 192px;
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
     gap: 68px;
-    /* justify-content: space-between; */
-    /* margin-top: 96px; */
 
     .content {
         position: relative;
         width: 100%;
-        /* height: ${(props) => props.type === 'Edit' ? '822px' : '657px'}; */
         border-radius: 10px;
         background: #FFFFFF;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 24px;
-        /* justify-content: center; */
 
         .plus {
             position: absolute;

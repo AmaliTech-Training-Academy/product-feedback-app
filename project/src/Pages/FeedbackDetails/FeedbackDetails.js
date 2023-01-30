@@ -5,7 +5,7 @@ import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const FeedbackDetails = ({item}) => {
   const [feed, setFeed] = useState(null);
