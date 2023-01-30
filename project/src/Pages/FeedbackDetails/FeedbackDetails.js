@@ -8,17 +8,14 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
+// import Horizontal from "./Horizontal";
 
 
 const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
   const {id} = useParams()
+ 
 
-  // const getData = async () => {
-  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
-  //   setFeed(results);
-  //   console.log(results);
-  // };
 
   useEffect(() => {
     axios.get(`http://localhost:8000/productRequests/${id}`)
@@ -27,26 +24,12 @@ const FeedbackDetails = () => {
       });
   }, []);
 
-  const [input, setInput] = useState(false);
+  const [input, setInput] = useState("");
 
-  const showInput = () => {
-    if (input === true) {
-      setInput(false);
-    } else {
-      setInput(true);
-    }
+  const showInput = (commentId) => {
+    setInput(commentId);
   };
 
-  // const [fetchReplies, setFetchReplies] = useState();
-  // useEffect(()=>{
-  //   axios.get("http://localhost:8000/productRequests")
-  //   .then((res) =>{
-  //     setFetchReplies(res.data.comments)
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  // })
 
   return (
     <main>
@@ -72,7 +55,7 @@ const FeedbackDetails = () => {
           />
 
           {feed.comments ? (
-            <section className="comments sections">
+            <section className="comment sections">
               <h3>{feed.comments.length} comments</h3>
               {feed.comments.map((comment) => {
                 return (
@@ -91,7 +74,7 @@ const FeedbackDetails = () => {
                           </h4>
                         </div>
 
-                        <div className="reply body-3" onClick={showInput}>
+                        <div className="reply body-3" onClick={()=>showInput(comment.id)}>
                           Reply
                         </div>
                       </div>
@@ -99,7 +82,7 @@ const FeedbackDetails = () => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply input={input} />
+                      <Reply  active={comment.id} currentReply={input}/>
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
@@ -129,9 +112,13 @@ const FeedbackDetails = () => {
                             })
                       }
                     </div>
+                  
+                  
+                    {comment.id  !== (feed.comments).length - 1 || <hr />}
                   </div>
                 );
               })}
+           
             </section>
           ) : <EmptyComment />}
 
