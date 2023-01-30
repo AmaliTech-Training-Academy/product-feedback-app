@@ -53,7 +53,7 @@ export const Container = styled.div`
 
         &:hover, &:focus {
             outline: 1px solid #4661E6;
-            /* border: none; */
+            border: none;
         }
 
         @media (max-width: 450px) {

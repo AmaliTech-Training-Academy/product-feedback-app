@@ -2,10 +2,10 @@
 import Feedback from '../Feedback/Feedback'
 // import axios from 'axios'
 
-function EditFeedback() {
+function EditFeedback({id}) {
   return (
     <>
-        <Feedback type= 'Edit' />
+        <Feedback type= 'Edit' id={id} />
     </>
   )
 }

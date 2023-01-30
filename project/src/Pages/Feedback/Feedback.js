@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import FeedbackCategory from '../../Components/Feedback/FeedbackCategory'
 import Head from '../../Components/Feedback/Head'
@@ -10,12 +10,23 @@ import {
     Container
 } from './FeedbackStyles'
 
-function Feedback(props) {
+function Feedback({ type, id }) {
   const [option, setOption] = useState('Feature')
   const [detailOption, setDetailOption] = useState('Suggestion')
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
   const [error, setError] = useState({})
+
+  useEffect(() => {
+    axios.get(`http://localhost:8000/productRequests/${id}`)
+      .then(res => {
+        console.log(res.data)
+        setTitle(type === "Edit" && res.data.title)
+        setDetails(type === "Edit" && res.data.description)
+        setOption(type === "Edit" && res.data.category.charAt().toUpperCase() + res.data.category.slice(1))
+        setDetailOption(type === "Edit" && res.data.status.charAt().toUpperCase() + res.data.status.slice(1))
+      })
+  }, [])
 
   const getTitleValue = (value) => {
     setTitle(value)
@@ -42,8 +53,8 @@ function Feedback(props) {
     if(title && details) {
       // setTitle('')
       // setDetails('')
-      if (props.type === 'Edit') { 
-        axios.patch('http://localhost:8000/productRequests', {
+      if (type === 'Edit') { 
+        axios.patch(`http://localhost:8000/productRequests/${id}`, {
           title: title,
           category: option.toLowerCase(),
           status: detailOption,
@@ -69,21 +80,21 @@ function Feedback(props) {
   }
 
   return (
-    <Container type={props.type}>
-        <Link to={props.type === 'Edit' ? '/feedback-detail' : '/'}><Head /></Link>
+    <Container type={type}>
+        <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><Head /></Link>
         <form className='content' onSubmit={handleSubmit}>
-          <img src={props.type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
-          <span className='h1 head'>{props.type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
+          <img src={type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
+          <span className='h1 head'>{type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
           <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
           <span className='h4 error'>{error.title}</span>
           <FeedbackCategory option={option} setOption={setOption} />
-          {props.type === 'Edit' && <UpdateStatus detailOption={detailOption} setDetailOption={setDetailOption}/>}
+          {type === 'Edit' && <UpdateStatus detailOption={detailOption} setDetailOption={setDetailOption}/>}
           <Details value={details} getDetailsValue={getDetailsValue} error={error.detail} />
           <span className='h4 error'>{error.detail}</span>
           <div className='buttons'>
-            {(props.type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
+            {(type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
             <button className='button-3-default cancel'>Cancel</button>
-            <button className='button-1-default save' type='submit'>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
+            <button className='button-1-default save' type='submit'>{type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>
     </Container>

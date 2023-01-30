@@ -10,7 +10,7 @@ import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 
 
-const FeedbackDetails = () => {
+const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
   const {id} = useParams()
 
@@ -37,16 +37,10 @@ const FeedbackDetails = () => {
     }
   };
 
-  // const [fetchReplies, setFetchReplies] = useState();
-  // useEffect(()=>{
-  //   axios.get("http://localhost:8000/productRequests")
-  //   .then((res) =>{
-  //     setFetchReplies(res.data.comments)
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  // })
+  const setid = () => {
+    setId(id)
+    console.log(id)
+  }
 
   return (
     <main>
@@ -57,7 +51,7 @@ const FeedbackDetails = () => {
               <Head />
             </Link>
             <Link to="/edit-feedback">
-              <button className="btn btn-primary button-text edit-button">
+              <button className="btn btn-primary button-text edit-button" onClick={setid}>
                 Edit Feedback
               </button>
             </Link>
@@ -72,7 +66,7 @@ const FeedbackDetails = () => {
           />
 
           {feed.comments ? (
-            <section className="comments sections">
+            <section className="comment sections">
               <h3>{feed.comments.length} comments</h3>
               {feed.comments.map((comment) => {
                 return (

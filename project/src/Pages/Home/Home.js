@@ -70,7 +70,7 @@ function Home() {
       <div className='main-page'>
         <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
-          <Header data={data} setSelectedSortMethod={setSelectedSortMethod}/>
+          <Header data={filteredData} setSelectedSortMethod={setSelectedSortMethod}/>
 
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {Routes, Route } from "react-router-dom";
 import Home from "../Pages/Home/Home";
 import FeedbackDetails from "../Pages/FeedbackDetails/FeedbackDetails";
@@ -12,6 +12,7 @@ import Plan from "../Pages/roadmap/roadmap";
 
 
 function ProductApp(){
+    const [id, setId] = useState('')
     return(
         <>
         <Routes>
@@ -22,9 +23,9 @@ function ProductApp(){
                 </>
             }/>
             <Route path="/suggestion" element={<SuggestionHome/>}/>
-            <Route path="/feedback-detail/:id" element={<FeedbackDetails/>}/>
-            <Route path="/new-feedback" element={<Feedback/>}/>
-            <Route path="/edit-feedback" element={<EditFeedback/>}/>
+            <Route path="/feedback-detail/:id" element={<FeedbackDetails setId={setId}/>}/>
+            <Route path="/new-feedback" element={<Feedback />}/>
+            <Route path="/edit-feedback" element={<EditFeedback id={id}/>}/>
             <Route path="/roadmap" element={<Plan />}/>
         </Routes>
         </>
