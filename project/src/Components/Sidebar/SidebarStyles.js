@@ -29,7 +29,7 @@ export const FrontendMentors = styled(Container)`
 color: black; 
 height: 137px;
 border-radius: 10px;
-background-image: url('./assets/suggestions/desktop/background-header.png');
+background-image: url('/assets/suggestions/desktop/background-header.png');
 
 div {
   margin: 0 24px;
@@ -58,7 +58,7 @@ div {
   color: black; 
   width: 223px;
   height: 178px;
-  background-image: url('./assets/suggestions/tablet/background-header.png');
+  background-image: url('/assets/suggestions/tablet/background-header.png');
 
   div {
     width: 153px;
