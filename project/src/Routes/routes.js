@@ -7,7 +7,7 @@ import EditFeedback from "../Pages/Edit Feedback/EditFeedback";
 import SuggestionHome from "../Pages/Home/SuggestionHome";
 import MobileNav from "../Components/Header/Mobile nav/MobileNav"
 import { RoadMap } from "../Components/Sidebar/SidebarStyles";
-import MobileNav from "../Components/Header/Mobile nav/MobileNav"
+// import MobileNav from "../Components/Header/Mobile nav/MobileNav"
 
 
 function ProductApp(){
