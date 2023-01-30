@@ -9,13 +9,13 @@ import { RoadMap } from "../Components/Sidebar/SidebarStyles";
 
 
 function ProductApp(){
-    const [item, setItem] = useState({})
+    // const [id, setId] = useState('')
     return(
         <>
         <Routes>
-            <Route path="/" element={<Home setItem={setItem}/>}/>
+            <Route path="/" element={<Home/>}/>
             <Route path="/suggestion" element={<SuggestionHome/>}/>
-            <Route path="/feedback-detail" element={<FeedbackDetails item={item}/>}/>
+            <Route path="/feedback-detail/:id" element={<FeedbackDetails/>}/>
             <Route path="/new-feedback" element={<Feedback/>}/>
             <Route path="/edit-feedback" element={<EditFeedback/>}/>
             <Route path="/roadmap" element={<RoadMap/>}/>
