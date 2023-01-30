@@ -65,7 +65,7 @@ function Feedback(props) {
         console.log(e)
       })
     } 
-    
+
   }
 
   return (
@@ -74,11 +74,11 @@ function Feedback(props) {
         <form className='content' onSubmit={handleSubmit}>
           <img src={props.type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
           <span className='h1 head'>{props.type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
-          <FeedbackTitle value= {getTitleValue} error={error.title}/>
+          <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
           <span className='h4 error'>{error.title}</span>
           <FeedbackCategory option={option} setOption={setOption} />
           {props.type === 'Edit' && <UpdateStatus detailOption={detailOption} setDetailOption={setDetailOption}/>}
-          <Details value={getDetailsValue} error={error.detail} />
+          <Details value={details} getDetailsValue={getDetailsValue} error={error.detail} />
           <span className='h4 error'>{error.detail}</span>
           <div className='buttons'>
             {(props.type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
