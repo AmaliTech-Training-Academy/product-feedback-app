@@ -11,26 +11,23 @@ import MobileNav from "../Components/Header/Mobile nav/MobileNav"
 
 
 function ProductApp(){
-    const [item, setItem] = useState({})
     return(
         <>
         <Routes>
             <Route path="/" element={
                 <>
                     <MobileNav />
-                    <Home setItem={setItem}/>
+                    <Home />
                 </>
             }/>
             <Route path="/suggestion" element={<SuggestionHome/>}/>
-            <Route path="/feedback-detail" element={<FeedbackDetails item={item}/>}/>
+            <Route path="/feedback-detail/:id" element={<FeedbackDetails/>}/>
             <Route path="/new-feedback" element={<Feedback/>}/>
             <Route path="/edit-feedback" element={<EditFeedback/>}/>
             <Route path="/roadmap" element={<Plan/>}/>
         </Routes>
         </>
     );
-
-
 }
 
 export default ProductApp
