@@ -5,9 +5,9 @@ import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const FeedbackDetails = ({item}) => {
+const FeedbackDetails = ({ item }) => {
   const [feed, setFeed] = useState(null);
 
   const getData = async () => {
@@ -20,18 +20,21 @@ const FeedbackDetails = ({item}) => {
     getData();
   }, []);
 
-  const [input, setInput] = useState(false)
+  const [input, setInput] = useState(false);
 
-  const showInput = () =>{
-    if(input === true){
-      setInput(false)
+  const showInput = () => {
+    if (input === true) {
+      setInput(false);
+    } else {
+      setInput(true);
     }
-    else{
-      setInput(true)
-    }
+  };
 
-
-  }
+  const [fetchReplies, setFetchReplies] = useState();
+  const getReplies = async () => {
+    const reply = await axios.get("http://localhost:8000/productRequests");
+    setFetchReplies(reply.data.comments.replies);
+  };
 
   return (
     <main>
@@ -39,34 +42,21 @@ const FeedbackDetails = ({item}) => {
         <>
           <section className="navigation">
             <Link to="/">
-            <Head />
+              <Head />
             </Link>
             <Link to="/edit-feedback">
-            <button className="btn btn-primary button-text edit-button">
-              Edit Feedback
-            </button>
+              <button className="btn btn-primary button-text edit-button">
+                Edit Feedback
+              </button>
             </Link>
-            
           </section>
-          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
-          {/* <section className="card dark-theme ">
-            <button className="increase-theme ">
-              <img
-                src="./assets/shared/icon-arrow-up.svg"
-                className="up-arrow"
-              />
-              <p className="number">{feed.upvotes}</p>
-            </button>
-            <div className="theme-decription">
-              <h3 className="card-title">{feed.title}</h3>
-              <p className="body-1 card-text">{feed.description}</p>
-              <button className="feature-button">{feed.category}</button>
-            </div>
-            <div className="comment-tag ">
-              <img src="./assets/shared/icon-comments.svg" />
-              <span>{feed.comments.length}</span>
-            </div>
-          </section> */}
+          <Suggestions
+            title={item.title}
+            category={item.category}
+            status={item.status}
+            upvote={item.upvotes}
+            description={item.description}
+          />
 
           <section className="comments sections">
             <h3>{feed.comments.length} comments</h3>
@@ -87,31 +77,53 @@ const FeedbackDetails = ({item}) => {
                         </h4>
                       </div>
 
-                      <div className="reply body-3" onClick={showInput}>Reply</div>
+                      <div className="reply body-3" onClick={showInput}>
+                        Reply
+                      </div>
                     </div>
 
                     <div className="body-2 users-comment">
                       {comment.content}
                     </div>
 
-                    {
-                      input &&
-                      (<div className="reply-input">
-                      <textarea className="reply-textarea"></textarea>
-                      <button className="post-comment button-text  post-reply">
-                        Post Reply
-                      </button>
-                    </div>)
-                    }
+                    {input && (
+                      <div className="reply-input">
+                        <textarea className="reply-textarea"></textarea>
+                        <button className="post-comment button-text  post-reply">
+                          Post Reply
+                        </button>
+                      </div>
+                    )}
+
+                    {fetchReplies.map((reply) => {
+                      return (
+                        <div key={reply.id}>
+                          <div className="replies">
+                          <div className="comment-profile">
+                            <img  src={reply.user.image}
+                            alt="user-image" className="profile-image" />
+                            <div className="user-detail">
+                              <h4 className="username">{reply.user.name}</h4>
+                              <h4 className="user-account">@{reply.user.username} </h4>
+                            </div>
+
+                            <div className="reply body-3">Reply</div>
+                          </div>
+                          <div className="body-2 users-comment">{reply.content}</div>
+                        </div>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               );
             })}
           </section>
-          <AddComment/>
+
+          <AddComment />
         </>
-        ) : (
-            <p>no feed yet</p>
+      ) : (
+        <p>no feed yet</p>
       )}
     </main>
   );

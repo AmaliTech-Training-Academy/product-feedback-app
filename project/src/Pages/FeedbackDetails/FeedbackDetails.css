@@ -75,6 +75,13 @@ main {
   width: 82%;
   margin-left: auto;
 }
+
+.replies{
+  width: 82%;
+  margin-left: auto;
+  margin-top: 32px;
+}
+
 textarea {
   background-color: #f7f8fd;
   border: none;
