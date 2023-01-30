@@ -1,12 +1,30 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 const App = () => {
   const [commentInput, setCommentInput]=useState("");
 
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    axios.post('http://localhost:8000/productRequests', {
+      content: "content",
+      
+    })
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
+
+  
+
 
   
   return (
-    <form className="add-comment sections">
+    <form className="add-comment sections" onSubmit={handleSubmit}>
             <div className="card-body">
               <label htmlFor="add-comment" className="form-label">
                 <h3>Add comment</h3>
