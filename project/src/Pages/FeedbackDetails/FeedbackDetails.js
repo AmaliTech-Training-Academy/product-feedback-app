@@ -5,20 +5,34 @@ import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+// import EmptyComponent from "../../Components/EmptyComponent/EmptyComponent";
+import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 
-const FeedbackDetails = ({item}) => {
+const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
+  // const [comment, setComment] = useState([])
+  const {id} = useParams()
 
-  const getData = async () => {
-    const results = await axios.get("http://localhost:8000/productRequests");
-    setFeed(results.data[1]);
-    console.log(results.data[1].comments);
-  };
+  // const getData = async () => {
+  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
+  //   setFeed(results.data[1]);
+  //   console.log(results.data[1].comments);
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
 
   useEffect(() => {
-    getData();
-  }, []);
+    axios.get(`http://localhost:8000/productRequests/${id}`)
+      .then(res => {
+        setFeed(res.data)
+        // setComment(res.data.comments)
+      })
+  }, [])
+
+  console.log(id)
 
   const [input, setInput] = useState(false)
 
@@ -48,7 +62,7 @@ const FeedbackDetails = ({item}) => {
             </Link>
             
           </section>
-          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
+          <Suggestions title={feed.title} category={feed.category} status={feed.status} upvote={feed.upvotes} description={feed.description} comments={feed.comments ? feed.comments : undefined}/>
           {/* <section className="card dark-theme ">
             <button className="increase-theme ">
               <img
@@ -68,15 +82,15 @@ const FeedbackDetails = ({item}) => {
             </div>
           </section> */}
 
-          <section className="comments sections">
+          {feed.comments ? <section className="comments sections">
             <h3>{feed.comments.length} comments</h3>
-            {feed.comments.map((comment) => {
+            {feed.comments && feed.comments.map((comment) => {
               return (
                 <div key={`comment ${comment.id}`}>
                   <div className="comment-section">
                     <div className="comment-profile">
                       <img
-                        src={comment.user.image}
+                        src={`${comment.user.image}`}
                         alt="profile_image"
                         className="profile-image"
                       />
@@ -107,11 +121,11 @@ const FeedbackDetails = ({item}) => {
                 </div>
               );
             })}
-          </section>
+          </section> : <EmptyComment />}
           <AddComment/>
         </>
         ) : (
-            <p>no feed yet</p>
+            <p>No feed yet</p>
       )}
     </main>
   );
