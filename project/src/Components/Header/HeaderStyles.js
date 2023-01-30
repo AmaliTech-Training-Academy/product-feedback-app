@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Head = styled.div`
+export const Nav = styled.div`
     position: relative;
     width: 825px;
-    height: 72px;
+    height: ${(props) => props.type === 'home' ? '72px' : '113px'};
     background: #373F68;
     border-radius: 10px;
     display: flex;
@@ -11,7 +11,11 @@ export const Head = styled.div`
     gap: 16px;
     color: #FFFFFF;
 
-    img {
+    a {
+        color: #FFFFFF;
+    }
+
+    .suggestion-image {
         margin-left: 24px;
 
         @media (max-width: 450px) {
@@ -34,17 +38,14 @@ export const Head = styled.div`
             margin-left: 9px;
         }
 
-        svg path {
-            stroke: #FFF;
-        }
-
-        /* @media (max-width: 950px) {
-            margin-right: 141px;
-        } */
         @media (max-width: 450px) {
             margin-left: 24px;
         }
     }
+
+    svg path {
+            stroke: #FFF;
+        }
 
     button {
         position: absolute;
@@ -103,6 +104,16 @@ export const Head = styled.div`
         @media (max-width: 450px) {
             left: 24px;
         }
+    }
+
+    .roadmap-link {
+        margin-left: 32px;
+    }
+
+    .roadmap-goback {
+        display: flex;
+        align-items: center;
+        gap: 16px;
     }
 
     @media (max-width: 950px) {

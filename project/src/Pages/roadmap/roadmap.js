@@ -4,6 +4,7 @@ import {useState,useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
+import Header from "../../Components/Header/Header"
 import axios from 'axios'
 
 
@@ -59,6 +60,7 @@ function Plan(){
     return(
 
         <>
+        <Header />
         <nav>
           <ul className="list1">
             <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>

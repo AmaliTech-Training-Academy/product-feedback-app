@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
-    Head
+  Nav
 } from './HeaderStyles'
+import {arrowLeft} from '../svgs'
 
 import {
     arrowDown, arrowUp,
@@ -9,7 +10,7 @@ import {
 } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
-function Header({data, setSelectedSortMethod}) {
+function Header({type, data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Most Upvotes')
 
@@ -20,8 +21,10 @@ function Header({data, setSelectedSortMethod}) {
     setSelectedSortMethod(name)
   }
   return (
-    <Head>
-        <img src='./assets/suggestions/icon-suggestions.svg' alt='' />
+    <Nav type={type}>
+        {type == 'home' ?
+        <>
+        <img src='./assets/suggestions/icon-suggestions.svg' alt='' className='suggestion-image' />
         <span className='h3 suggestions'>{data.length} Suggestions</span>
         <span className='h4 sort' onClick={() => setIsOpen(!isOpen)}>
             Sort by : <b>{option}</b>
@@ -44,9 +47,19 @@ function Header({data, setSelectedSortMethod}) {
             <span className='body-1 option'>Least Comments</span>
             {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
-        </div>}
+          </div>}
+        </> 
+        : 
+        <div className='roadmap-link'>
+          <Link className='roadmap-goback'>
+            {arrowLeft}
+            <span className='h4'>Go back</span>
+          </Link>
+          <span className='h1'>Roadmap</span>
+        </div>
+        }
         <Link to='/new-feedback'><button className='button-1-default add-feedback'>+ Add Feedback</button></Link>
-    </Head>
+    </Nav>
   )
 }
 
