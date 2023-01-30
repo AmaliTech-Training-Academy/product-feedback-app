@@ -5,7 +5,7 @@ import Home from "../Pages/Home/Home";
 import EditFeedback from "../Pages/Edit Feedback/EditFeedback";
 import SuggestionHome from "../Pages/Home/SuggestionHome";
 import FeedbackDetails from "../Pages/Home/FeedbackDetails/FeedbackDetails";
-import { RoadMap } from "../Components/Sidebar/SidebarStyles";
+import Plan from "../Pages/roadmap/roadmap";
 
 
 function ProductApp(){
@@ -17,7 +17,7 @@ function ProductApp(){
             <Route path="/feedback-detail" element={<FeedbackDetails/>}/>
             <Route path="/new-feedback" element={<Feedback/>}/>
             <Route path="/edit-feedback" element={<EditFeedback/>}/>
-            <Route path="/roadmap" element={<RoadMap/>}/>
+            <Route path="/roadmap" element={<Plan/>}/>
         </Routes>
         </>
     );
