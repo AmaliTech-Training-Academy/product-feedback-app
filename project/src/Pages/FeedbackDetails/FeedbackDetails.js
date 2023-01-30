@@ -7,6 +7,7 @@ import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
+import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 
 
 const FeedbackDetails = () => {
@@ -20,9 +21,8 @@ const FeedbackDetails = () => {
   // };
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:8000/productRequests/${id}`)
-      .then((response) => {
+    axios.get(`http://localhost:8000/productRequests/${id}`)
+      .then(response => {
         setFeed(response.data);
       });
   }, []);
@@ -101,64 +101,39 @@ const FeedbackDetails = () => {
                       </div>
                       <Reply input={input} />
 
-                      {/* {input && (
-                      <div className="reply-input">
-                        <textarea className="reply-textarea"></textarea>
-                        <button className="post-comment button-text  post-reply">
-                          Post Reply
-                        </button>
-                      </div>
-                    )} */}
-
-                      {/* {
-                    fetchReplies.map((reply) => {
-                      return (
-                        <div key={reply.id}>
-                          <div className="replies">
-                          <div className="comment-profile">
-                            <img  src={reply.user.image}
-                            alt="user-image" className="profile-image" />
-                            <div className="user-detail">
-                              <h4 className="username">{reply.user.name}</h4>
-                              <h4 className="user-account">@{reply.user.username} </h4>
-                            </div>
-
-                            <div className="reply body-3">Reply</div>
-                          </div>
-                          <div className="body-2 users-comment">{reply.content}</div>
-                        </div>
-                        </div>
-                      );
-                    })} */}
-
-                      <div className="replies">
-                        <div className="comment-profile">
-                          <img
-                            src={comment.replies.user.image}
-                            alt="user-image"
-                            className="profile-image"
-                          />
-                          <div className="user-detail">
-                            <h4 className="username">{comment.replies.user.name}</h4>
-                            <h4 className="user-account">
-                              @{comment.replies.user.username}
-                            </h4>
-                          </div>
-
-                          <div className="reply body-3">Reply</div>
-                        </div>
-                        <div className="body-2 users-comment">
-                          {comment.replies.content}
-                        </div>
-                      </div>
+                      {comment.replies && comment.replies.map(reply => {
+                              return (
+                                <>
+                                  <div className="replies">
+                                    <div className="comment-profile">
+                                      <img
+                                      src={reply.user.image}
+                                      alt="user-image"
+                                      className="profile-image"
+                                      />
+                                      <div className="user-detail">
+                                        <h4 className="username">{reply.user.name}</h4>
+                                        <h4 className="user-account">
+                                          @{reply.user.username}
+                                        </h4>
+                                      </div>
+            
+                                      <div className="reply body-3">Reply</div>
+                                    </div>
+                                    <div className="body-2 users-comment">
+                                      {reply.content}
+                                    </div>
+                                  </div>
+                                </>
+                              )
+                            })
+                      }
                     </div>
                   </div>
                 );
               })}
             </section>
-          ) : (
-            <p>hello</p>
-          )}
+          ) : <EmptyComment />}
 
           <AddComment />
         </>
