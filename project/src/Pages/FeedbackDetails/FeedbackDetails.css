@@ -1,8 +1,10 @@
+
 main {
   width: 51.35vw;
   margin-top: 81px;
   color: #3a4374;
 }
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -75,6 +77,13 @@ main {
   width: 82%;
   margin-left: auto;
 }
+
+.replies{
+  width: 82%;
+  margin-left: auto;
+  margin-top: 32px;
+}
+
 textarea {
   background-color: #f7f8fd;
   border: none;
@@ -145,7 +154,11 @@ textarea {
  }
  .post-comment:hover{
      background-color: #C75AF6;
+
  }
+
+
+
 @media (max-width: 1255px) {
   .reply-textarea{
     width: 70%;
@@ -200,6 +213,9 @@ textarea {
     width: 60%;
     height: 90%;
   }
+}
+.showReply{
+  display: none;
 }
 
 

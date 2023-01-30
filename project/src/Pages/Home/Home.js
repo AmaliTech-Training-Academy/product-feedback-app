@@ -9,8 +9,6 @@ import axios from 'axios'
 
 
 function Home() {
-
-
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')

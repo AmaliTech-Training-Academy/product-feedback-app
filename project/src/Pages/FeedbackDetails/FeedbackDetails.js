@@ -5,33 +5,48 @@ import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import Reply from "./Reply";
 
-const FeedbackDetails = ({item}) => {
+
+const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
+  const {id} = useParams()
 
-  const getData = async () => {
-    const results = await axios.get("http://localhost:8000/productRequests");
-    setFeed(results.data[1]);
-    console.log(results.data[1].comments);
-  };
+  // const getData = async () => {
+  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
+  //   setFeed(results);
+  //   console.log(results);
+  // };
 
   useEffect(() => {
-    getData();
+    axios
+      .get(`http://localhost:8000/productRequests/${id}`)
+      .then((response) => {
+        setFeed(response.data);
+      });
   }, []);
 
-  const [input, setInput] = useState(false)
+  const [input, setInput] = useState(false);
 
-  const showInput = () =>{
-    if(input === true){
-      setInput(false)
+  const showInput = () => {
+    if (input === true) {
+      setInput(false);
+    } else {
+      setInput(true);
     }
-    else{
-      setInput(true)
-    }
+  };
 
-
-  }
+  // const [fetchReplies, setFetchReplies] = useState();
+  // useEffect(()=>{
+  //   axios.get("http://localhost:8000/productRequests")
+  //   .then((res) =>{
+  //     setFetchReplies(res.data.comments)
+  //   })
+  //   .catch((err)=>{
+  //     console.log(err)
+  //   })
+  // })
 
   return (
     <main>
@@ -39,79 +54,116 @@ const FeedbackDetails = ({item}) => {
         <>
           <section className="navigation">
             <Link to="/">
-            <Head />
+              <Head />
             </Link>
             <Link to="/edit-feedback">
-            <button className="btn btn-primary button-text edit-button">
-              Edit Feedback
-            </button>
+              <button className="btn btn-primary button-text edit-button">
+                Edit Feedback
+              </button>
             </Link>
-            
           </section>
-          <Suggestions title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description}/>
-          {/* <section className="card dark-theme ">
-            <button className="increase-theme ">
-              <img
-                src="./assets/shared/icon-arrow-up.svg"
-                className="up-arrow"
-              />
-              <p className="number">{feed.upvotes}</p>
-            </button>
-            <div className="theme-decription">
-              <h3 className="card-title">{feed.title}</h3>
-              <p className="body-1 card-text">{feed.description}</p>
-              <button className="feature-button">{feed.category}</button>
-            </div>
-            <div className="comment-tag ">
-              <img src="./assets/shared/icon-comments.svg" />
-              <span>{feed.comments.length}</span>
-            </div>
-          </section> */}
+          <Suggestions
+            title={feed.title}
+            category={feed.category}
+            status={feed.status}
+            upvote={feed.upvotes}
+            description={feed.description}
+            comments={feed.comments ? feed.comments : undefined}
+          />
 
-          <section className="comments sections">
-            <h3>{feed.comments.length} comments</h3>
-            {feed.comments.map((comment) => {
-              return (
-                <div key={`comment ${comment.id}`}>
-                  <div className="comment-section">
-                    <div className="comment-profile">
-                      <img
-                        src={comment.user.image}
-                        alt="profile_image"
-                        className="profile-image"
-                      />
-                      <div className="user-detail">
-                        <h4 className="username">{comment.user.name}</h4>
-                        <h4 className="user-account">
-                          @{comment.user.username}
-                        </h4>
+          {feed.comments ? (
+            <section className="comments sections">
+              <h3>{feed.comments.length} comments</h3>
+              {feed.comments.map((comment) => {
+                return (
+                  <div key={`comment ${comment.id}`}>
+                    <div className="comment-section">
+                      <div className="comment-profile">
+                        <img
+                          src={comment.user.image}
+                          alt="profile_image"
+                          className="profile-image"
+                        />
+                        <div className="user-detail">
+                          <h4 className="username">{comment.user.name}</h4>
+                          <h4 className="user-account">
+                            @{comment.user.username}
+                          </h4>
+                        </div>
+
+                        <div className="reply body-3" onClick={showInput}>
+                          Reply
+                        </div>
                       </div>
 
-                      <div className="reply body-3" onClick={showInput}>Reply</div>
-                    </div>
+                      <div className="body-2 users-comment">
+                        {comment.content}
+                      </div>
+                      <Reply input={input} />
 
-                    <div className="body-2 users-comment">
-                      {comment.content}
-                    </div>
+                      {/* {input && (
+                      <div className="reply-input">
+                        <textarea className="reply-textarea"></textarea>
+                        <button className="post-comment button-text  post-reply">
+                          Post Reply
+                        </button>
+                      </div>
+                    )} */}
 
-                    {
-                      input &&
-                      (<div className="reply-input">
-                      <textarea className="reply-textarea"></textarea>
-                      <button className="post-comment button-text  post-reply">
-                        Post Reply
-                      </button>
-                    </div>)
-                    }
+                      {/* {
+                    fetchReplies.map((reply) => {
+                      return (
+                        <div key={reply.id}>
+                          <div className="replies">
+                          <div className="comment-profile">
+                            <img  src={reply.user.image}
+                            alt="user-image" className="profile-image" />
+                            <div className="user-detail">
+                              <h4 className="username">{reply.user.name}</h4>
+                              <h4 className="user-account">@{reply.user.username} </h4>
+                            </div>
+
+                            <div className="reply body-3">Reply</div>
+                          </div>
+                          <div className="body-2 users-comment">{reply.content}</div>
+                        </div>
+                        </div>
+                      );
+                    })} */}
+
+                      <div className="replies">
+                        <div className="comment-profile">
+                          <img
+                            src={comment.replies.user.image}
+                            alt="user-image"
+                            className="profile-image"
+                          />
+                          <div className="user-detail">
+                            <h4 className="username">{comment.replies.user.name}</h4>
+                            <h4 className="user-account">
+                              @{comment.replies.user.username}
+                            </h4>
+                          </div>
+
+                          <div className="reply body-3">Reply</div>
+                        </div>
+                        <div className="body-2 users-comment">
+                          {comment.replies.content}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </section>
-          <AddComment/>
+                );
+              })}
+            </section>
+          ) : (
+            <p>hello</p>
+          )}
+
+          <AddComment />
         </>
-        ) : (
-            <p>no feed yet</p>
+      ) : (
+        <p>no feed yet</p>
       )}
     </main>
   );
