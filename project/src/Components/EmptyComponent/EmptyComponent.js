@@ -1,5 +1,6 @@
 import React from 'react'
 import './EmptyComponentStyles.css'
+import { Link } from 'react-router-dom'
 
 
 function EmptyComponent() {
@@ -10,7 +11,9 @@ function EmptyComponent() {
         <div className='text-container'>
           <span className='h1'>There is no feedback yet.</span>
           <span className='body-1'>Got a suggestion? Found a bug that needs to be squashed? We love hearing about new ideas to improve our app.</span>
-          <button className='button-1-default empty'>+ Add Feedback</button>
+          <Link to='/new-feedback'> 
+            <button className='button-1-default empty'>+ Add Feedback</button>
+          </Link>
         </div>
       </div>
     </div>

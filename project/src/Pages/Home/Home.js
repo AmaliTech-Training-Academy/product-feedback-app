@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useLayoutEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
@@ -9,6 +9,7 @@ import axios from 'axios'
 
 
 function Home({setItem}) {
+
 
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
@@ -52,9 +53,11 @@ function Home({setItem}) {
     }
   }, [selectedSortMethod])
 
+
   useEffect(() => {
     axios.get('http://localhost:8000/productRequests')
     .then(res => {
+
       setData(res.data)
       setFilteredData(res.data)
       // console.log(res.data)
@@ -70,13 +73,14 @@ function Home({setItem}) {
         <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
           <Header data={data} setSelectedSortMethod={setSelectedSortMethod}/>
+
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>
                   <Suggestions setItem={setItem} item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
               </>
             )
-          }) : <EmptyComponent />}
+          }): <EmptyComponent/>}
         </div>
       </div>
     </>

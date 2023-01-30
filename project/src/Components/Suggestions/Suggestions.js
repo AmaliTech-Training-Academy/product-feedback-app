@@ -29,8 +29,10 @@ function Suggestions({setItem, item, id, title, category, status, upvote, descri
         <Link to='/feedback-detail' className="text" onClick={() => setItem(item)}>
           <span className='h3'>{title}</span>
           <span className='body-1'>{description}</span>
+
           <Enhancement>{category[0].toUpperCase() + category.slice(1)}</Enhancement>
         </Link>
+
       </div>
       <div className="left-components">
         <img src="./assets/shared/icon-comments.svg" alt=''/>
