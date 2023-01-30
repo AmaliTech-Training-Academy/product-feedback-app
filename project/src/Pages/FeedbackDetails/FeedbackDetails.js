@@ -62,7 +62,13 @@ const FeedbackDetails = () => {
             </Link>
             
           </section>
-          <Suggestions title={feed.title} category={feed.category} status={feed.status} upvote={feed.upvotes} description={feed.description} comments={feed.comments ? feed.comments : undefined}/>
+          <Suggestions
+           title={feed.title} 
+           category={feed.category} 
+           status={feed.status} 
+           upvote={feed.upvotes} 
+           description={feed.description} 
+           comments={feed.comments ? feed.comments : undefined}/>
           {/* <section className="card dark-theme ">
             <button className="increase-theme ">
               <img
