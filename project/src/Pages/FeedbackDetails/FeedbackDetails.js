@@ -8,6 +8,7 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 
+
 const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
   const {id} = useParams()

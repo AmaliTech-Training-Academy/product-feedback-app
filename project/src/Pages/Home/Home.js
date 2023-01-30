@@ -8,9 +8,7 @@ import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
 
 
-function Home({setId}) {
-
-
+function Home() {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
@@ -77,7 +75,7 @@ function Home({setId}) {
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>
-                  <Suggestions setId={setId} item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
+                  <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
               </>
             )
           }): <EmptyComponent/>}
