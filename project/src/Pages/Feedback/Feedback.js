@@ -40,8 +40,8 @@ function Feedback(props) {
     e.preventDefault()
     setError(validate(title, details))
     if(title && details) {
-      setTitle('')
-      setDetails('')
+      // setTitle('')
+      // setDetails('')
       if (props.type === 'Edit') { 
         axios.patch('http://localhost:8000/productRequests', {
           title: title,
