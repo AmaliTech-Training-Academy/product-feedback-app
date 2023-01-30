@@ -3,7 +3,7 @@ import './FeedbackDetails.css'
 
 const AddDarkTheme = () => {
   return (
-    <section className='card dark-theme '>
+    <section className=' dark-theme '>
     <button className='increase-theme '>
         <img src='./assets/shared/icon-arrow-up.svg' className='up-arrow'/>
         <p className='number'>99</p>

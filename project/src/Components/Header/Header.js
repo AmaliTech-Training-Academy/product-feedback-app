@@ -7,19 +7,21 @@ import {
     arrowDown, arrowUp,
     // arrowUp
 } from '../../Components/svgs'
+import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Most Upvotes')
 
   const handleOption = (name) => {
     setOption(name)
     setIsOpen(!isOpen)
+    setSelectedSortMethod(name)
   }
   return (
     <Head>
         <img src='./assets/suggestions/icon-suggestions.svg' alt='' />
-        <span className='h3 suggestions'>6 Suggestions</span>
+        <span className='h3 suggestions'>{data.length} Suggestions</span>
         <span className='h4 sort' onClick={() => setIsOpen(!isOpen)}>
             Sort by : <b>{option}</b>
             {isOpen ? arrowUp : arrowDown}
@@ -42,7 +44,7 @@ function Header() {
             {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
         </div>}
-        <button className='button-1-default add-feedback'>+ Add Feedback</button>
+        <Link to='/new-feedback'><button className='button-1-default add-feedback'>+ Add Feedback</button></Link>
     </Head>
   )
 }

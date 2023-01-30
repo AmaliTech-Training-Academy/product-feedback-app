@@ -4,11 +4,11 @@ import Tags from './Components/Tags'
 import RoadMap from './Components/Roadmap'
 import { Container } from './SidebarStyles'
 
-function Sidebar() {
+function Sidebar({data, setSelectedCategory}) {
   return (
     <Container>
       <FrontendMentor />
-      <Tags />
+      <Tags data={data} setSelectedCategory={setSelectedCategory}/>
       <RoadMap />
     </Container>
   )

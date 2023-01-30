@@ -48,9 +48,10 @@ export const Head = styled.div`
 
     button {
         position: absolute;
+        top: 0;
         right: 16px;
-        /* flex: 1;
-        margin-right: 16px; */
+        bottom: 0;
+        margin: auto 0;
     }
 
     .select {

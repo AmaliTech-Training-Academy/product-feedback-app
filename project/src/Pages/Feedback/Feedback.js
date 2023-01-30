@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import FeedbackCategory from '../../Components/Feedback/FeedbackCategory'
-import FeedbackHead from '../../Components/Feedback/FeedbackHead'
+import Head from '../../Components/Feedback/Head'
 import FeedbackTitle from '../../Components/Feedback/FeedbackTitle'
 import UpdateStatus from '../../Components/Feedback/UpdateStatus'
 import Details from '../../Components/Feedback/Details'
@@ -14,10 +15,7 @@ function Feedback(props) {
   const [detailOption, setDetailOption] = useState('Suggestion')
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
-  const [error, setError] = useState({
-    errorTitle: false,
-    errorDetail: false
-  })
+  const [error, setError] = useState({})
 
   const getTitleValue = (value) => {
     setTitle(value)
@@ -27,63 +25,65 @@ function Feedback(props) {
     setDetails(details)
   }
 
-  const handleClick = (e) => {
-    e.preventDefault()
-    if(title.length === 0) {
-      setError({
-        errorTitle: true,
-        errorDetail: false
-      })
+  const validate = (title, details) => {
+    let errors = {}
+    if(!title) {
+      errors.title = "Can't be empty"
     }
-      else if(details.length === 0) {
-        setError({
-          errorTitle: false,
-          errorDetail: true
-        }) 
-      }
-    
+    if(!details) {
+      errors.detail = "Can't be empty"
+    }
+    return errors
+  }
 
-      
-          if (props.type === 'Edit') { 
-            axios.patch('http://localhost:8000/productRequests', {
-              title: title,
-              category: option,
-              status: detailOption,
-              description: details
-            })
-            .catch((e) => {
-              console.log(e)
-            })
-          }
-          axios.post('http://localhost:8000/productRequests', {
-            title: title,
-            category: option,
-            upvotes: '0',
-            status: detailOption,
-            description: details,
-            comments: []
-          })
-          .catch((e) => {
-            console.log(e)
-          })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setError(validate(title, details))
+    if(title && details) {
+      setTitle('')
+      setDetails('')
+      if (props.type === 'Edit') { 
+        axios.patch('http://localhost:8000/productRequests', {
+          title: title,
+          category: option.toLowerCase(),
+          status: detailOption,
+          description: details
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+      }
+      axios.post('http://localhost:8000/productRequests', {
+        title: title,
+        category: option.toLowerCase(),
+        upvotes: '0',
+        status: detailOption,
+        description: details,
+        comments: []
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+    } 
+
   }
 
   return (
     <Container type={props.type}>
-        <FeedbackHead />
-        <form className='content'>
+        <Link to='/'><Head /></Link>
+        <form className='content' onSubmit={handleSubmit}>
           <img src={props.type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
           <span className='h1 head'>{props.type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
-          <FeedbackTitle value= {getTitleValue}/>
-          {error.errorTitle && <span className='h4 error'>Can't be empty</span>}
-          <FeedbackCategory option={option} setOption={setOption}/>
+          <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
+          <span className='h4 error'>{error.title}</span>
+          <FeedbackCategory option={option} setOption={setOption} />
           {props.type === 'Edit' && <UpdateStatus detailOption={detailOption} setDetailOption={setDetailOption}/>}
-          <Details value={getDetailsValue} />
-          {error.errorDetail && <span className='h4 error'>Can't be empty</span>}
+          <Details value={details} getDetailsValue={getDetailsValue} error={error.detail} />
+          <span className='h4 error'>{error.detail}</span>
           <div className='buttons'>
             {(props.type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
             <button className='button-3-default cancel'>Cancel</button>
-            <button className='button-1-default save' onClick={handleClick}>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
+            <button className='button-1-default save' type='submit'>{props.type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>
     </Container>
