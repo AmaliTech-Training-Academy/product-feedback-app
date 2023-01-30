@@ -41,7 +41,8 @@ main {
 }
 .comment-profile {
   display: flex;
-  justify-content: space-between;
+  gap: 32px;
+  position: relative;
 }
 .profile-image {
   height: 50%;
@@ -62,6 +63,9 @@ main {
 .reply {
   color: #4661e6;
   align-self: center;
+  position: absolute;
+  right: 0;
+
 }
 .reply:hover {
   cursor: pointer;
@@ -75,12 +79,11 @@ main {
 }
 .users-comment {
   width: 82%;
-  margin-left: auto;
+  margin-left: 72px;
 }
 
 .replies{
-  width: 82%;
-  margin-left: auto;
+  margin-left: 45px;
   margin-top: 32px;
 }
 
