@@ -51,8 +51,8 @@ function Feedback({ type, id }) {
     e.preventDefault()
     setError(validate(title, details))
     if(title && details) {
-      // setTitle('')
-      // setDetails('')
+      setTitle('')
+      setDetails('')
       if (type === 'Edit') { 
         axios.patch(`http://localhost:8000/productRequests/${id}`, {
           title: title,
@@ -64,17 +64,19 @@ function Feedback({ type, id }) {
           console.log(e)
         })
       }
-      axios.post('http://localhost:8000/productRequests', {
-        title: title,
-        category: option.toLowerCase(),
-        upvotes: '0',
-        status: detailOption,
-        description: details,
-        comments: []
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+      else {
+        axios.post('http://localhost:8000/productRequests', {
+          title: title,
+          category: option.toLowerCase(),
+          upvotes: '0',
+          status: detailOption,
+          description: details,
+          comments: []
+        })
+        .catch((e) => {
+          console.log(e)
+        })
+      }
     } 
 
   }
@@ -83,7 +85,7 @@ function Feedback({ type, id }) {
     <Container type={type}>
         <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><Head /></Link>
         <form className='content' onSubmit={handleSubmit}>
-          <img src={type === 'Edit' ? './assets/shared/icon-edit-feedback.svg' : './assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
+          <img src={type === 'Edit' ? '/assets/shared/icon-edit-feedback.svg' : '/assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
           <span className='h1 head'>{type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
           <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
           <span className='h4 error'>{error.title}</span>
@@ -92,8 +94,8 @@ function Feedback({ type, id }) {
           <Details value={details} getDetailsValue={getDetailsValue} error={error.detail} />
           <span className='h4 error'>{error.detail}</span>
           <div className='buttons'>
-            {(type === 'Edit') && <button className='button-4-default delete'>Delete</button>}
-            <button className='button-3-default cancel'>Cancel</button>
+            {(type === 'Edit') && <input type='button' className='button-4-default delete' value='Delete' />}
+            <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><input type='button' className='button-3-default cancel' value='Cancel' /></Link>
             <button className='button-1-default save' type='submit'>{type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
         </form>

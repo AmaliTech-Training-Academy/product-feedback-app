@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Nav = styled.div`
     position: relative;
-    width: 825px;
+    width: 100%;
     height: ${(props) => props.type === 'home' ? '72px' : '113px'};
     background: #373F68;
     border-radius: 10px;
@@ -10,6 +10,7 @@ export const Nav = styled.div`
     align-items: center;
     gap: 16px;
     color: #FFFFFF;
+    margin: ${(props) => props.type === 'home' ? undefined : '78px 0 48px'};
 
     a {
         color: #FFFFFF;
@@ -31,7 +32,6 @@ export const Nav = styled.div`
 
     .sort {
         font-weight: 500;
-        /* margin: 0 273px 0 22px; */
         cursor: pointer;
 
         svg {
@@ -41,6 +41,12 @@ export const Nav = styled.div`
         @media (max-width: 450px) {
             margin-left: 24px;
         }
+    }
+
+    .inactive {
+        color: #F2F4FE;
+        opacity: 0.5;
+        cursor: not-allowed;
     }
 
     svg path {

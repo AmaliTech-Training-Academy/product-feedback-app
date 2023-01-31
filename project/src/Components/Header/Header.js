@@ -20,13 +20,19 @@ function Header({type, data, setSelectedSortMethod}) {
     setIsOpen(!isOpen)
     setSelectedSortMethod(name)
   }
+
+  const handleClick = () => {
+    if(data.length > 0) {
+      setIsOpen(!isOpen)
+    }
+  }
   return (
     <Nav type={type}>
         {type == 'home' ?
         <>
         <img src='./assets/suggestions/icon-suggestions.svg' alt='' className='suggestion-image' />
         <span className='h3 suggestions'>{data.length} Suggestions</span>
-        <span className='h4 sort' onClick={() => setIsOpen(!isOpen)}>
+        <span className={`h4 ${data < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
             Sort by : <b>{option}</b>
             {isOpen ? arrowUp : arrowDown}
         </span>
@@ -51,7 +57,7 @@ function Header({type, data, setSelectedSortMethod}) {
         </> 
         : 
         <div className='roadmap-link'>
-          <Link className='roadmap-goback'>
+          <Link to='/' className='roadmap-goback'>
             {arrowLeft}
             <span className='h4'>Go back</span>
           </Link>
