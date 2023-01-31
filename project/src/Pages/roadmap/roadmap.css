@@ -15,7 +15,6 @@ h3{
 }
  .up-votes,.comments{
     color: #3a4374;
-
 }
 
 #tab1,#tab2,#tab3{
@@ -65,8 +64,7 @@ nav{
 .plan-st{
     display: flex;
     flex-direction: column;
-    width: 350px;
- 
+    width: 31.53%;
 }
 
 .sub-faded{
@@ -88,8 +86,6 @@ nav{
     margin-top: 0;
     text-transform: lowercase;
 }
-
-
 .tag{
     background-color:#f2f4ff ;
     padding: 5px 16px;
@@ -121,8 +117,6 @@ nav{
 .up:active svg{
    stroke: #ffffff;
 }
-
-
 .inner-box-up{
     height: 19px;
     margin: 11px 18.12% 10px 23.19%;
@@ -264,8 +258,7 @@ nav{
         line-height: 19px;
         margin-top: 20px;
         padding-bottom: 16px; 
-        border-bottom: 1px solid rgb(58,67,116,.4);
-         
+        border-bottom: 1px solid rgb(58,67,116,.4);      
     }
 
    .big-screen{
@@ -304,13 +297,11 @@ nav{
    .last-line{
     margin-top: 16px;
    }
-
    .plan-st{
-    margin: 0px 6.4%;
+    margin: 0 6.4%;
+    width: 87.2%;
    }
    .bottom-1{
     margin-top: 8px;
-   }
-
-  
+   } 
 }
