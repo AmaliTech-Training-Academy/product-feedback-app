@@ -200,10 +200,9 @@ border-radius: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // background-color: orange;
+  /* background-color: orange; */
   height: 26px;
 }
-
 
 
 .roadmap-view .h3{
@@ -212,13 +211,26 @@ border-radius: 10px;
 }
 
 .roadmap-view .body-3{
-  // background-color: green;
+  /* background-color: green; */
   text-decoration: underline; 
   color: #4661E6;
 }
 
 .roadmap-view .body-3:hover {
   cursor: pointer;
+}
+
+.in_active {
+  opacity: 0.25;
+  cursor: not-allowed;
+  text-decoration: underline; 
+  font-size: 13px;
+}
+
+.inactive {
+  font-size: 16px;
+  font-weight: 700;
+  color: #647196;
 }
 
 .roadmap-planned {

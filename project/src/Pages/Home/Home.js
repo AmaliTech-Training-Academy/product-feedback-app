@@ -68,15 +68,15 @@ function Home() {
   return (
     <>
       <div className='main-page'>
-        <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
+        <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
           <Header data={data} setSelectedSortMethod={setSelectedSortMethod}/>
 
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
-              <>
+              <div >
                   <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
-              </>
+              </div>
             )
           }): <EmptyComponent/>}
         </div>

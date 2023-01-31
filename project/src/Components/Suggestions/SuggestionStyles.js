@@ -17,11 +17,17 @@ justify-content: center;
   width: 761px;
   height: 95px;
   margin: 28px 32px;
-  // background: blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:hover {
+    .h3 {
+      color: #4661E6;
+    }
+  }  
 }
+
 
 .right-components {
   height:95px;
@@ -40,6 +46,10 @@ justify-content: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
+  &:active {
+    background: #4661E6;
+  }
 }
 
 .top-arrow:hover {
@@ -52,6 +62,7 @@ justify-content: center;
   font-weight: 700;
   color: #3A4374;
   margin-top: 8px;
+  
 }
 
 .text {

@@ -7,7 +7,6 @@ import axios from 'axios'
 
 
 function Suggestions({id, title, category, status, upvote, description, comments}) {
-  
   const updateUpVote = (id, upvote) => {
     axios.patch(`http://localhost:8000/productRequests/${id}`, 
     {
@@ -20,7 +19,7 @@ function Suggestions({id, title, category, status, upvote, description, comments
   }
   return (
   <SuggestionContainer >
-    <div className="suggestion-board">
+    <div className="suggestion-board ">
       <div className="right-components">
         <div className="top-arrow">
           <img src="/assets/shared/icon-arrow-up.svg" alt=''/>
