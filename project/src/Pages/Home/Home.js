@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
@@ -8,9 +8,7 @@ import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
 
 
-function Home({setItem}) {
-
-
+function Home() {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [selectedCategory, setSelectedCategory] = useState('')
@@ -77,7 +75,7 @@ function Home({setItem}) {
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <>
-                  <Suggestions setItem={setItem} item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
+                  <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
               </>
             )
           }): <EmptyComponent/>}

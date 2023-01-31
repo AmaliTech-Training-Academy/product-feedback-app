@@ -15,6 +15,7 @@ function Header({data, setSelectedSortMethod}) {
 
   const handleOption = (name) => {
     setOption(name)
+    setSelectedSortMethod(name)
     setIsOpen(!isOpen)
     setSelectedSortMethod(name)
   }
