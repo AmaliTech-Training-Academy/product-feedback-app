@@ -47,6 +47,12 @@ function Feedback({ type, id }) {
     return errors
   }
 
+  const handleClick = () => {
+    axios.delete(`http://localhost:8000/productRequests/${id}`)
+    setTitle('')
+    setDetails('')
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
     setError(validate(title, details))
@@ -94,7 +100,7 @@ function Feedback({ type, id }) {
           <Details value={details} getDetailsValue={getDetailsValue} error={error.detail} />
           <span className='h4 error'>{error.detail}</span>
           <div className='buttons'>
-            {(type === 'Edit') && <input type='button' className='button-4-default delete' value='Delete' />}
+            {(type === 'Edit') && <Link to='/'><input type='button' className='button-4-default delete' value='Delete' onClick={handleClick}/></Link>}
             <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><input type='button' className='button-3-default cancel' value='Cancel' /></Link>
             <button className='button-1-default save' type='submit'>{type === 'Edit' ? 'Save Changes' : 'Add Feedback'}</button>
           </div>
