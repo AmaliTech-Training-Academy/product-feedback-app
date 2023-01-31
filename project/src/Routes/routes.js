@@ -5,7 +5,6 @@ import FeedbackDetails from "../Pages/FeedbackDetails/FeedbackDetails";
 import Feedback from "../Pages/Feedback/Feedback";
 import EditFeedback from "../Pages/Edit Feedback/EditFeedback";
 import SuggestionHome from "../Pages/Home/SuggestionHome";
-import FeedbackDetails from "../Pages/Home/FeedbackDetails/FeedbackDetails";
 import Plan from "../Pages/roadmap/roadmap";
 
 
