@@ -64,9 +64,9 @@ function Plan(){
         <>
         <nav>
           <ul className="list1">
-            <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem theStyle="progress-tag"title="In-Progress (3)" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem theStyle="live-tag" title="Live (1)" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="plan-tag" title={`Planned (${PlannedRequestProducts.length})`} id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="progress-tag"title={`In-Progress  (${ProgressRequestProducts.length})`} id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="live-tag" title={`Live  (${LiveRequestProducts.length})`} id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
           </ul>
         </nav>
     <div className="small-screen">
