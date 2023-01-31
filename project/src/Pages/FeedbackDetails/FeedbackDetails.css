@@ -32,12 +32,6 @@ main {
   margin-bottom: 32px;
 }
 
-hr {
-  border: none;
-  height: 1px;
-  color: #f2f2f2; 
-  background-color: #f2f2f2; 
-}
 
 .comment-profile {
   display: flex;
@@ -168,7 +162,16 @@ textarea {
      background-color: #C75AF6;
 
  }
+ /* .replies{
+  border-left: thick solid #ff0000;
+ } */
 
+ hr {
+  border: none;
+  height: 1px;
+  color: #f2f2f2; 
+  background-color: #f2f2f2; 
+}
 
 
 @media (max-width: 1255px) {
@@ -200,6 +203,11 @@ textarea {
   }
   
 }
+@media (max-width:724px) {
+  main {
+    width: 95vw;
+  }
+}
 
 @media (max-width:532px) {
   .user-detail{
@@ -217,6 +225,7 @@ textarea {
 
   .users-comment{
     width: 100%;
+    margin-left: 0;
   }
   .reply-input{
     width: 100%;

@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const App = () => {
+const AddComment = ({ id }) => {
   const [commentInput, setCommentInput]=useState("");
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8000/productRequests/${id}`)
+  //     .then(res => {
+  //       console.log(res.data)
+  //     })
+  // }, [])
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    axios.post('http://localhost:8000/productRequests', {
-      content: "content",
-      
+    axios.post(`http://localhost:8000/productRequests/${id}`, {
+      comments: [
+        {
+          content: "content",
+        }
+      ]
     })
     .then(response => {
-      console.log(response.data);
+      setCommentInput(response.data.comments);
     })
     .catch(error => {
       console.log(error);
     });
   }
-
-
-  
-
 
   
   return (
@@ -41,7 +47,7 @@ const App = () => {
                 onChange={(e)=>{
                   setCommentInput(e.target.value)
                 }}
-                
+                // required
               />
             </div>
             <div className="share-comment  body-2">
@@ -54,4 +60,4 @@ const App = () => {
   )
 }
 
-export default App
+export default AddComment

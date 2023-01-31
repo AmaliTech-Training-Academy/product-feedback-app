@@ -36,7 +36,6 @@ function Suggestions({id, title, category, status, upvote, description, comments
       </div>
       <div className="left-components">
         <img src="/assets/shared/icon-comments.svg" alt=''/>
-        {/* <span>2</span> */}
         <span>{comments ? comments.length : '0'}</span>
       </div>
     </div>

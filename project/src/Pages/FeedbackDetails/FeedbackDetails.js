@@ -8,7 +8,7 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
-// import Horizontal from "./Horizontal";
+
 
 
 const FeedbackDetails = () => {
@@ -29,6 +29,8 @@ const FeedbackDetails = () => {
   const showInput = (commentId) => {
     setInput(commentId);
   };
+
+ 
 
 
   return (
@@ -53,10 +55,11 @@ const FeedbackDetails = () => {
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
           />
-
+           
           {feed.comments ? (
             <section className="comment sections">
-              <h3>{feed.comments.length} comments</h3>
+             
+              <h3>{`${feed.comments.length} comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
@@ -83,11 +86,13 @@ const FeedbackDetails = () => {
                         {comment.content}
                       </div>
                       <Reply  active={comment.id} currentReply={input}/>
+                      
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
                                 <>
-                                  <div className="replies">
+                                
+                                  <div className="replies" >
                                     <div className="comment-profile">
                                       <img
                                       src={reply.user.image}
@@ -101,12 +106,14 @@ const FeedbackDetails = () => {
                                         </h4>
                                       </div>
             
-                                      <div className="reply body-3">Reply</div>
+                                      <div className="reply body-3" onClick={()=>showInput(comment.id)}>Reply</div>
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
                                     </div>
+                                  
                                   </div>
+                                  
                                 </>
                               )
                             })
@@ -122,7 +129,7 @@ const FeedbackDetails = () => {
             </section>
           ) : <EmptyComment />}
 
-          <AddComment />
+          <AddComment id={id}/>
         </>
       ) : (
         <p>no feed yet</p>
