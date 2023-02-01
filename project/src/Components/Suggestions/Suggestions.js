@@ -8,7 +8,7 @@ import axios from 'axios'
 
 function Suggestions({id, title, category, status, upvote, description, comments}) {
   const updateUpVote = (id, upvote) => {
-    axios.patch(`http://localhost:8000/productRequests/${id}`, 
+    axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, 
     {
       upvotes: upvote += 1
     })
