@@ -12,6 +12,7 @@ import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 
 const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
+  const [input, setInput] = useState(false);
   const {id} = useParams()
 
   // const getData = async () => {
@@ -27,8 +28,6 @@ const FeedbackDetails = ({ setId }) => {
       });
   }, []);
 
-  const [input, setInput] = useState(false);
-
   const showInput = () => {
     if (input === true) {
       setInput(false);
@@ -39,9 +38,9 @@ const FeedbackDetails = ({ setId }) => {
 
   const setid = () => {
     setId(id)
-    console.log(id)
+    // console.log(id)
   }
-
+  // console.log(feed.comments && feed.comments)
   return (
     <main>
       {feed ? (
@@ -71,7 +70,7 @@ const FeedbackDetails = ({ setId }) => {
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
-                    <div className="comment-section">
+                    <div className={feed.comments.length === comment.id ? "last" : "comment-section"}>
                       <div className="comment-profile">
                         <img
                           src={comment.user.image}
@@ -93,7 +92,7 @@ const FeedbackDetails = ({ setId }) => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply input={input} />
+                      <Reply id={id} commentContent={comment.content} input={input} />
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
@@ -129,7 +128,7 @@ const FeedbackDetails = ({ setId }) => {
             </section>
           ) : <EmptyComment />}
 
-          <AddComment />
+          <AddComment id={id} comments={feed.comments ? feed.comments : undefined}/>
         </>
       ) : (
         <p>no feed yet</p>

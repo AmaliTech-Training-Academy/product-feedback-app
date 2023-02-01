@@ -13,13 +13,14 @@ import Plan from "../Pages/roadmap/roadmap";
 
 function ProductApp(){
     const [id, setId] = useState('')
+    const [selectedCategory, setSelectedCategory] = useState('')
     return(
         <>
         <Routes>
             <Route path="/" element={
                 <>
-                    <MobileNav />
-                    <Home />
+                    <MobileNav setSelectedCategory={setSelectedCategory}/>
+                    <Home selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
                 </>
             }/>
             <Route path="/suggestion" element={<SuggestionHome/>}/>

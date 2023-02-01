@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { SuggestionContainer } from './SuggestionStyles'
 import { Enhancement } from '../Sidebar/SidebarStyles'
 import { Link } from 'react-router-dom'
@@ -7,24 +7,26 @@ import axios from 'axios'
 
 
 function Suggestions({id, title, category, status, upvote, description, comments}) {
+  const [stateUpvote, setStateUpvote] = useState(upvote)
   
-  const updateUpVote = (id, upvote) => {
+  const updateUpVote = (prev) => {
+    setStateUpvote(prev + 1)
+    console.log(stateUpvote)
     axios.patch(`http://localhost:8000/productRequests/${id}`, 
     {
-      upvotes: upvote += 1
+      upvotes: stateUpvote
     })
     .catch((e) => {
       console.log(e)
     })
-    console.log(upvote)
   }
   return (
   <SuggestionContainer >
     <div className="suggestion-board">
       <div className="right-components">
-        <div className="top-arrow">
+        <div className="top-arrow" onClick={() => updateUpVote(stateUpvote)}>
           <img src="/assets/shared/icon-arrow-up.svg" alt=''/>
-          <span onClick={() => updateUpVote(id, upvote)}>{upvote}</span>
+          <span>{stateUpvote}</span>
         </div>
         <Link to={`/feedback-detail/${id}`} className="text">
           <span className='h3'>{title}</span>
