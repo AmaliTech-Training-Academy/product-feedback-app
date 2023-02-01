@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 
-const App = () => {
+const AddComment = ({ id }) => {
   const [commentInput, setCommentInput]=useState("");
 
+  // useEffect(() => {
+  //   axios.get(`http://localhost:8000/productRequests/${id}`)
+  //     .then(res => {
+  //       console.log(res.data)
+  //     })
+  // }, [])
+
+  const handleSubmit = (e) =>{
+    e.preventDefault();
+    axios.post(`http://localhost:8000/productRequests/${id}`, {
+      comments: [
+        {
+          content: "content",
+        }
+      ]
+    })
+    .then(response => {
+      setCommentInput(response.data.comments);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
 
   
   return (
-    <form className="add-comment sections">
+    <form className="add-comment sections" onSubmit={handleSubmit}>
             <div className="card-body">
               <label htmlFor="add-comment" className="form-label">
                 <h3>Add comment</h3>
@@ -23,7 +47,7 @@ const App = () => {
                 onChange={(e)=>{
                   setCommentInput(e.target.value)
                 }}
-                
+                // required
               />
             </div>
             <div className="share-comment  body-2">
@@ -36,4 +60,4 @@ const App = () => {
   )
 }
 
-export default App
+export default AddComment
