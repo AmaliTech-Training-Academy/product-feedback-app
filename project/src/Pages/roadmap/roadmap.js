@@ -22,7 +22,7 @@ function Plan(){
        
         
 
-        axios.get('http://localhost:8000/productRequests')
+        axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
         .then((res)=>{
           let productdata = res.data;
           setProductData({productdata })
