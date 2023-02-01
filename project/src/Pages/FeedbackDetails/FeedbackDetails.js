@@ -8,6 +8,7 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
+import NoFeed from "./NoFeed";
 
 
 
@@ -18,7 +19,7 @@ const FeedbackDetails = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(response => {
         setFeed(response.data);
       });
@@ -54,16 +55,17 @@ const FeedbackDetails = () => {
             upvote={feed.upvotes}
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
-          />
+          className="suggestion"/>
            
           {feed.comments ? (
             <section className="comment sections">
              
-              <h3>{`${feed.comments.length} comment${feed.comments.length>1 ? "s" : ""}`}</h3>
+              <h3>{`${feed.comments.length + feed.comments.replies.length}
+              comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
-                    <div className="comment-section">
+                    <div className={feed.comments.length - 1 === comment.id ? 'comment-section' : 'last'}>
                       <div className="comment-profile">
                         <img
                           src={comment.user.image}
@@ -132,7 +134,7 @@ const FeedbackDetails = () => {
           <AddComment id={id}/>
         </>
       ) : (
-        <p>no feed yet</p>
+        <NoFeed/>
       )}
     </main>
   );
