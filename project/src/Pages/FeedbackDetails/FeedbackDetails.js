@@ -10,15 +10,12 @@ import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 
 
+
 const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
   const {id} = useParams()
+ 
 
-  // const getData = async () => {
-  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
-  //   setFeed(results);
-  //   console.log(results);
-  // };
 
   useEffect(() => {
     axios.get(`http://localhost:8000/productRequests/${id}`)
@@ -27,26 +24,14 @@ const FeedbackDetails = () => {
       });
   }, []);
 
-  const [input, setInput] = useState(false);
+  const [input, setInput] = useState("");
 
-  const showInput = () => {
-    if (input === true) {
-      setInput(false);
-    } else {
-      setInput(true);
-    }
+  const showInput = (commentId) => {
+    setInput(commentId);
   };
 
-  // const [fetchReplies, setFetchReplies] = useState();
-  // useEffect(()=>{
-  //   axios.get("http://localhost:8000/productRequests")
-  //   .then((res) =>{
-  //     setFetchReplies(res.data.comments)
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  // })
+ 
+
 
   return (
     <main>
@@ -70,10 +55,11 @@ const FeedbackDetails = () => {
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
           />
-
+           
           {feed.comments ? (
-            <section className="comments sections">
-              <h3>{feed.comments.length} comments</h3>
+            <section className="comment sections">
+             
+              <h3>{`${feed.comments.length} comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
@@ -91,7 +77,7 @@ const FeedbackDetails = () => {
                           </h4>
                         </div>
 
-                        <div className="reply body-3" onClick={showInput}>
+                        <div className="reply body-3" onClick={()=>showInput(comment.id)}>
                           Reply
                         </div>
                       </div>
@@ -99,12 +85,14 @@ const FeedbackDetails = () => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply input={input} />
+                      <Reply  active={comment.id} currentReply={input}/>
+                      
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
                                 <>
-                                  <div className="replies">
+                                
+                                  <div className="replies" >
                                     <div className="comment-profile">
                                       <img
                                       src={reply.user.image}
@@ -118,24 +106,30 @@ const FeedbackDetails = () => {
                                         </h4>
                                       </div>
             
-                                      <div className="reply body-3">Reply</div>
+                                      <div className="reply body-3" onClick={()=>showInput(comment.id)}>Reply</div>
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
                                     </div>
+                                  
                                   </div>
+                                  
                                 </>
                               )
                             })
                       }
                     </div>
+                  
+                  
+                    {comment.id  !== (feed.comments).length - 1 || <hr />}
                   </div>
                 );
               })}
+           
             </section>
           ) : <EmptyComment />}
 
-          <AddComment />
+          <AddComment id={id}/>
         </>
       ) : (
         <p>no feed yet</p>
