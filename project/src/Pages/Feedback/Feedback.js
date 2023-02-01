@@ -18,7 +18,7 @@ function Feedback({ type, id }) {
   const [error, setError] = useState({})
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(res => {
         console.log(res.data)
         setTitle(type === "Edit" && res.data.title)
@@ -48,7 +48,7 @@ function Feedback({ type, id }) {
   }
 
   const handleClick = () => {
-    axios.delete(`http://localhost:8000/productRequests/${id}`)
+    axios.delete(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     setTitle('')
     setDetails('')
   }
@@ -60,7 +60,7 @@ function Feedback({ type, id }) {
       setTitle('')
       setDetails('')
       if (type === 'Edit') { 
-        axios.patch(`http://localhost:8000/productRequests/${id}`, {
+        axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
           title: title,
           category: option.toLowerCase(),
           status: detailOption,
@@ -71,7 +71,7 @@ function Feedback({ type, id }) {
         })
       }
       else {
-        axios.post('http://localhost:8000/productRequests', {
+        axios.post('https://product-feedback-api-hry7.onrender.com/productRequests', {
           title: title,
           category: option.toLowerCase(),
           upvotes: '0',
