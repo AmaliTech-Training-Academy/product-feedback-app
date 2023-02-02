@@ -14,6 +14,7 @@ import NoFeed from "./NoFeed";
 
 const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
+  const [input, setInput] = useState("");
   const {id} = useParams()
  
 
@@ -22,10 +23,9 @@ const FeedbackDetails = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(response => {
         setFeed(response.data);
+        // console.log(response.data);
       });
   }, []);
-
-  const [input, setInput] = useState("");
 
   const showInput = (commentId) => {
     setInput(commentId);
@@ -60,7 +60,7 @@ const FeedbackDetails = () => {
           {feed.comments ? (
             <section className="comment sections">
              
-              <h3>{`${feed.comments.length + feed.comments.replies.length}
+              <h3>{`${feed.comments.replies ? feed.comments.replies.length + feed.comments.length : feed.comments.length}
               comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
