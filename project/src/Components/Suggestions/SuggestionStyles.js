@@ -25,7 +25,11 @@ justify-content: center;
     .h3 {
       color: #4661E6;
     }
-  }  
+  } 
+  
+  @media screen and (max-width: 950px) {
+  width: 100%;
+ }
 }
 
 
@@ -91,9 +95,9 @@ justify-content: center;
   color: #3A4374;
 }
 
-@media screen and (max-width: 950px) {
+/* @media screen and (max-width: 950px) {
   width: 689px;
-}
+} */
 
 @media screen and (max-width: 450px) {
   width: 327px;
