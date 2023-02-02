@@ -7,6 +7,7 @@ const AddComment = ({ id }) => {
   const [comments, setComments]=useState(null);
   
   const handleClick = (e) => {
+    e.preventDefault()
     const details = {}
     details.content = commentInput
     details.user = {
@@ -14,21 +15,29 @@ const AddComment = ({ id }) => {
       image: user.image,
       username: user.username
     }
-    const comment = [...comments, details]
-    axios.patch(`http://localhost:8000/productRequests/${id}`, {
+    let comment;
+    if(comments) {
+      comment = [...comments, details]
+      // console.log(comment);
+    }
+    else {
+      comment = [details]
+    }
+    axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
       comments: comment
     })
   }
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     .then(response => {
       // console.log(response.data.comments ? response.data.comments : 'hello')
-      const comment = [response.data.comments && response.data.comments];
+      const comment = [response.data.comments];
       setComments(...comment)
+      // console.log(...comment)
     });
 
-    axios.get(`http://localhost:8000/currentUser/`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/currentUser/`)
     .then(response => {
       setUser(response.data)
     });
