@@ -63,7 +63,7 @@ function Feedback({ type, id }) {
         axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
           title: title,
           category: option.toLowerCase(),
-          status: detailOption,
+          status: detailOption.toLowerCase(),
           description: details
         })
         .catch((e) => {
@@ -75,7 +75,7 @@ function Feedback({ type, id }) {
           title: title,
           category: option.toLowerCase(),
           upvotes: '0',
-          status: detailOption,
+          status: detailOption.toLowerCase(),
           description: details,
           comments: []
         })

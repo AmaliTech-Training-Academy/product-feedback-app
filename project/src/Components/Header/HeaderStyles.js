@@ -47,6 +47,10 @@ export const Nav = styled.div`
         color: #F2F4FE;
         opacity: 0.5;
         cursor: not-allowed;
+
+        @media (max-width: 450px) {
+            margin-left: 24px;
+        }
     }
 
     svg path {
@@ -124,16 +128,18 @@ export const Nav = styled.div`
 
     @media (max-width: 950px) {
         width: 689px;
+        margin: ${(props) => props.type === 'home' ? undefined : '56px auto 32px'}
     }
 
     @media (max-width: 450px) {
+        width: 100vw;
+        border-radius: 0;
+        margin: ${(props) => props.type === 'home' ? '71px 0 0' : '0'};
+
         .add-feedback {
         width: 134px;
         margin-right: 8px;
     }
-        width: 100vw;
-        border-radius: 0;
-        margin-top: 71px;
     }
 
 `

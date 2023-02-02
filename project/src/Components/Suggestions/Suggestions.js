@@ -10,11 +10,12 @@ function Suggestions({id, title, category, status, upvote, description, comments
   const [stateUpvote, setStateUpvote] = useState(upvote)
   
   const updateUpVote = (prev) => {
-    setStateUpvote(prev + 1)
-    console.log(stateUpvote)
+    const upvote = prev += 1
+    setStateUpvote(upvote)
+    console.log(upvote)
     axios.patch(`http://localhost:8000/productRequests/${id}`, 
     {
-      upvotes: stateUpvote
+      upvotes: upvote
     })
     .catch((e) => {
       console.log(e)
