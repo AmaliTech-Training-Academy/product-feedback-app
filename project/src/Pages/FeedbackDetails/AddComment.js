@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const App = ({ id }) => {
+const AddComment = ({ id }) => {
   const [user, setUser] = useState(null)
   const [commentInput, setCommentInput]=useState('');
   const [comments, setComments]=useState(null);
@@ -35,7 +35,7 @@ const App = ({ id }) => {
   }, [])
 
 return (
-    <form className="add-comment sections" onSubmit={handleSubmit}>
+    <form className="add-comment sections" >
             <div className="card-body">
               <label htmlFor="add-comment" className="form-label">
                 <h3>Add comment</h3>
