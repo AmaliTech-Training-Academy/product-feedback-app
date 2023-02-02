@@ -4,7 +4,7 @@ import Home from "../Pages/Home/Home";
 import FeedbackDetails from "../Pages/FeedbackDetails/FeedbackDetails";
 import Feedback from "../Pages/Feedback/Feedback";
 import EditFeedback from "../Pages/Edit Feedback/EditFeedback";
-import SuggestionHome from "../Pages/";
+// import SuggestionHome from "../Pages/";
 import Plan from '../Pages/roadmap/roadmap'
 import MobileNav from '../Components/Header/Mobile nav/MobileNav'
 
@@ -21,7 +21,7 @@ function ProductApp(){
                     <Home selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
                 </>
             }/>
-            <Route path="/suggestion" element={<SuggestionHome/>}/>
+            {/* <Route path="/suggestion" element={<SuggestionHome/>}/> */}
             <Route path="/feedback-detail/:id" element={<FeedbackDetails setId={setId}/>}/>
             <Route path="/new-feedback" element={<Feedback />}/>
             <Route path="/edit-feedback" element={<EditFeedback id={id}/>}/>
