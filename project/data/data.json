@@ -9,7 +9,7 @@
       "id": 1,
       "title": "Add tags for solutions",
       "category": "enhancement",
-      "upvotes": 112,
+      "upvotes": 114,
       "status": "suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
       "comments": [
@@ -37,7 +37,7 @@
       "id": 2,
       "title": "Add a dark theme option",
       "category": "feature",
-      "upvotes": 100,
+      "upvotes": 101,
       "status": "suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
       "comments": [
@@ -179,7 +179,7 @@
       "id": 7,
       "title": "More comprehensive reports",
       "category": "feature",
-      "upvotes": 123,
+      "upvotes": 124,
       "status": "planned",
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "comments": [
@@ -297,6 +297,42 @@
           ]
         }
       ]
+    },
+    {
+      "title": "hey",
+      "category": "feature",
+      "upvotes": "0",
+      "status": "Suggestion",
+      "description": "hbdjdj",
+      "comments": [],
+      "id": 13
+    },
+    {
+      "title": "hey",
+      "category": "feature",
+      "upvotes": "0",
+      "status": "Suggestion",
+      "description": "hbdjdj",
+      "comments": [],
+      "id": 14
+    },
+    {
+      "title": "xoxo",
+      "category": "feature",
+      "upvotes": "0",
+      "status": "Live",
+      "description": "jbjbj",
+      "comments": [],
+      "id": 15
+    },
+    {
+      "title": "xoxo",
+      "category": "feature",
+      "upvotes": "0",
+      "status": "Live",
+      "description": "jbjbj",
+      "comments": [],
+      "id": 16
     }
   ]
 }

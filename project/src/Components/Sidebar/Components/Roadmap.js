@@ -4,26 +4,20 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 
 
-function Roadmap() {
+function Roadmap({ filteredData }) {
   const [data, setData] = useState([]);
+  const [planned, setPlanned] = useState([]);
+  const [inProgress, setInProgress] = useState([]);
+  const [live, setLive] = useState([]);
+
   useEffect(() => {
-    axios.get('http://localhost:8000/productRequests')
+    axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
-      const dataWanted = res.data.slice(6);
-      const dataWantedCounts = {};
-      dataWanted.forEach((elt) => {
-        if (elt.status.toLowerCase() !== 'suggestion') {
-          console.log(Object.keys(dataWantedCounts))
-          if (Object.keys(dataWantedCounts).includes(elt.status)) {
-            dataWantedCounts[elt.status] += 1
-          } else {
-            dataWantedCounts[elt.status] = 1;
-          }
-        }
-      });
-      console.log(dataWantedCounts)
-      setData(dataWantedCounts);
-    })
+    setData(res.data)
+    setPlanned(res.data.filter(element => element.status.toLowerCase() === 'planned'))
+    setInProgress(res.data.filter(element => element.status.toLowerCase() ==='in-progress'))
+    setLive(res.data.filter(element => element.status.toLowerCase() === 'live'))
+  })
   }, []);
 
   return (
@@ -32,7 +26,7 @@ function Roadmap() {
         <div className='roadmap-view'>
           <span className='h3'>Roadmap</span>
           <Link to='/roadmap'>
-            <span className='body-3'>View</span>
+            <span className={`${filteredData < 1 ? 'in_active' : 'body-3'}`}>View</span>
           </Link>
         </div>
         <div className='roadmap-planned'>
@@ -40,21 +34,21 @@ function Roadmap() {
             <span className='dot'></span>
             <span className='body-1'> Planned</span>
           </div>
-          <span className='num'>{data?.planned || 0}</span>
+          <span className={`${filteredData < 1 ? 'inactive' : 'num'}`}>{filteredData < 1 ? '0' : planned.length}</span>
         </div>
         <div className='roadmap-progress'>
           <div>
             <span className='dot'></span>
             <span className='body-1'> In-progress</span>
           </div>
-          <span className='num'>{data['in-progress'] || 0}</span>
+          <span className={`${filteredData < 1 ? 'inactive' : 'num'}`}>{filteredData < 1 ? '0' : inProgress.length}</span>
         </div>
         <div className='roadmap-live'>
           <div>
             <span className='dot'></span>
             <span className='body-1'> Live</span>
           </div>
-          <span className='num'>{data?.live || 0}</span>
+          <span className={`${filteredData < 1 ? 'inactive' : 'num'}`}>{filteredData < 1 ? '0' : live.length}</span>
         </div>
       </div>
     </RoadMap>

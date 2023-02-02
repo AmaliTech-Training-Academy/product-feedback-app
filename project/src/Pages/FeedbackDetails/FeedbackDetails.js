@@ -8,23 +8,20 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
+import NoFeed from "./NoFeed";
+
 
 
 const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
   const [input, setInput] = useState(false);
   const {id} = useParams()
-
-  // const getData = async () => {
-  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
-  //   setFeed(results);
-  //   console.log(results);
-  // };
-
+ 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(response => {
         setFeed(response.data);
+        // console.log(response.data);
       });
   }, []);
 
@@ -38,9 +35,8 @@ const FeedbackDetails = ({ setId }) => {
 
   const setid = () => {
     setId(id)
-    // console.log(id)
   }
-  // console.log(feed.comments && feed.comments)
+
   return (
     <main>
       {feed ? (
@@ -62,11 +58,12 @@ const FeedbackDetails = ({ setId }) => {
             upvote={feed.upvotes}
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
-          />
-
+          className="suggestion"/>
+           
           {feed.comments ? (
             <section className="comment sections">
-              <h3>{feed.comments.length} comments</h3>
+              <h3>{`${feed.comments.replies ? feed.comments.replies.length + feed.comments.length : feed.comments.length}
+              comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
@@ -84,7 +81,7 @@ const FeedbackDetails = ({ setId }) => {
                           </h4>
                         </div>
 
-                        <div className="reply body-3" onClick={showInput}>
+                        <div className="reply body-3" onClick={()=>showInput(comment.id)}>
                           Reply
                         </div>
                       </div>
@@ -96,8 +93,8 @@ const FeedbackDetails = ({ setId }) => {
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
-                                <>
-                                  <div className="replies">
+                                <>              
+                                   <div className="replies" >
                                     <div className="comment-profile">
                                       <img
                                       src={reply.user.image}
@@ -111,27 +108,32 @@ const FeedbackDetails = ({ setId }) => {
                                         </h4>
                                       </div>
             
-                                      <div className="reply body-3">Reply</div>
+                                      <div className="reply body-3" onClick={()=>showInput(comment.id)}>Reply</div>
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
                                     </div>
+                                  
                                   </div>
+                                  
                                 </>
                               )
                             })
                       }
                     </div>
+                  
+                  
+                    {comment.id  !== (feed.comments).length - 1 || <hr />}
                   </div>
                 );
               })}
+           
             </section>
           ) : <EmptyComment />}
-
           <AddComment id={id} comments={feed.comments ? feed.comments : undefined}/>
         </>
       ) : (
-        <p>no feed yet</p>
+        <NoFeed/>
       )}
     </main>
   );

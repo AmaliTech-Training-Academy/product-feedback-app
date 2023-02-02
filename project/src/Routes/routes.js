@@ -4,11 +4,9 @@ import Home from "../Pages/Home/Home";
 import FeedbackDetails from "../Pages/FeedbackDetails/FeedbackDetails";
 import Feedback from "../Pages/Feedback/Feedback";
 import EditFeedback from "../Pages/Edit Feedback/EditFeedback";
-import SuggestionHome from "../Pages/Home/SuggestionHome";
-import MobileNav from "../Components/Header/Mobile nav/MobileNav"
-import { RoadMap } from "../Components/Sidebar/SidebarStyles";
-import Plan from "../Pages/roadmap/roadmap";
-
+import SuggestionHome from "../Pages/";
+import Plan from '../Pages/roadmap/roadmap'
+import MobileNav from '../Components/Header/Mobile nav/MobileNav'
 
 
 function ProductApp(){

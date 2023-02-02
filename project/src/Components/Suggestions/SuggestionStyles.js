@@ -17,15 +17,20 @@ justify-content: center;
   width: 761px;
   height: 95px;
   margin: 28px 32px;
-  // background: blue;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &:hover {
+    .h3 {
+      color: #4661E6;
+    }
+  }  
 }
+
 
 .right-components {
   height:95px;
-  // background: orange;
   display: flex;
   gap: 40px;
 }
@@ -35,7 +40,6 @@ justify-content: center;
   height: 53px;
   border-radius: 10px;
   background: #F7F8FD;
-  // background-color: ${props => props.type === 'UI' ? '#F7F8FD' : '#4661E6'}
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,6 +62,7 @@ justify-content: center;
   display: flex;
   flex-direction: column;
 }
+
 .text .h3 {
   color: #3A4374;
   font-weight: 700;
@@ -68,7 +73,6 @@ justify-content: center;
   color: #3A4374;
   font-weight: 400;
   height: 23px;
-  /* background-color: blue; */
   margin-top: 4px;
   margin-bottom: 12px;
 }
@@ -76,7 +80,6 @@ justify-content: center;
 .left-components {
   width: 44px;
   height: 23px;
-  // background: green;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -99,13 +102,11 @@ justify-content: center;
 
   .suggestion-board {
     height: 152px;
-    /* background: blue; */
     margin: 24px;
   }
 
   .right-components {
     height:152px;
-    /* background: orange; */
     display: flex;
     flex-direction: column-reverse;
   }
@@ -117,7 +118,6 @@ justify-content: center;
     flex-direction: row;
     align-items: center;
     margin-top: -24px;
-    /* background: green; */
   }
 
   .top-arrow span {
@@ -126,7 +126,6 @@ justify-content: center;
 
   .text .h3 {
     height: 19px;
-    /* background-color: green; */
     font-size: 13px;
     line-height: 19px;
 
@@ -137,16 +136,13 @@ justify-content: center;
     margin-top: 9px;
     font-size: 13px;
     line-height: 19px;
-    /* background-color: green; */
   }
 
   .left-components {
     width: 44px;
     height: 23px;
-    // background: blue;
     position: absolute;
     transform: translate(235px, 64px);
   }
-
 }
 `

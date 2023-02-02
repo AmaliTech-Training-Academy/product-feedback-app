@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import { Link } from 'react-router-dom'
 import './HomeStyles.css'
 import Header from '../../Components/Header/Header'
 import Sidebar from '../../Components/Sidebar/Sidebar'
@@ -55,29 +54,23 @@ function Home({ selectedCategory, setSelectedCategory }) {
   useEffect(() => {
     axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
-
       setData(res.data)
       setFilteredData(res.data)
-      // console.log(res.data)
     })
 
   }, [])
-
-  // console.log(filteredData)
-  // console.log(selectedSortMethod)
   return (
     <>
       {/* <MobileNav setSelectedCategory={setSelectedCategory}/> */}
       <div className='main-page'>
-        <Sidebar data={data} setSelectedCategory={setSelectedCategory}/> 
+        <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
           <Header type='home' data={filteredData} setSelectedSortMethod={setSelectedSortMethod}/>
-
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
-              <>
-                  <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
-              </>
+              <div >
+                <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
+              </div>
             )
           }): <EmptyComponent/>}
         </div>

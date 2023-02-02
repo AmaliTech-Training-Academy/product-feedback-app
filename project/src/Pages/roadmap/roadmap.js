@@ -13,7 +13,7 @@ function Plan(){
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
     const [activeTab, setActiveTab] = useState("tab2");
-    const [productdata, setProductData] = useState([])
+    const [productData, setProductData] = useState([])
    
 
     const groupData=()=>{
@@ -23,39 +23,42 @@ function Plan(){
        
         
 
-        axios.get('http://localhost:8000/productRequests')
+        axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
         .then((res)=>{
           let productdata = res.data;
           setProductData({productdata })
+          console.log(productdata)
 
           productdata.map((productRequest)=>{
-              if(productRequest.status==='planned'){
+            console.log(productRequest)
+              if(productRequest.status==='planned'|| productRequest.status==='Planned'){
                   planned.push(productRequest);
+                  console.log(planned)
               }
-              if(productRequest.status==='in-progress'){
+              if(productRequest.status==='in-progress'||productRequest.status==='In-Progress' ){
                   progress.push(productRequest);   
               }
-              if(productRequest.status==='live'){
-                  live.push(productRequest);   
+              if(productRequest.status==='live' ||productRequest.status==='Live'){
+                  live.push(productRequest);
+                  console.log(live)   
               }
           })
-          setPlannedRequestProduct(planned);
-          setProgressRequestProduct(progress);
-          setLiveRequestProduct(live);
+         
           
-        })
-        
-          
-
-       
-
-      
+        })  
+        setPlannedRequestProduct(planned);
+        setProgressRequestProduct(progress);
+        setLiveRequestProduct(live); 
 
     }
     useEffect(()=>{
-        groupData()
+      groupData()
 
-    },[])
+
+     
+
+  },[])
+   
  
     return(
 
@@ -63,9 +66,9 @@ function Plan(){
         <Header />
         <nav>
           <ul className="list1">
-            <TabNavItem theStyle="plan-tag" title="Planned (2)" id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem theStyle="progress-tag"title="In-Progress (3)" id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
-            <TabNavItem theStyle="live-tag" title="Live (1)" id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="plan-tag" title={`Planned (${PlannedRequestProducts.length})`} id="tab1" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="progress-tag"title={`In-Progress  (${ProgressRequestProducts.length})`} id="tab2" activeTab={activeTab} setActiveTab={setActiveTab}/>
+            <TabNavItem theStyle="live-tag" title={`Live  (${LiveRequestProducts.length})`} id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
           </ul>
         </nav>
     <div className="small-screen">
@@ -106,15 +109,15 @@ function Plan(){
     </div>
 
 
-        <div className="big-screen"> 
-      <div className="roadmap-main">
-     <ProductRequest
-     title="Planned"
-     subtitle="Ideas prioritized for research"
-     productRequests={PlannedRequestProducts}
-     border1="plan"
-     round1="plan-round"
-     />
+      <div className="big-screen"> 
+          <div className="roadmap-main">
+            <ProductRequest
+               title="Planned"
+               subtitle="Ideas prioritized for research"
+               productRequests={PlannedRequestProducts}
+               border1="plan"
+              round1="plan-round"
+            />
      <ProductRequest
      id="tab2" 
      activeTab={activeTab}

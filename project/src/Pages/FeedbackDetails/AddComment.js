@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+
 const App = ({ id }) => {
   const [user, setUser] = useState(null)
   const [commentInput, setCommentInput]=useState('');
-  // const [commentDeatils, setCommentDeatils]=useState({});
   const [comments, setComments]=useState(null);
   
   const handleClick = (e) => {
-    // e.preventDefault()
     const details = {}
     details.content = commentInput
     details.user = {
@@ -15,10 +14,7 @@ const App = ({ id }) => {
       image: user.image,
       username: user.username
     }
-    // setCommentDeatils(...details)
     const comment = [...comments, details]
-    // setComments(comment)
-    // console.log(details)
     axios.patch(`http://localhost:8000/productRequests/${id}`, {
       comments: comment
     })
@@ -38,15 +34,8 @@ const App = ({ id }) => {
     });
   }, [])
 
-  // useEffect(() => {
-  //   axios.patch(`http://localhost:8000/productRequests/${id}`, {
-  //     comments: comments
-  //   })
-  // }, [commentInput])
-  
-  console.log(comments)
-  return (
-    <form className="add-comment sections">
+return (
+    <form className="add-comment sections" onSubmit={handleSubmit}>
             <div className="card-body">
               <label htmlFor="add-comment" className="form-label">
                 <h3>Add comment</h3>
@@ -63,7 +52,6 @@ const App = ({ id }) => {
                 onChange={(e)=>{
                   setCommentInput(e.target.value)
                 }}
-                
               />
             </div>
             <div className="share-comment  body-2">
@@ -76,4 +64,4 @@ const App = ({ id }) => {
   )
 }
 
-export default App
+export default AddComment
