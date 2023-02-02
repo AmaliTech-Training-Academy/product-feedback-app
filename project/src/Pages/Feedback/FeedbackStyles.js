@@ -64,9 +64,21 @@ export const Container = styled.div`
             }
         }
 
+        input[type='button'] {
+            height: 44px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 20px;
+            color: #F2F4FE;
+            cursor: pointer;
+        }
+
         .cancel {
             width: 93px;
             margin-left: 110px;
+
 
             @media (max-width: 450px) {
                 width: 279px;

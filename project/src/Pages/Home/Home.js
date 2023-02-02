@@ -5,12 +5,12 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
+import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 
 
-function Home() {
+function Home({ selectedCategory, setSelectedCategory }) {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
-  const [selectedCategory, setSelectedCategory] = useState('')
   const [selectedSortMethod, setSelectedSortMethod] = useState('')
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Home() {
       const dataWithoutComments = data.filter(item => !item.comments)
       dataWithComments.sort((a, b) => a.comments.length < b.comments.length ? 1 : -1)
       const sortedData = [...dataWithComments, ...dataWithoutComments]
-      console.log(sortedData)
+      // console.log(sortedData)
       setFilteredData(sortedData)
     }
     else if(selectedSortMethod === 'Least Comments') {
@@ -61,10 +61,11 @@ function Home() {
   }, [])
   return (
     <>
+      {/* <MobileNav setSelectedCategory={setSelectedCategory}/> */}
       <div className='main-page'>
         <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
-          <Header data={data} setSelectedSortMethod={setSelectedSortMethod}/>
+          <Header type='home' data={filteredData} setSelectedSortMethod={setSelectedSortMethod}/>
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <div >

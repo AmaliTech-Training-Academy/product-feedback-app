@@ -2,11 +2,12 @@ import React, { useState } from 'react'
 import { Tag, All, UI, UX, Enhancement, Bug, Feature } from '../SidebarStyles'
 
 
-function Tags({data, setSelectedCategory}) {
+function Tags({isOpen, setIsOpen, setSelectedCategory}) {
   const [isClicked, setIsClicked] = useState('All')
   const handleClick = (value) => {
     setIsClicked(value)
     setSelectedCategory(value.toLowerCase())
+    setIsOpen(!isOpen)
   }
   return (
     <Tag>

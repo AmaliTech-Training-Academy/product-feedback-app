@@ -12,27 +12,30 @@ import NoFeed from "./NoFeed";
 
 
 
-const FeedbackDetails = () => {
+const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
+  const [input, setInput] = useState(false);
   const {id} = useParams()
  
-
-
   useEffect(() => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(response => {
         setFeed(response.data);
+        // console.log(response.data);
       });
   }, []);
 
-  const [input, setInput] = useState("");
-
-  const showInput = (commentId) => {
-    setInput(commentId);
+  const showInput = () => {
+    if (input === true) {
+      setInput(false);
+    } else {
+      setInput(true);
+    }
   };
 
- 
-
+  const setid = () => {
+    setId(id)
+  }
 
   return (
     <main>
@@ -43,7 +46,7 @@ const FeedbackDetails = () => {
               <Head />
             </Link>
             <Link to="/edit-feedback">
-              <button className="btn btn-primary button-text edit-button">
+              <button className="btn btn-primary button-text edit-button" onClick={setid}>
                 Edit Feedback
               </button>
             </Link>
@@ -59,13 +62,12 @@ const FeedbackDetails = () => {
            
           {feed.comments ? (
             <section className="comment sections">
-             
-              <h3>{`${feed.comments.length + feed.comments.replies.length}
+              <h3>{`${feed.comments.replies ? feed.comments.replies.length + feed.comments.length : feed.comments.length}
               comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
                   <div key={`comment ${comment.id}`}>
-                    <div className={feed.comments.length - 1 === comment.id ? 'comment-section' : 'last'}>
+                    <div className={feed.comments.length === comment.id ? "last" : "comment-section"}>
                       <div className="comment-profile">
                         <img
                           src={comment.user.image}
@@ -87,14 +89,12 @@ const FeedbackDetails = () => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply  active={comment.id} currentReply={input}/>
-                      
+                      <Reply id={id} commentContent={comment.content} input={input} />
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
-                                <>
-                                
-                                  <div className="replies" >
+                                <>              
+                                   <div className="replies" >
                                     <div className="comment-profile">
                                       <img
                                       src={reply.user.image}
@@ -130,8 +130,7 @@ const FeedbackDetails = () => {
            
             </section>
           ) : <EmptyComment />}
-
-          <AddComment id={id}/>
+          <AddComment id={id} comments={feed.comments ? feed.comments : undefined}/>
         </>
       ) : (
         <NoFeed/>
