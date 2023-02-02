@@ -195,6 +195,9 @@ nav{
         line-height: 20px;
         letter-spacing: -0.2px;
     }
+    .roadmap-main{
+        gap: 10px;
+    }
     .big-screen{
         margin-left: 5.08%;
         margin-right: 5.21%;
