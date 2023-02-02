@@ -10,25 +10,9 @@ function Roadmap({ filteredData }) {
   const [inProgress, setInProgress] = useState([]);
   const [live, setLive] = useState([]);
 
-
-
   useEffect(() => {
     axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
-  //     const dataWanted = res.data.slice(6);
-  //     const dataWantedCounts = {};
-  //     dataWanted.forEach((elt) => {
-  //       if (elt.status.toLowerCase() !== 'suggestion') {
-  //         console.log(Object.keys(dataWantedCounts))
-  //         if (Object.keys(dataWantedCounts).includes(elt.status)) {
-  //           dataWantedCounts[elt.status] += 1
-  //         } else {
-  //           dataWantedCounts[elt.status] = 1;
-  //         }
-  //       }
-  //     });
-  //     console.log(dataWantedCounts)
-  //     setData(dataWantedCounts);
     setData(res.data)
     setPlanned(res.data.filter(element => element.status.toLowerCase() === 'planned'))
     setInProgress(res.data.filter(element => element.status.toLowerCase() ==='in-progress'))
