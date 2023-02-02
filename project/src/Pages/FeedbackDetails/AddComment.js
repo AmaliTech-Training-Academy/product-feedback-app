@@ -13,7 +13,7 @@ const AddComment = ({ id }) => {
 
   const handleSubmit = (e) =>{
     e.preventDefault();
-    axios.post(`http://localhost:8000/productRequests/${id}`, {
+    axios.post(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
       comments: [
         {
           content: "content",
