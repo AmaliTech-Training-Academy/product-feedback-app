@@ -191,6 +191,7 @@ textarea {
   .reply-textarea{
     width: 60%;
   }
+
 }
 
   
@@ -198,6 +199,9 @@ textarea {
 @media (max-width: 900px) {
   .reply-textarea{
     width: 50%;
+  }
+  main {
+    width: 689px;
   }
 }
 @media (max-width:768px) {

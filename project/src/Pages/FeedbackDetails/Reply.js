@@ -10,22 +10,17 @@ const Reply = ({ id, commentContent, input }) => {
     axios.get(`http://localhost:8000/productRequests/${id}`)
       .then(res => {
         setComment(res.data.comments)
-        console.log(res.data.comments)
       })
   }, [])
+
+  const handleClick = () => {
+
+  }
     
   return (
     <div className={`reply-input ${input ? '' : "showReply"}`}>
       <textarea className="reply-textarea"></textarea>
-      <button className="post-comment button-text  post-reply" onClick={() => {
-        let commentObject;
-        comment.map(ele => {
-          if(ele.content === commentContent) {
-            commentObject = ele
-          }
-        })
-        console.log(commentObject);
-      } }>
+      <button className="post-comment button-text  post-reply" onClick={handleClick}>
         Post Reply
       </button>
     </div>
