@@ -16,6 +16,10 @@ h3{
  .up-votes,.comments{
     color: #3a4374;
 }
+.big-screen{
+    margin-left: 11.46%;
+    margin-right: 11.46%;
+}
 
 #tab1,#tab2,#tab3{
     display: none;
@@ -190,6 +194,10 @@ nav{
         font-size: 14px;
         line-height: 20px;
         letter-spacing: -0.2px;
+    }
+    .big-screen{
+        margin-left: 5.08%;
+        margin-right: 5.21%;
     }
     .top-part p{
         font-size:14px;
