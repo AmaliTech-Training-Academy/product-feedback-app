@@ -197,6 +197,7 @@ nav{
     }
     .roadmap-main{
         gap: 10px;
+        width: 100%;
     }
     .big-screen{
         margin-left: 5.08%;
