@@ -1,35 +1,40 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const AddComment = ({ id }) => {
-  const [commentInput, setCommentInput]=useState("");
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:8000/productRequests/${id}`)
-  //     .then(res => {
-  //       console.log(res.data)
-  //     })
-  // }, [])
-
-  const handleSubmit = (e) =>{
-    e.preventDefault();
-    axios.post(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
-      comments: [
-        {
-          content: "content",
-        }
-      ]
+const App = ({ id }) => {
+  const [user, setUser] = useState(null)
+  const [commentInput, setCommentInput]=useState('');
+  const [comments, setComments]=useState(null);
+  
+  const handleClick = (e) => {
+    const details = {}
+    details.content = commentInput
+    details.user = {
+      name: user.name,
+      image: user.image,
+      username: user.username
+    }
+    const comment = [...comments, details]
+    axios.patch(`http://localhost:8000/productRequests/${id}`, {
+      comments: comment
     })
-    .then(response => {
-      setCommentInput(response.data.comments);
-    })
-    .catch(error => {
-      console.log(error);
-    });
   }
 
-  
-  return (
+  useEffect(() => {
+    axios.get(`http://localhost:8000/productRequests/${id}`)
+    .then(response => {
+      // console.log(response.data.comments ? response.data.comments : 'hello')
+      const comment = [response.data.comments && response.data.comments];
+      setComments(...comment)
+    });
+
+    axios.get(`http://localhost:8000/currentUser/`)
+    .then(response => {
+      setUser(response.data)
+    });
+  }, [])
+
+return (
     <form className="add-comment sections" onSubmit={handleSubmit}>
             <div className="card-body">
               <label htmlFor="add-comment" className="form-label">
@@ -47,12 +52,11 @@ const AddComment = ({ id }) => {
                 onChange={(e)=>{
                   setCommentInput(e.target.value)
                 }}
-                // required
               />
             </div>
             <div className="share-comment  body-2">
               <p className="body-2"><span className='characterCounter' >{250-commentInput.length}</span> Characters left</p>
-              <button type="submit" className=" post-comment button-text">
+              <button type="submit" className=" post-comment button-text" onClick={handleClick}>
                 Post Comment
               </button>
             </div>

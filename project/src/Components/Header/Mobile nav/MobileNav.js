@@ -5,7 +5,7 @@ import {
     Container
 } from './MobileNavStyles'
 
-function MobileNav() {
+function MobileNav({ setSelectedCategory }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Container>
@@ -16,7 +16,7 @@ function MobileNav() {
         <img src={`${isOpen ? './assets/shared/mobile/icon-close.svg' : './assets/shared/mobile/icon-hamburger.svg'}`} alt='' onClick={() => setIsOpen(!isOpen)} />
         {isOpen && <div className='pop-up'>
          <div className='menu'>
-            <Tags />
+            <Tags setSelectedCategory={setSelectedCategory} isOpen={isOpen} setIsOpen={setIsOpen}/>
             <Roadmap />
           </div>
         </div>}
