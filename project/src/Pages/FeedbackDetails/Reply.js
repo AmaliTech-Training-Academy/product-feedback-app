@@ -26,7 +26,7 @@ const Reply = ({ id, commentContent, input }) => {
     let commentObject;
     comment.map(ele => {
       if(ele.content === commentContent) {
-        setCommentWanted(ele)
+        // setCommentWanted(ele)
         const replyObject = {
           content: reply,
           replyingTo: ele.user.name,
@@ -50,12 +50,20 @@ const Reply = ({ id, commentContent, input }) => {
         ele = newCommentObject
         
       }
-      setCommentWanted(commentWanted)
+      // setCommentWanted(commentWanted)
       // console.log(comment.indexOf(ele))
-      console.log(commentObject)
     })
+    // console.log(commentObject)
     setReply('')
-    console.log(comment.indexOf(commentWanted))
+    // console.log(comment.indexOf(commentWanted))
+
+    for (let i = 0; i < comment.length; i++) {
+      if(comment[i].content === commentObject.content) {
+        comment[i] = commentObject
+      };  
+    }
+
+    // console.log(comment)
   }
 
   return (

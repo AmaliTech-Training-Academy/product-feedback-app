@@ -242,9 +242,9 @@ textarea {
     height: 90%;
   }
 }
-.showReply{
+/* .showReply{
   display: none;
-}
+} */
 .no-feed{
   width: max-content;
   margin: auto;

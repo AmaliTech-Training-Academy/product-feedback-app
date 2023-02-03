@@ -5,13 +5,13 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
-import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 
 
 function Home({ selectedCategory, setSelectedCategory }) {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [selectedSortMethod, setSelectedSortMethod] = useState('')
+  const [fetch, setFetch] = useState(false)
 
   useEffect(() => {
     if(selectedCategory === 'all') {
@@ -22,11 +22,19 @@ function Home({ selectedCategory, setSelectedCategory }) {
   }, [selectedCategory])
 
   useEffect(() => {
+    // let newdata;
+    // axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
+    // .then(res => {
+    //   newdata = res.data
+    //   // setFilteredData(res.data)
+    // })
+    // .then(() => console.log(newdata.filter(element => filteredData.includes(element.title))))
+
     if(selectedSortMethod === 'Most Upvotes') {
       const sortedData = [...filteredData];
       sortedData.sort((a, b) => a.upvotes < b.upvotes ? 1 : -1)
       setFilteredData(sortedData)
-      console.log(filteredData)
+      // console.log(filteredData)
     }
     else if(selectedSortMethod === 'Least Upvotes') {
       const sortedData = [...filteredData]
@@ -49,16 +57,29 @@ function Home({ selectedCategory, setSelectedCategory }) {
       setFilteredData(sortedData)
     }
   }, [selectedSortMethod])
-
-
-  useEffect(() => {
+  const fetchingData = () => {
     axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
       setData(res.data)
       setFilteredData(res.data)
+      setFetch(false)
     })
+}
 
+  useEffect(() => {
+    fetchingData()
   }, [])
+  useEffect(() => {
+    if(fetch) {
+      // // if(selectedCategory === 'all') {
+      // //   setFilteredData(data)
+      // // } else {
+      // //   setFilteredData(data.filter(item => item.category === selectedCategory))
+      // }
+      console.log(selectedSortMethod)
+      fetchingData()
+    }
+  }, [fetch])
   return (
     <>
       {/* <MobileNav setSelectedCategory={setSelectedCategory}/> */}
@@ -69,7 +90,7 @@ function Home({ selectedCategory, setSelectedCategory }) {
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <div >
-                <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments}/>
+                <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments} setFetch={setFetch}/>
               </div>
             )
           }): <EmptyComponent/>}

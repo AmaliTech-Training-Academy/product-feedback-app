@@ -7,6 +7,7 @@ const AddComment = ({ id }) => {
   const [comments, setComments]=useState(null);
   
   const handleClick = (e) => {
+    e.preventDefault()
     const details = {}
     details.content = commentInput
     details.user = {
