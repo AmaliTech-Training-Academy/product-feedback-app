@@ -1,39 +1,52 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-const AddComment = ({ id }) => {
+const AddComment = ({ id, setRefetch }) => {
   const [user, setUser] = useState(null)
   const [commentInput, setCommentInput]=useState('');
-  const [comments, setComments]=useState(null);
+  const [comments, setComments]=useState([]);
+  const [fetch, setFetch] = useState(false)
   
   const handleClick = (e) => {
     e.preventDefault()
-    const details = {}
-    details.content = commentInput
-    details.user = {
-      name: user.name,
-      image: user.image,
-      username: user.username
-    }
-    let comment;
-    if(comments) {
-      comment = [...comments, details]
-      // console.log(comment);
+    if(commentInput) {
+      const details = {}
+      details.id = comments.length + 1
+      details.content = commentInput
+      details.user = {
+        name: user.name,
+        image: user.image,
+        username: user.username
+      }
+      let comment;
+      if(comments) {
+        comment = [...comments, details]
+        // console.log(comment);
+      }
+      else {
+        comment = [details]
+      }
+      console.log(comment)
+      setFetch(true)
+      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+        comments: comment
+      })
+      .then(() => {
+        setCommentInput('')
+        setRefetch(true)
+      })
     }
     else {
-      comment = [details]
+      console.log('no input')
     }
-    axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
-      comments: comment
-    })
   }
-
-  useEffect(() => {
+  const commentsFetching = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     .then(response => {
       // console.log(response.data.comments ? response.data.comments : 'hello')
       const comment = [response.data.comments];
       setComments(...comment)
+      setFetch(false)
       // console.log(...comment)
     });
 
@@ -41,7 +54,17 @@ const AddComment = ({ id }) => {
     .then(response => {
       setUser(response.data)
     });
+  }
+
+  useEffect(() => {
+    commentsFetching()
   }, [])
+
+  useEffect(() => {
+    if(fetch) {
+      commentsFetching()
+    }
+  }, [fetch])
 
 return (
     <form className="add-comment sections" >
