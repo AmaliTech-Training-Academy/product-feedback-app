@@ -5,7 +5,6 @@ import Sidebar from '../../Components/Sidebar/Sidebar'
 import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
 import axios from 'axios'
-import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 
 
 function Home({ selectedCategory, setSelectedCategory }) {

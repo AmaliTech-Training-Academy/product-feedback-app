@@ -5,6 +5,7 @@ import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
 import Header from "../../Components/Header/Header"
+import EmptyComment from "../../Components/EmptyComment/EmptyComment"
 import axios from 'axios'
 
 
@@ -27,20 +28,17 @@ function Plan(){
         .then((res)=>{
           let productdata = res.data;
           setProductData({productdata })
-          console.log(productdata)
+          
 
           productdata.map((productRequest)=>{
-            console.log(productRequest)
               if(productRequest.status==='planned'|| productRequest.status==='Planned'){
                   planned.push(productRequest);
-                  console.log(planned)
               }
               if(productRequest.status==='in-progress'||productRequest.status==='In-Progress' ){
                   progress.push(productRequest);   
               }
               if(productRequest.status==='live' ||productRequest.status==='Live'){
                   live.push(productRequest);
-                  console.log(live)   
               }
           })
          
@@ -51,18 +49,13 @@ function Plan(){
         setLiveRequestProduct(live); 
 
     }
-    useEffect(()=>{
+    useEffect(() => {
       groupData()
+    }, [])
 
-
-     
-
-  },[])
-   
- 
     return(
 
-        <>
+      <>
         <Header />
         <nav>
           <ul className="list1">
@@ -71,74 +64,76 @@ function Plan(){
             <TabNavItem theStyle="live-tag" title={`Live  (${LiveRequestProducts.length})`} id="tab3" activeTab={activeTab} setActiveTab={setActiveTab}/>
           </ul>
         </nav>
-    <div className="small-screen">
-        <div className="roadmap-main ">
-     <TabContent id="tab1" activeTab={activeTab}>
-      <ProductRequest
-        title="Planned"
-        subtitle="Ideas prioritized for research"
-        productRequests={PlannedRequestProducts}
-        border1="plan"
-        round1="plan-round"
-      />
-    </TabContent>
+        <div className="small-screen">
+          <div className="roadmap-main ">
+            <TabContent id="tab1" activeTab={activeTab}>
+              <ProductRequest
+                title="Planned"
+                subtitle="Ideas prioritized for research"
+                productRequests={PlannedRequestProducts}
+                border1="plan"
+                round1="plan-round"
+              />
+            </TabContent>
 
-     <TabContent id="tab2" activeTab={activeTab}>
-      <ProductRequest
-        id="tab2" 
-        activeTab={activeTab}
-        title="In-Progress"
-        subtitle="Currently being developed"
-        productRequests={ProgressRequestProducts}
-        border1="progress"
-        round1="progress-round"
-      />
-      </TabContent>
+            <TabContent id="tab2" activeTab={activeTab}>
+              <ProductRequest
+                id="tab2" 
+                activeTab={activeTab}
+                title="In-Progress"
+                subtitle="Currently being developed"
+                productRequests={ProgressRequestProducts}
+                border1="progress"
+                round1="progress-round"
+              />
+            </TabContent>
 
-      <TabContent id="tab3" activeTab={activeTab}>
-       <ProductRequest
-         id="tab3" 
-         activeTab={activeTab}
-         title="Live"
-         subtitle="Released features"
-         productRequests={LiveRequestProducts}
-         border1="live"
-         round1="live-round"/>
-      </TabContent>      
-      </div>
-    </div>
+            <TabContent id="tab3" activeTab={activeTab}>
+              <ProductRequest
+                id="tab3" 
+                activeTab={activeTab}
+                title="Live"
+                subtitle="Released features"
+                productRequests={LiveRequestProducts}
+                border1="live"
+                round1="live-round"
+                />
+            </TabContent>      
+          </div>
+        </div>
 
 
-      <div className="big-screen"> 
-          <div className="roadmap-main">
-            <ProductRequest
-               title="Planned"
-               subtitle="Ideas prioritized for research"
-               productRequests={PlannedRequestProducts}
-               border1="plan"
-              round1="plan-round"
-            />
-     <ProductRequest
-     id="tab2" 
-     activeTab={activeTab}
-     title="In-Progress"
-     subtitle="Currently being developed"
-     productRequests={ProgressRequestProducts}
-     border1="progress"
-     round1="progress-round"
-     />
-     <ProductRequest
-      id="tab3" 
-      activeTab={activeTab}
-     title="Live"
-     subtitle="Released features"
-     productRequests={LiveRequestProducts}
-     border1="live"
-     round1="live-round"/>      
-         </div>
-      </div>
+        <div className="big-screen"> 
+            <div className="roadmap-main">
+              <ProductRequest
+                title="Planned"
+                subtitle="Ideas prioritized for research"
+                productRequests={PlannedRequestProducts}
+                border1="plan"
+                round1="plan-round"
+              />
+              <ProductRequest
+                id="tab2" 
+                activeTab={activeTab}
+                title="In-Progress"
+                subtitle="Currently being developed"
+                productRequests={ProgressRequestProducts}
+                border1="progress"
+                round1="progress-round"
+              />
+              <ProductRequest
+                id="tab3" 
+                activeTab={activeTab}
+                title="Live"
+                subtitle="Released features"
+                productRequests={LiveRequestProducts}
+                border1="live"
+                round1="live-round"
+              />      
+            </div>
+        </div>
 
-        </>
+      </>
     );
     
 }

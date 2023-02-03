@@ -17,8 +17,7 @@ h3{
     color: #3a4374;
 }
 .big-screen{
-    margin-left: 11.46%;
-    margin-right: 11.46%;
+    width: 1110px;
 }
 
 #tab1,#tab2,#tab3{
@@ -79,7 +78,6 @@ nav{
 
 .round-plan{
     border-radius: 50%;
-    /* background-color: #f49f85; */
     width: 8px;
     height: 8px;
     margin-right: 4.57%;
@@ -197,11 +195,10 @@ nav{
     }
     .roadmap-main{
         gap: 10px;
-        width: 689px;
+        
     }
     .big-screen{
-        margin-left: unset;
-        margin-right: unset;
+        width: 689px;
     }
     .top-part p{
         font-size:14px;
@@ -239,7 +236,6 @@ nav{
     .up{
         width: 30.94%;
         height: 32px;
-        /* margin-right: 40.44%; */
     }
     .inner-box-up{
         margin: 6px 18.12% 7px 23.19%;

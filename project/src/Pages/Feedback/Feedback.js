@@ -74,7 +74,7 @@ function Feedback({ type, id }) {
         axios.post('https://product-feedback-api-hry7.onrender.com/productRequests', {
           title: title,
           category: option.toLowerCase(),
-          upvotes: '0',
+          upvotes: 0,
           status: detailOption.toLowerCase(),
           description: details,
           comments: []
