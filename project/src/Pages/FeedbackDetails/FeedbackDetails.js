@@ -123,8 +123,7 @@ const FeedbackDetails = ({ setId }) => {
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
-                                    </div>
-                                  
+                                    </div>                                  
                                   </div>
                                   
                                 </>

@@ -77,7 +77,6 @@ function Feedback({ type, id }) {
           upvotes: 0,
           status: detailOption.toLowerCase(),
           description: details,
-          comments: []
         })
         .catch((e) => {
           console.log(e)
