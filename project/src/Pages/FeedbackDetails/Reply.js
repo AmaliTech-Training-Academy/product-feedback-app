@@ -12,13 +12,11 @@ const Reply = ({ id, commentContent, input }) => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(res => {
         setComment(res.data.comments)
-        // console.log(res.data.comments)
       })
 
     axios.get(`https://product-feedback-api-hry7.onrender.com/currentUser/`)
       .then(response => {
       setUser(response.data)
-      // console.log(response.data)
     }); 
   }, [])
 
@@ -26,7 +24,6 @@ const Reply = ({ id, commentContent, input }) => {
     let commentObject;
     comment.map(ele => {
       if(ele.content === commentContent) {
-        // setCommentWanted(ele)
         const replyObject = {
           content: reply,
           replyingTo: ele.user.name,
@@ -45,25 +42,17 @@ const Reply = ({ id, commentContent, input }) => {
           newCommentObject.replies.push(replyObject)
         }
         commentObject = newCommentObject
-        // console.log(newCommentObject)
-
         ele = newCommentObject
         
       }
-      // setCommentWanted(commentWanted)
-      // console.log(comment.indexOf(ele))
     })
-    // console.log(commentObject)
     setReply('')
-    // console.log(comment.indexOf(commentWanted))
 
     for (let i = 0; i < comment.length; i++) {
       if(comment[i].content === commentObject.content) {
         comment[i] = commentObject
       };  
     }
-
-    // console.log(comment)
   }
 
   return (

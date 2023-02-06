@@ -14,39 +14,28 @@ import NoFeed from "./NoFeed";
 
 const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
-  // const [input, setInput] = useState(false);
+  const [refetch, setRefetch] = useState(false);
   const {id} = useParams()
-  // const [isClicked, setIsClicked] = useState(false)
   const [commentClicked, setCommentClicked] = useState({})
  
-  useEffect(() => {
+  const fetching = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
-      .then(response => {
-        setFeed(response.data);
-        // console.log(response.data);
-      });
+    .then(response => {
+      setFeed(response.data);
+      setRefetch(false)
+    });
+  }
+
+  useEffect(() => {
+    fetching()
   }, []);
 
-  useEffect(() => {
-    console.log(commentClicked);
-  }, [commentClicked])
-
   const handleClick = (id) => {
-    // console.log(id)
-    // console.log(Object.keys(commentClicked).includes(`comment${id}`));
     setCommentClicked({
       ...commentClicked, 
       [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
     })
   }
-
-  // const showInput = () => {
-  //   if (input === true) {
-  //     setInput(false);
-  //   } else {
-  //     setInput(true);
-  //   }
-  // };
 
   const setid = () => {
     setId(id)
@@ -127,8 +116,7 @@ const FeedbackDetails = ({ setId }) => {
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
-                                    </div>
-                                  
+                                    </div>                                  
                                   </div>
                                   
                                 </>
@@ -145,7 +133,7 @@ const FeedbackDetails = ({ setId }) => {
            
             </section>
           ) : <EmptyComment />}
-          <AddComment id={id} comments={feed.comments ? feed.comments : undefined}/>
+          <AddComment id={id} setRefetch={setRefetch}/>
         </>
       ) : (
         <NoFeed/>
