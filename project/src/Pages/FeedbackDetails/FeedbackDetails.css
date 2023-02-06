@@ -104,10 +104,18 @@ textarea {
 }
 .reply-input {
   display: flex;
-  justify-content: space-between;
+  gap: 16px;
   width: 90%;
   margin-top: 17px;
   margin-left: auto;
+}
+
+.comment {
+  border-bottom: 1px solid #F2F4FF;
+}
+
+.last {
+  border-bottom: unset;
 }
 
 .reply-textarea {
@@ -184,6 +192,10 @@ textarea {
   color: red;
 }
 
+.reply-error {
+  margin-left: 72px;
+}
+
 
 @media (max-width: 1255px) {
   .reply-textarea{
@@ -254,9 +266,7 @@ textarea {
     height: 90%;
   }
 }
-/* .showReply{
-  display: none;
-} */
+
 .no-feed{
   width: max-content;
   margin: auto;
