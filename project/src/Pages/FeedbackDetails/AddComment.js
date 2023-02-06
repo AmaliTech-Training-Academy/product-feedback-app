@@ -55,11 +55,11 @@ const AddComment = ({ id, setRefetch }) => {
     commentsFetching()
   }, [])
 
-  // useEffect(() => {
-  //   if(fetch) {
-  //     commentsFetching()
-  //   }
-  // }, [fetch])
+  useEffect(() => {
+    if(fetch) {
+      commentsFetching()
+    }
+  }, [fetch])
 
 return (
     <form className="add-comment sections" >
