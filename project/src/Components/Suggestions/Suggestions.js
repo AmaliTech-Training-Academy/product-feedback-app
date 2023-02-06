@@ -5,15 +5,18 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 
-function Suggestions({id, title, category, status, upvote, description, comments}) {
+function Suggestions({id, title, category, status, upvote, description, comments, setFetch}) {
   const [stateUpvote, setStateUpvote] = useState(upvote)
   const updateUpVote = (prev) => {
-    const upvote = prev += 1
-    setStateUpvote(upvote)
+    const nextUpvote = prev += 1
+    // setStateUpvote(upvote)
     console.log(upvote)
     axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, 
     {
-      upvotes: upvote
+      upvotes: nextUpvote
+    })
+    .then(() => {
+      setFetch(true)
     })
     .catch((e) => {
       console.log(e)
@@ -25,7 +28,7 @@ function Suggestions({id, title, category, status, upvote, description, comments
       <div className="right-components">
         <div className="top-arrow" onClick={() => updateUpVote(stateUpvote)}>
           <img src="/assets/shared/icon-arrow-up.svg" alt=''/>
-          <span>{stateUpvote}</span>
+          <span>{upvote}</span>
         </div>
         <Link to={`/feedback-detail/${id}`} className="text">
           <span className='h3'>{title}</span>

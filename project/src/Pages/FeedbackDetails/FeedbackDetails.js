@@ -14,9 +14,9 @@ import NoFeed from "./NoFeed";
 
 const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
-  const [input, setInput] = useState(false);
   const [refetch, setRefetch] = useState(false);
   const {id} = useParams()
+  const [commentClicked, setCommentClicked] = useState({})
  
   const fetching = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
@@ -30,19 +30,12 @@ const FeedbackDetails = ({ setId }) => {
     fetching()
   }, []);
 
-  useEffect(() => {
-    if(refetch) {
-      fetching()
-    }
-  }, [refetch])
-
-  const showInput = () => {
-    if (input === true) {
-      setInput(false);
-    } else {
-      setInput(true);
-    }
-  };
+  const handleClick = (id) => {
+    setCommentClicked({
+      ...commentClicked, 
+      [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
+    })
+  }
 
   const setid = () => {
     setId(id)
@@ -92,7 +85,7 @@ const FeedbackDetails = ({ setId }) => {
                           </h4>
                         </div>
 
-                        <div className="reply body-3" onClick={()=>showInput(comment.id)}>
+                        <div className="reply body-3" onClick={() => handleClick(comment.id)}>
                           Reply
                         </div>
                       </div>
@@ -100,7 +93,7 @@ const FeedbackDetails = ({ setId }) => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply id={id} commentContent={comment.content} input={input} />
+                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} />}
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
@@ -119,7 +112,7 @@ const FeedbackDetails = ({ setId }) => {
                                         </h4>
                                       </div>
             
-                                      <div className="reply body-3" onClick={()=>showInput(comment.id)}>Reply</div>
+                                      <div className="reply body-3">Reply</div>
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}

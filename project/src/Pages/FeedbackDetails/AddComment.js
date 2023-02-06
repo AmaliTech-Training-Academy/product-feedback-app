@@ -11,7 +11,6 @@ const AddComment = ({ id, setRefetch }) => {
   const commentsFetching = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     .then(response => {
-      // console.log(response.data.comments ? response.data.comments : 'hello')
       const comment = [response.data.comments ? response.data.comments : []];
       setComments(...comment)
       setFetch(false)
@@ -41,7 +40,6 @@ const AddComment = ({ id, setRefetch }) => {
         comments: comments
       })
       .then(() => {
-        // setCommentInput('')
         setRefetch(true)
       })
     console.log(comments)
