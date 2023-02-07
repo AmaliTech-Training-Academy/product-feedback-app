@@ -254,6 +254,9 @@ nav{
     nav{
         display: block;
     }
+    .roadmap-main{
+        display: block;
+    }
      li{
         list-style-type: none;
         display: inline-block;
