@@ -21,14 +21,11 @@ function Plan(){
         let planned=[]
         let progress =[]
         let live =[]
-       
-        
 
         axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
         .then((res)=>{
           let productdata = res.data;
           setProductData({productdata })
-          
 
           productdata.map((productRequest)=>{
               if(productRequest.status==='planned'|| productRequest.status==='Planned'){
@@ -40,14 +37,11 @@ function Plan(){
               if(productRequest.status==='live' ||productRequest.status==='Live'){
                   live.push(productRequest);
               }
-          })
-         
-          
+          })  
         })  
         setPlannedRequestProduct(planned);
         setProgressRequestProduct(progress);
         setLiveRequestProduct(live); 
-
     }
     useEffect(() => {
       groupData()
