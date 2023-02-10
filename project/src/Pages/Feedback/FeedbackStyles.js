@@ -60,7 +60,6 @@ export const Container = styled.div`
                 flex-direction: column-reverse;
                 justify-content: center;
                 align-items: center;
-                /* background-color: red; */
             }
         }
 
@@ -87,8 +86,6 @@ export const Container = styled.div`
         }
 
         .delete {
-            /* justify-self: flex-start; */
-            /* margin-left: 0; */
             width: 93px;
 
             @media (max-width: 450px) {
@@ -102,14 +99,9 @@ export const Container = styled.div`
             } 
         }
 
-        @media (max-width: 450px) {
-            /* height: ${(props) => props.type === 'Edit' ? '893px' : '708px'}; */
-        }
     }
 
     @media (max-width: 450px) {
         width: 327px;
-        /* height: 782px; */
-        /* margin: 34px auto 192px; */
     }
 `
