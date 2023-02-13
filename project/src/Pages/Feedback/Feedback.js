@@ -12,16 +12,18 @@ import {
 
 function Feedback({ type, id }) {
   const [option, setOption] = useState('Feature')
-  const [detailOption, setDetailOption] = useState('Suggestion')
+  const [detailOption, setDetailOption] = useState('')
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
   const [error, setError] = useState({})
+  const [header, setHeader] = useState('')
 
   useEffect(() => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(res => {
         console.log(res.data)
         setTitle(type === "Edit" && res.data.title)
+        setHeader(type === "Edit" && res.data.title)
         setDetails(type === "Edit" && res.data.description)
         setOption(type === "Edit" && res.data.category.charAt().toUpperCase() + res.data.category.slice(1))
         setDetailOption(type === "Edit" && res.data.status.charAt().toUpperCase() + res.data.status.slice(1))
@@ -91,7 +93,7 @@ function Feedback({ type, id }) {
         <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><Head /></Link>
         <form className='content' onSubmit={handleSubmit}>
           <img src={type === 'Edit' ? '/assets/shared/icon-edit-feedback.svg' : '/assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
-          <span className='h1 head'>{type === 'Edit' ? 'Editing ‘Add a dark theme option’' : 'Create New Feedback' }</span>
+          <span className='h1 head'>{type === 'Edit' ? `Editing ‘${header}’` : 'Create New Feedback' }</span>
           <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
           <span className='h4 error'>{error.title}</span>
           <FeedbackCategory option={option} setOption={setOption} />

@@ -6,15 +6,12 @@ const AddComment = ({ id, setRefetch }) => {
   const [commentInput, setCommentInput]=useState('');
   const [error, setError]=useState('');
   const [comments, setComments]=useState([]);
-  const [fetch, setFetch] = useState(false)
 
   const commentsFetching = () => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     .then(response => {
       const comment = [response.data.comments ? response.data.comments : []];
       setComments(...comment)
-      setFetch(false)
-      console.log(comment)
     });
 
     axios.get(`https://product-feedback-api-hry7.onrender.com/currentUser/`)
@@ -42,8 +39,6 @@ const AddComment = ({ id, setRefetch }) => {
       .then(() => {
         setRefetch(true)
       })
-    console.log(comments)
-    console.log(fetch)
     }
     else {
       setError('Comment is empty')
@@ -54,12 +49,6 @@ const AddComment = ({ id, setRefetch }) => {
   useEffect(() => {
     commentsFetching()
   }, [])
-
-  // useEffect(() => {
-  //   if(fetch) {
-  //     commentsFetching()
-  //   }
-  // }, [fetch])
 
 return (
     <form className="add-comment sections" >

@@ -22,13 +22,6 @@ function Home({ selectedCategory, setSelectedCategory }) {
   }, [selectedCategory])
 
   useEffect(() => {
-    // let newdata;
-    // axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
-    // .then(res => {
-    //   newdata = res.data
-    //   // setFilteredData(res.data)
-    // })
-    // .then(() => console.log(newdata.filter(element => filteredData.includes(element.title))))
 
     if(selectedSortMethod === 'Most Upvotes') {
       const sortedData = [...filteredData];
@@ -42,21 +35,21 @@ function Home({ selectedCategory, setSelectedCategory }) {
       setFilteredData(sortedData)
     }
     else if(selectedSortMethod === 'Most Comments') {
-      const dataWithComments = data.filter(item => item.comments)
-      const dataWithoutComments = data.filter(item => !item.comments)
+      const dataWithComments = filteredData.filter(item => item.comments)
+      const dataWithoutComments = filteredData.filter(item => !item.comments)
       dataWithComments.sort((a, b) => a.comments.length < b.comments.length ? 1 : -1)
       const sortedData = [...dataWithComments, ...dataWithoutComments]
-      // console.log(sortedData)
       setFilteredData(sortedData)
     }
     else if(selectedSortMethod === 'Least Comments') {
-      const dataWithComments = data.filter(item => item.comments)
-      const dataWithoutComments = data.filter(item => !item.comments)
+      const dataWithComments = filteredData.filter(item => item.comments)
+      const dataWithoutComments = filteredData.filter(item => !item.comments)
       dataWithComments.sort((a, b) => a.comments.length > b.comments.length ? 1 : -1)
       const sortedData = [...dataWithoutComments, ...dataWithComments]
       setFilteredData(sortedData)
     }
   }, [selectedSortMethod])
+  
   const fetchingData = () => {
     axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
@@ -69,11 +62,9 @@ function Home({ selectedCategory, setSelectedCategory }) {
   useEffect(() => {
     fetchingData()
   }, [])
+
   useEffect(() => {
-    if(fetch) { // // if(selectedCategory === 'all') { // //   setFilteredData(data) // // } else {
-      // //   setFilteredData(data.filter(item => item.category === selectedCategory))
-      // }
-      console.log(selectedSortMethod)
+    if(fetch) {
       fetchingData()
     }
   }, [fetch])

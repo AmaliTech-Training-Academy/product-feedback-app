@@ -26,16 +26,22 @@ const FeedbackDetails = ({ setId }) => {
     });
   }
 
+  const handleClick = (id) => {
+    setCommentClicked({
+      // ...commentClicked, 
+      [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
+    })
+  }
+
   useEffect(() => {
     fetching()
   }, []);
 
-  const handleClick = (id) => {
-    setCommentClicked({
-      ...commentClicked, 
-      [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
-    })
-  }
+  useEffect(() => {
+    if(refetch) {
+      fetching()
+    }  
+  }, [refetch])
 
   const setid = () => {
     setId(id)
@@ -70,8 +76,8 @@ const FeedbackDetails = ({ setId }) => {
               comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
-                  <div key={`comment ${comment.id}`}>
-                    <div className={feed.comments.length === comment.id ? "last" : "comment-section"}>
+                  <div key={`comment ${comment.id}`} className={`comment ${feed.comments.length - 1 === feed.comments.indexOf(comment) ? 'last' : undefined}`}>
+                    <div className="comment-section">
                       <div className="comment-profile">
                         <img
                           src={comment.user.image}
@@ -93,7 +99,7 @@ const FeedbackDetails = ({ setId }) => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} />}
+                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
@@ -118,7 +124,7 @@ const FeedbackDetails = ({ setId }) => {
                                       {reply.content}
                                     </div>                                  
                                   </div>
-                                  
+                                  {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
                                 </>
                               )
                             })
@@ -126,7 +132,7 @@ const FeedbackDetails = ({ setId }) => {
                     </div>
                   
                   
-                    {comment.id  !== (feed.comments).length - 1 || <hr />}
+                    {/* {comment.id  !== (feed.comments).length - 1 || <hr />} */}
                   </div>
                 );
               })}
