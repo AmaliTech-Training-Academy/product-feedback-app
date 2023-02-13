@@ -70,10 +70,7 @@ function Home({ selectedCategory, setSelectedCategory }) {
     fetchingData()
   }, [])
   useEffect(() => {
-    if(fetch) {
-      // // if(selectedCategory === 'all') {
-      // //   setFilteredData(data)
-      // // } else {
+    if(fetch) { // // if(selectedCategory === 'all') { // //   setFilteredData(data) // // } else {
       // //   setFilteredData(data.filter(item => item.category === selectedCategory))
       // }
       console.log(selectedSortMethod)
