@@ -62,6 +62,29 @@ justify-content: center;
   margin-top: 8px;
 }
 
+.clicked {
+  width: 40px;
+  height: 53px;
+  border-radius: 10px;
+  background: #4661E6;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.clicked span {
+  color: #FFFFFF;
+}
+
+.clicked svg path {
+  stroke: #FFFFFF;
+}
+
+.clicked:hover {
+  background: #4661E6;
+}
+
 .text {
   display: flex;
   flex-direction: column;

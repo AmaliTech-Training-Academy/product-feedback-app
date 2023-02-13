@@ -19,7 +19,7 @@ const FeedbackDetails = ({ setId }) => {
   const [commentClicked, setCommentClicked] = useState({})
  
   const fetching = () => {
-    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
+    axios.get(`http://localhost:8000/productRequests/${id}`)
     .then(response => {
       setFeed(response.data);
       setRefetch(false)
@@ -68,7 +68,9 @@ const FeedbackDetails = ({ setId }) => {
             upvote={feed.upvotes}
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
-          className="suggestion"/>
+            className="suggestion"
+            id={id}
+          />
            
           {feed.comments ? (
             <section className="comment sections">

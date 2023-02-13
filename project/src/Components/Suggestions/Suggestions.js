@@ -1,33 +1,65 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { SuggestionContainer } from './SuggestionStyles'
 import { Enhancement } from '../Sidebar/SidebarStyles'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import { arrowUp } from '../svgs'
 
 
 function Suggestions({id, title, category, status, upvote, description, comments, setFetch}) {
-  const [stateUpvote, setStateUpvote] = useState(upvote)
+  // const [stateUpvote, setStateUpvote] = useState(upvote)
+  const [isUpVoted, setIsUpVoted] = useState(false)
+  // const [clicked, setClicked] = useState('')
+  // useEffect(() => {
+  //   window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+  // }, [clicked])
+  // useEffect(() => {
+  //   window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+  // }, [isUpVoted])
+
   const updateUpVote = (prev) => {
-    const nextUpvote = prev += 1
+    // window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+    // const nextUpvote = prev += 1
     // setStateUpvote(upvote)
-    console.log(upvote)
-    axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, 
-    {
-      upvotes: nextUpvote
-    })
-    .then(() => {
-      setFetch(true)
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+    // console.log(upvote)
+    if(localStorage.getItem(`${id} upvoted`) === 'false') {
+      axios.patch(`http://localhost:8000/productRequests/${id}`, 
+      {
+        upvotes: prev += 1
+      })
+      .then(() => {
+        setFetch(true)
+        setIsUpVoted(true)
+        // window.localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
+      })
+      .then(() => {
+        window.localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+    }
+    else {
+      axios.patch(`http://localhost:8000/productRequests/${id}`, 
+      {
+        upvotes: prev -1
+      })
+      .then(() => {
+        setFetch(true)
+        setIsUpVoted(false)
+      })
+      .then(() => {
+        window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+      })
+    }
   }
+
   return (
   <SuggestionContainer >
     <div className="suggestion-board ">
       <div className="right-components">
-        <div className="top-arrow" onClick={() => updateUpVote(stateUpvote)}>
-          <img src="/assets/shared/icon-arrow-up.svg" alt=''/>
+        <div className={`top-arrow ${localStorage.getItem(`${id} upvoted`) === 'true' ? 'clicked' : ''}`} onClick={() => updateUpVote(upvote)} isUpVoted={isUpVoted}>
+          {arrowUp}
           <span>{upvote}</span>
         </div>
         <Link to={`/feedback-detail/${id}`} className="text">

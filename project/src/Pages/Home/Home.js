@@ -51,7 +51,7 @@ function Home({ selectedCategory, setSelectedCategory }) {
   }, [selectedSortMethod])
   
   const fetchingData = () => {
-    axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
+    axios.get('http://localhost:8000/productRequests')
     .then(res => {
       setData(res.data)
       setFilteredData(res.data)
@@ -78,7 +78,17 @@ function Home({ selectedCategory, setSelectedCategory }) {
           {filteredData.length > 0 ? filteredData.map((item) => {
             return (
               <div >
-                <Suggestions item={item} id={item.id} title={item.title} category={item.category} status={item.status} upvote={item.upvotes} description={item.description} comments={item.comments} setFetch={setFetch}/>
+                <Suggestions 
+                  item={item} 
+                  id={item.id} 
+                  title={item.title} 
+                  category={item.category} 
+                  status={item.status} 
+                  upvote={item.upvotes} 
+                  description={item.description} 
+                  comments={item.comments} 
+                  setFetch={setFetch}
+                />
               </div>
             )
           }): <EmptyComponent/>}
