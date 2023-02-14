@@ -48,8 +48,13 @@ const Plan = (setRoad) => {
 
     useEffect(() => {
       groupData()
-    }, [])
 
+
+     
+
+  },[])
+   
+ 
     return(
       <>
         <Header />
