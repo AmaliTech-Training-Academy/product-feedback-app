@@ -36,6 +36,7 @@ function Feedback(props) {
     return errors
   }
 
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     setError(validate(title, details))

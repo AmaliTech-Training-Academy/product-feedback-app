@@ -26,7 +26,7 @@ function Plan(){
         .then((res)=>{
           let productdata = res.data;
           setProductData({productdata })
-          console.log(productdata)
+          console.log(productdata) 
 
           productdata.map((productRequest)=>{
             console.log(productRequest)
@@ -51,11 +51,7 @@ function Plan(){
 
     }
     useEffect(()=>{
-      groupData()
-
-
-     
-
+      groupData()    
   },[])
    
  
