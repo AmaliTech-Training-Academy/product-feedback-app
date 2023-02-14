@@ -9,7 +9,7 @@
       "id": 1,
       "title": "Add tags for solutions",
       "category": "enhancement",
-      "upvotes": 112,
+      "upvotes": 185,
       "status": "suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
       "comments": [
@@ -30,6 +30,30 @@
             "name": "Thomas Hood",
             "username": "brawnybrave"
           }
+        },
+        {
+          "content": "hello",
+          "user": {
+            "name": "Zena Kelley",
+            "image": "/assets/user-images/image-zena.jpg",
+            "username": "velvetround"
+          }
+        },
+        {
+          "content": "hello",
+          "user": {
+            "name": "Zena Kelley",
+            "image": "/assets/user-images/image-zena.jpg",
+            "username": "velvetround"
+          }
+        },
+        {
+          "content": "heyy",
+          "user": {
+            "name": "Zena Kelley",
+            "image": "/assets/user-images/image-zena.jpg",
+            "username": "velvetround"
+          }
         }
       ]
     },
@@ -37,7 +61,7 @@
       "id": 2,
       "title": "Add a dark theme option",
       "category": "feature",
-      "upvotes": 100,
+      "upvotes": 114,
       "status": "suggestion",
       "description": "It would help people with light sensitivities and who prefer dark mode.",
       "comments": [
@@ -85,7 +109,7 @@
       "id": 3,
       "title": "Q&A within the challenge hubs",
       "category": "feature",
-      "upvotes": 65,
+      "upvotes": 72,
       "status": "suggestion",
       "description": "Challenge-specific Q&A would make for easy reference.",
       "comments": [
@@ -104,7 +128,7 @@
       "id": 4,
       "title": "Add image/video upload to feedback",
       "category": "enhancement",
-      "upvotes": 51,
+      "upvotes": 53,
       "status": "suggestion",
       "description": "Images and screencasts can enhance comments on solutions.",
       "comments": [
@@ -179,7 +203,7 @@
       "id": 7,
       "title": "More comprehensive reports",
       "category": "feature",
-      "upvotes": 123,
+      "upvotes": 124,
       "status": "planned",
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "comments": [
@@ -301,7 +325,7 @@
     {
       "title": "hey",
       "category": "feature",
-      "upvotes": "0",
+      "upvotes": 1,
       "status": "Suggestion",
       "description": "hbdjdj",
       "comments": [],
@@ -310,7 +334,7 @@
     {
       "title": "hey",
       "category": "feature",
-      "upvotes": "0",
+      "upvotes": 2,
       "status": "Suggestion",
       "description": "hbdjdj",
       "comments": [],
@@ -319,7 +343,7 @@
     {
       "title": "xoxo",
       "category": "feature",
-      "upvotes": "0",
+      "upvotes": 1,
       "status": "Live",
       "description": "jbjbj",
       "comments": [],
@@ -328,7 +352,7 @@
     {
       "title": "xoxo",
       "category": "feature",
-      "upvotes": "0",
+      "upvotes": 1,
       "status": "Live",
       "description": "jbjbj",
       "comments": [],

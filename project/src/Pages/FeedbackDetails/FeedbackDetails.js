@@ -8,45 +8,44 @@ import Head from "../../Components/Feedback/Head";
 import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
+import NoFeed from "./NoFeed";
 
 
-const FeedbackDetails = () => {
+
+const FeedbackDetails = ({ setId }) => {
   const [feed, setFeed] = useState(null);
+  const [refetch, setRefetch] = useState(false);
   const {id} = useParams()
+  const [commentClicked, setCommentClicked] = useState({})
+ 
+  const fetching = () => {
+    axios.get(`http://localhost:8000/productRequests/${id}`)
+    .then(response => {
+      setFeed(response.data);
+      setRefetch(false)
+    });
+  }
 
-  // const getData = async () => {
-  //   const results = await axios.get(`http://localhost:8000/productRequests/${id}`);
-  //   setFeed(results);
-  //   console.log(results);
-  // };
+  const handleClick = (id) => {
+    setCommentClicked({
+      // ...commentClicked, 
+      [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
+    })
+  }
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
-      .then(response => {
-        setFeed(response.data);
-      });
+    fetching()
   }, []);
 
-  const [input, setInput] = useState(false);
+  useEffect(() => {
+    if(refetch) {
+      fetching()
+    }  
+  }, [refetch])
 
-  const showInput = () => {
-    if (input === true) {
-      setInput(false);
-    } else {
-      setInput(true);
-    }
-  };
-
-  // const [fetchReplies, setFetchReplies] = useState();
-  // useEffect(()=>{
-  //   axios.get("http://localhost:8000/productRequests")
-  //   .then((res) =>{
-  //     setFetchReplies(res.data.comments)
-  //   })
-  //   .catch((err)=>{
-  //     console.log(err)
-  //   })
-  // })
+  const setid = () => {
+    setId(id)
+  }
 
   return (
     <main>
@@ -57,7 +56,7 @@ const FeedbackDetails = () => {
               <Head />
             </Link>
             <Link to="/edit-feedback">
-              <button className="btn btn-primary button-text edit-button">
+              <button className="btn btn-primary button-text edit-button" onClick={setid}>
                 Edit Feedback
               </button>
             </Link>
@@ -69,14 +68,17 @@ const FeedbackDetails = () => {
             upvote={feed.upvotes}
             description={feed.description}
             comments={feed.comments ? feed.comments : undefined}
+            className="suggestion"
+            id={id}
           />
-
+           
           {feed.comments ? (
-            <section className="comments sections">
-              <h3>{feed.comments.length} comments</h3>
+            <section className="comment sections">
+              <h3>{`${feed.comments.replies ? feed.comments.replies.length + feed.comments.length : feed.comments.length}
+              comment${feed.comments.length>1 ? "s" : ""}`}</h3>
               {feed.comments.map((comment) => {
                 return (
-                  <div key={`comment ${comment.id}`}>
+                  <div key={`comment ${comment.id}`} className={`comment ${feed.comments.length - 1 === feed.comments.indexOf(comment) ? 'last' : undefined}`}>
                     <div className="comment-section">
                       <div className="comment-profile">
                         <img
@@ -91,7 +93,7 @@ const FeedbackDetails = () => {
                           </h4>
                         </div>
 
-                        <div className="reply body-3" onClick={showInput}>
+                        <div className="reply body-3" onClick={() => handleClick(comment.id)}>
                           Reply
                         </div>
                       </div>
@@ -99,12 +101,12 @@ const FeedbackDetails = () => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      <Reply input={input} />
+                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
-                                <>
-                                  <div className="replies">
+                                <>              
+                                   <div className="replies" >
                                     <div className="comment-profile">
                                       <img
                                       src={reply.user.image}
@@ -122,23 +124,27 @@ const FeedbackDetails = () => {
                                     </div>
                                     <div className="body-2 users-comment">
                                       {reply.content}
-                                    </div>
+                                    </div>                                  
                                   </div>
+                                  {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
                                 </>
                               )
                             })
                       }
                     </div>
+                  
+                  
+                    {/* {comment.id  !== (feed.comments).length - 1 || <hr />} */}
                   </div>
                 );
               })}
+           
             </section>
           ) : <EmptyComment />}
-
-          <AddComment />
+          <AddComment id={id} setRefetch={setRefetch}/>
         </>
       ) : (
-        <p>no feed yet</p>
+        <NoFeed/>
       )}
     </main>
   );

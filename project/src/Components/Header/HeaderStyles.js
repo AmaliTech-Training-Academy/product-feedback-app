@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
-export const Head = styled.div`
+export const Nav = styled.div`
     position: relative;
-    width: 825px;
-    height: 72px;
+    width: 100%;
+    height: ${(props) => props.type === 'home' ? '72px' : '113px'};
     background: #373F68;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 16px;
     color: #FFFFFF;
+    margin: ${(props) => props.type === 'home' ? undefined : '78px 0 48px'};
 
-    img {
+    a {
+        color: #FFFFFF;
+    }
+
+    .suggestion-image {
         margin-left: 24px;
 
         @media (max-width: 450px) {
@@ -27,24 +32,30 @@ export const Head = styled.div`
 
     .sort {
         font-weight: 500;
-        /* margin: 0 273px 0 22px; */
         cursor: pointer;
 
         svg {
             margin-left: 9px;
         }
 
-        svg path {
-            stroke: #FFF;
-        }
-
-        /* @media (max-width: 950px) {
-            margin-right: 141px;
-        } */
         @media (max-width: 450px) {
             margin-left: 24px;
         }
     }
+
+    .inactive {
+        color: #F2F4FE;
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        @media (max-width: 450px) {
+            margin-left: 24px;
+        }
+    }
+
+    svg path {
+            stroke: #FFF;
+        }
 
     button {
         position: absolute;
@@ -105,18 +116,30 @@ export const Head = styled.div`
         }
     }
 
+    .roadmap-link {
+        margin-left: 32px;
+    }
+
+    .roadmap-goback {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
     @media (max-width: 950px) {
         width: 689px;
+        margin: ${(props) => props.type === 'home' ? undefined : '56px auto 32px'}
     }
 
     @media (max-width: 450px) {
+        width: 100vw;
+        border-radius: 0;
+        margin: ${(props) => props.type === 'home' ? '71px 0 0' : '0'};
+
         .add-feedback {
         width: 134px;
         margin-right: 8px;
     }
-        width: 100vw;
-        border-radius: 0;
-        margin-top: 71px;
     }
 
 `
