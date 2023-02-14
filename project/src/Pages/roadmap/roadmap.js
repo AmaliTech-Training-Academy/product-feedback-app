@@ -27,6 +27,9 @@ function Plan(){
           let productdata = res.data;
           setProductData({productdata })
 
+          console.log(productdata) 
+
+
           productdata.map((productRequest)=>{
               if(productRequest.status==='planned'|| productRequest.status==='Planned'){
                   planned.push(productRequest);
@@ -43,12 +46,12 @@ function Plan(){
         setProgressRequestProduct(progress);
         setLiveRequestProduct(live); 
     }
+
     useEffect(() => {
       groupData()
     }, [])
 
     return(
-
       <>
         <Header />
         <nav>
@@ -129,7 +132,6 @@ function Plan(){
 
       </>
     );
-    
 }
 
 export default Plan
