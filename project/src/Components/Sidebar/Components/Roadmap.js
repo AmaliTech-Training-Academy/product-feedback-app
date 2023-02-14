@@ -25,7 +25,7 @@ function Roadmap({ filteredData }) {
       <div className='roadmap-container'>
         <div className='roadmap-view'>
           <span className='h3'>Roadmap</span>
-          <Link to='/roadmap'>
+          <Link to={`${filteredData.length > 0 ? '/roadmap' : '/'}`}>
             <span className={`${filteredData < 1 ? 'in_active' : 'body-3'}`}>View</span>
           </Link>
         </div>

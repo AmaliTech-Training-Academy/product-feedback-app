@@ -43,7 +43,7 @@ justify-content: center;
   width: 40px;
   height: 53px;
   border-radius: 10px;
-  background: #F7F8FD;
+  background: #F2F4FF;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -52,7 +52,7 @@ justify-content: center;
 
 .top-arrow:hover {
   cursor: pointer;
-  background: #F2F4FF;
+  background: #CFD7FF;
 }
 
 .top-arrow span {
