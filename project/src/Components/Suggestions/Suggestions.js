@@ -6,7 +6,7 @@ import axios from 'axios'
 import { arrowUp } from '../svgs'
 
 
-function Suggestions({id, title, category, status, upvote, description, comments, setFetch, selectedSortMethod}) {
+function Suggestions({id, title, category, status, upvote, description, comments, setFetch, selectedSortMethod, selectedCategory}) {
   const [isUpvoted, setIsUpvoted] = useState(false)
 
   useEffect(() => {
@@ -26,11 +26,11 @@ function Suggestions({id, title, category, status, upvote, description, comments
 
   const updateUpVote = () => {
     if(localStorage.getItem(`${id} upvoted`) === 'false') {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
+      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
         upvotes: upvote + 1
       })
       .then(() => {
-        if(!selectedSortMethod) {
+        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
           setFetch(true)
         }
       })
@@ -39,11 +39,11 @@ function Suggestions({id, title, category, status, upvote, description, comments
       setIsUpvoted(true)
     }
     else {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
+      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
         upvotes: upvote - 1
       })
       .then(() => {
-        if(!selectedSortMethod) {
+        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
           setFetch(true)
         }
       })

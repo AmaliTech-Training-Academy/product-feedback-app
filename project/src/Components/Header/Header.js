@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 
 function Header({type, data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState('Most Upvotes')
+  const [option, setOption] = useState('Select sort method')
 
   const handleOption = (name) => {
     setOption(name)
