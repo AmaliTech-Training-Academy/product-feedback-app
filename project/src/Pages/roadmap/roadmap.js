@@ -5,11 +5,10 @@ import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
 import Header from "../../Components/Header/Header"
-import EmptyComment from "../../Components/EmptyComment/EmptyComment"
 import axios from 'axios'
 
 
-function Plan(){
+const Plan = (setRoad) => {
     const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);

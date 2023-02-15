@@ -19,7 +19,7 @@ const FeedbackDetails = ({ setId }) => {
   const [commentClicked, setCommentClicked] = useState({})
  
   const fetching = () => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
+    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
     .then(response => {
       setFeed(response.data);
       setRefetch(false)

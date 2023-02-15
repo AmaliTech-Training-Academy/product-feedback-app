@@ -4,7 +4,7 @@ import ComponentBox from "./Planned";
 
 
 
-const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
+const ProductRequest = ({title, productRequests, subtitle,border1,round1,id})=>{
    
     return(
         <>
@@ -18,6 +18,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
                
                     return(
                         <ComponentBox key={key}
+                        id={data.id}
                         subtitle={data.status}
                         border={border1}
                         round={round1}
@@ -25,7 +26,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1})=>{
                         text={data.description}
                         tag={data.category}
                         up={data.upvotes}
-                        comments={data.comments?.length}
+                        comments={data.comments?data.comments.length : '0'}
                     />
                     )
 

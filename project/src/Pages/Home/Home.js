@@ -51,7 +51,7 @@ function Home({ selectedCategory, setSelectedCategory }) {
   }, [selectedSortMethod])
   
   const fetchingData = () => {
-    axios.get('http://localhost:8000/productRequests')
+    axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
     .then(res => {
       setData(res.data)
       setFilteredData(res.data)

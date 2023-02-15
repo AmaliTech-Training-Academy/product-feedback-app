@@ -1,8 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../../Pages/roadmap/roadmap.css'
 import '../../index.css'
+import { Link } from 'react-router-dom'
 
 const ComponentBox = (props)=> {
+
+  // const [id,setId] = useState('')
+
+  // const roadSet=()=>{
+  //   setId(id)
+  //   console.log(id)
+  
+  // }
     return(
         <> 
         <div className=''>
@@ -12,7 +21,8 @@ const ComponentBox = (props)=> {
                 <p className='round-plan' id={props.round}></p>
                  <p className='plan-title-1 body-1'>{props.subtitle}</p>
             </div>
-            <h3 className='plan-text-bold'>{props.title}</h3>
+            <Link to={`/feedback-detail/${props.id}`}>
+            <h3 className='plan-text-bold'  >{props.title}</h3></Link>
             <p className='plan-text-normal '>{props.text}</p>
 
               <div className='bottom-1'>
