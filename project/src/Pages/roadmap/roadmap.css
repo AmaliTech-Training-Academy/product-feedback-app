@@ -107,13 +107,13 @@ nav{
     margin-right: 60.63%;
 }
 
-.up:hover{
+.up:hover,.tag:hover{
     background-color:#cfd7ff ;
 }
-.up:active{
+.up:active,.tag:active{
     background-color:#4661e6 ;
 }
-.up:active p{
+.up:active p,.tag:active {
     color: #ffffff;
 }
 .up:active svg{

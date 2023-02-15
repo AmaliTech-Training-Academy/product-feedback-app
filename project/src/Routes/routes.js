@@ -10,7 +10,6 @@ import MobileNav from '../Components/Header/Mobile nav/MobileNav'
 
 function ProductApp(){
     const [id, setId] = useState('')
-    const [roadId,setRoadId] = useState('')
     const [selectedCategory, setSelectedCategory] = useState('')
     return(
         <>
@@ -25,7 +24,7 @@ function ProductApp(){
             <Route path="/feedback-detail/:id" element={<FeedbackDetails setId={setId}/>}/>
             <Route path="/new-feedback" element={<Feedback />}/>
             <Route path="/edit-feedback" element={<EditFeedback id={id}/>}/>
-            <Route path="/roadmap" element={<Plan setRoad={setRoadId} />}/>
+            <Route path="/roadmap" element={<Plan />}/>
         </Routes>
         </>
     );
