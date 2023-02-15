@@ -2,26 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 540px;
-    /* height: ${(props) => props.type === "Edit" ? '910px' : '745px'}; */
     margin: 92px auto 192px;
-    /* background-color: red; */
     display: flex;
     flex-direction: column;
     gap: 68px;
-    /* justify-content: space-between; */
-    /* margin-top: 96px; */
 
     .content {
         position: relative;
         width: 100%;
-        /* height: ${(props) => props.type === 'Edit' ? '822px' : '657px'}; */
         border-radius: 10px;
         background: #FFFFFF;
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 24px;
-        /* justify-content: center; */
 
         .plus {
             position: absolute;
@@ -66,13 +60,24 @@ export const Container = styled.div`
                 flex-direction: column-reverse;
                 justify-content: center;
                 align-items: center;
-                /* background-color: red; */
             }
+        }
+
+        input[type='button'] {
+            height: 44px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 14px;
+            line-height: 20px;
+            color: #F2F4FE;
+            cursor: pointer;
         }
 
         .cancel {
             width: 93px;
             margin-left: 110px;
+
 
             @media (max-width: 450px) {
                 width: 279px;
@@ -81,8 +86,6 @@ export const Container = styled.div`
         }
 
         .delete {
-            /* justify-self: flex-start; */
-            /* margin-left: 0; */
             width: 93px;
 
             @media (max-width: 450px) {
@@ -96,14 +99,9 @@ export const Container = styled.div`
             } 
         }
 
-        @media (max-width: 450px) {
-            /* height: ${(props) => props.type === 'Edit' ? '893px' : '708px'}; */
-        }
     }
 
     @media (max-width: 450px) {
         width: 327px;
-        /* height: 782px; */
-        /* margin: 34px auto 192px; */
     }
 `

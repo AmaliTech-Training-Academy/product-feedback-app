@@ -6,7 +6,7 @@ export const Container = styled.div`
     right: 0;
     width: 100%;
     height: 72px;
-    background-image: url('./assets/suggestions/mobile/background-header.png');
+    background-image: url('/assets/suggestions/mobile/background-header.png');
     /* background-color: black; */
     /* opacity: 0.6; */
     background-repeat: no-repeat;

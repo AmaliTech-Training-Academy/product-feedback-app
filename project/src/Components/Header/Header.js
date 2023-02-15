@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {
-    Head
+  Nav
 } from './HeaderStyles'
+import {arrowLeft} from '../svgs'
 
 import {
     arrowDown, arrowUp,
@@ -9,19 +10,29 @@ import {
 } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
-function Header() {
+function Header({type, data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
-  const [option, setOption] = useState('Most Upvotes')
+  const [option, setOption] = useState('Select sort method')
 
   const handleOption = (name) => {
     setOption(name)
+    setSelectedSortMethod(name)
     setIsOpen(!isOpen)
+    setSelectedSortMethod(name)
+  }
+
+  const handleClick = () => {
+    if(data.length > 0) {
+      setIsOpen(!isOpen)
+    }
   }
   return (
-    <Head>
-        <img src='./assets/suggestions/icon-suggestions.svg' alt='' />
-        <span className='h3 suggestions'>6 Suggestions</span>
-        <span className='h4 sort' onClick={() => setIsOpen(!isOpen)}>
+    <Nav type={type}>
+        {type == 'home' ?
+        <>
+        <img src='./assets/suggestions/icon-suggestions.svg' alt='' className='suggestion-image' />
+        <span className='h3 suggestions'>{data.length} Suggestions</span>
+        <span className={`h4 ${data < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
             Sort by : <b>{option}</b>
             {isOpen ? arrowUp : arrowDown}
         </span>
@@ -42,9 +53,19 @@ function Header() {
             <span className='body-1 option'>Least Comments</span>
             {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
-        </div>}
+          </div>}
+        </> 
+        : 
+        <div className='roadmap-link'>
+          <Link to='/' className='roadmap-goback'>
+            {arrowLeft}
+            <span className='h4'>Go back</span>
+          </Link>
+          <span className='h1'>Roadmap</span>
+        </div>
+        }
         <Link to='/new-feedback'><button className='button-1-default add-feedback'>+ Add Feedback</button></Link>
-    </Head>
+    </Nav>
   )
 }
 
