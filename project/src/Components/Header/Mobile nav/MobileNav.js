@@ -5,7 +5,7 @@ import {
     Container
 } from './MobileNavStyles'
 
-function MobileNav({ setSelectedCategory }) {
+function MobileNav({ setSelectedCategory, filteredData }) {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Container>
@@ -17,7 +17,7 @@ function MobileNav({ setSelectedCategory }) {
         {isOpen && <div className='pop-up'>
          <div className='menu'>
             <Tags setSelectedCategory={setSelectedCategory} isOpen={isOpen} setIsOpen={setIsOpen}/>
-            <Roadmap />
+            <Roadmap filteredData={filteredData} />
           </div>
         </div>}
     </Container>

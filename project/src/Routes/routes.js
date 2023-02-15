@@ -10,16 +10,10 @@ import MobileNav from '../Components/Header/Mobile nav/MobileNav'
 
 function ProductApp(){
     const [id, setId] = useState('')
-    const [selectedCategory, setSelectedCategory] = useState('')
     return(
         <>
         <Routes>
-            <Route path="/" element={
-                <>
-                    <MobileNav setSelectedCategory={setSelectedCategory}/>
-                    <Home selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
-                </>
-            }/>
+            <Route path="/" element={<Home />}/>
             <Route path="/suggestion" element={<Home/>}/>
             <Route path="/feedback-detail/:id" element={<FeedbackDetails setId={setId}/>}/>
             <Route path="/new-feedback" element={<Feedback />}/>

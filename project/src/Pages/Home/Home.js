@@ -4,14 +4,16 @@ import Header from '../../Components/Header/Header'
 import Sidebar from '../../Components/Sidebar/Sidebar'
 import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
+import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 import axios from 'axios'
 
 
-function Home({ selectedCategory, setSelectedCategory }) {
+function Home() {
   const [data, setData] = useState([])
   const [filteredData, setFilteredData] = useState([])
   const [selectedSortMethod, setSelectedSortMethod] = useState('')
   const [fetch, setFetch] = useState(false)
+  const [selectedCategory, setSelectedCategory] = useState('')
 
   useEffect(() => {
     if(selectedCategory === 'all') {
@@ -70,7 +72,7 @@ function Home({ selectedCategory, setSelectedCategory }) {
   }, [fetch])
   return (
     <>
-      {/* <MobileNav setSelectedCategory={setSelectedCategory}/> */}
+      <MobileNav setSelectedCategory={setSelectedCategory} filteredData={filteredData}/>
       <div className='main-page'>
         <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>

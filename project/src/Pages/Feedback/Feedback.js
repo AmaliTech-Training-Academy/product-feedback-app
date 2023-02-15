@@ -21,7 +21,6 @@ function Feedback({ type, id }) {
   useEffect(() => {
     axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
       .then(res => {
-        console.log(res.data)
         setTitle(type === "Edit" && res.data.title)
         setHeader(type === "Edit" && res.data.title)
         setDetails(type === "Edit" && res.data.description)
@@ -59,14 +58,16 @@ function Feedback({ type, id }) {
     e.preventDefault()
     setError(validate(title, details))
     if(title && details) {
-      setTitle('')
-      setDetails('')
       if (type === 'Edit') { 
         axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
           title: title,
           category: option.toLowerCase(),
           status: detailOption.toLowerCase(),
           description: details
+        })
+        .then(() => {
+          setTitle('')
+          setDetails('')
         })
         .catch((e) => {
           console.log(e)
@@ -79,6 +80,10 @@ function Feedback({ type, id }) {
           upvotes: 0,
           status: detailOption.toLowerCase(),
           description: details,
+        })
+        .then(() => {
+          setTitle('')
+          setDetails('')
         })
         .catch((e) => {
           console.log(e)

@@ -13,46 +13,31 @@ const Plan = (setRoad) => {
     const [ProgressRequestProducts, setProgressRequestProduct] = useState([]);
     const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
     const [activeTab, setActiveTab] = useState("tab2");
-    const [productData, setProductData] = useState([])
+    const [fetch, setFetch] = useState(false)
    
 
     const groupData=()=>{
-        let planned=[]
-        let progress =[]
-        let live =[]
-
         axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
         .then((res)=>{
           let productdata = res.data;
-          setProductData({productdata })
-
-          console.log(productdata) 
-
-
-          productdata.map((productRequest)=>{
-              if(productRequest.status==='planned'|| productRequest.status==='Planned'){
-                  planned.push(productRequest);
-              }
-              if(productRequest.status==='in-progress'||productRequest.status==='In-Progress' ){
-                  progress.push(productRequest);   
-              }
-              if(productRequest.status==='live' ||productRequest.status==='Live'){
-                  live.push(productRequest);
-              }
-          })  
-        })  
-        setPlannedRequestProduct(planned);
-        setProgressRequestProduct(progress);
-        setLiveRequestProduct(live); 
+          setPlannedRequestProduct(productdata.filter((ele) => ele.status === 'planned' || ele.status === 'Planned'));
+          setProgressRequestProduct(productdata.filter((ele) => ele.status === 'in-progress' || ele.status === 'In-Progress'));
+          setLiveRequestProduct(productdata.filter((ele) => ele.status === 'live' || ele.status === 'Live')); 
+        })
+        .then(() => {
+          setFetch(false)
+        })
     }
 
     useEffect(() => {
       groupData()
-
-
-     
-
   },[])
+
+    useEffect(() => {
+      if(fetch) {
+        groupData()
+      }
+  },[fetch])
    
  
     return(
@@ -74,6 +59,7 @@ const Plan = (setRoad) => {
                 productRequests={PlannedRequestProducts}
                 border1="plan"
                 round1="plan-round"
+                setFetch={setFetch}
               />
             </TabContent>
 
@@ -86,6 +72,7 @@ const Plan = (setRoad) => {
                 productRequests={ProgressRequestProducts}
                 border1="progress"
                 round1="progress-round"
+                setFetch={setFetch}
               />
             </TabContent>
 
@@ -98,6 +85,7 @@ const Plan = (setRoad) => {
                 productRequests={LiveRequestProducts}
                 border1="live"
                 round1="live-round"
+                setFetch={setFetch}
                 />
             </TabContent>      
           </div>
@@ -112,6 +100,7 @@ const Plan = (setRoad) => {
                 productRequests={PlannedRequestProducts}
                 border1="plan"
                 round1="plan-round"
+                setFetch={setFetch}
               />
               <ProductRequest
                 id="tab2" 
@@ -121,6 +110,7 @@ const Plan = (setRoad) => {
                 productRequests={ProgressRequestProducts}
                 border1="progress"
                 round1="progress-round"
+                setFetch={setFetch}
               />
               <ProductRequest
                 id="tab3" 
@@ -130,6 +120,7 @@ const Plan = (setRoad) => {
                 productRequests={LiveRequestProducts}
                 border1="live"
                 round1="live-round"
+                setFetch={setFetch}
               />      
             </div>
         </div>

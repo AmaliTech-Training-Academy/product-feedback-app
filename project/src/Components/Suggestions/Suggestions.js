@@ -10,8 +10,6 @@ function Suggestions({id, title, category, status, upvote, description, comments
   const [isUpvoted, setIsUpvoted] = useState(false)
 
   useEffect(() => {
-    window.localStorage.setItem(id, JSON.stringify(upvote))
-    // setStateUpvote(upvote)
     if(localStorage.getItem(`${id} upvoted`)) {
       localStorage.setItem(`${id} upvoted`, localStorage.getItem(`${id} upvoted`))
     }
@@ -34,7 +32,6 @@ function Suggestions({id, title, category, status, upvote, description, comments
           setFetch(true)
         }
       })
-      // localStorage.setItem(id, JSON.stringify(JSON.parse(localStorage.getItem(id)) + 1))
       localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
       setIsUpvoted(true)
     }
@@ -47,7 +44,6 @@ function Suggestions({id, title, category, status, upvote, description, comments
           setFetch(true)
         }
       })
-      // localStorage.setItem(id, JSON.stringify(JSON.parse(localStorage.getItem(id)) - 1))
       localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
       setIsUpvoted(false)
     }

@@ -1,6 +1,5 @@
 .roadmap-main{
     width: 100%;
-    height: 100vh;
     display: flex;
     gap: 30px;
 }
@@ -105,20 +104,29 @@ nav{
     width: 24.04%;
     height: 40px;
     margin-right: 60.63%;
+    cursor: pointer;
 }
 
 .up:hover,.tag:hover{
     background-color:#cfd7ff ;
 }
-.up:active,.tag:active{
-    background-color:#4661e6 ;
+
+.upvoted {
+    background-color: #4661e6;
 }
-.up:active p,.tag:active {
+
+.upvoted:hover {
+    background-color: #4661e6;
+}
+
+.upvoted p{
     color: #ffffff;
 }
-.up:active svg{
-   stroke: #ffffff;
+
+.upvoted svg path {
+    stroke: #ffffff;
 }
+
 .inner-box-up{
     height: 19px;
     margin: 11px 18.12% 10px 23.19%;

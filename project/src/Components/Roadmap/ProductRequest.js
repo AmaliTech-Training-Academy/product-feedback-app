@@ -4,7 +4,7 @@ import ComponentBox from "./Planned";
 
 
 
-const ProductRequest = ({title, productRequests, subtitle,border1,round1,id})=>{
+const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFetch})=>{
    
     return(
         <>
@@ -27,6 +27,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1,id})=>{
                         tag={data.category}
                         up={data.upvotes}
                         comments={data.comments?data.comments.length : '0'}
+                        setFetch={setFetch}
                     />
                     )
 
