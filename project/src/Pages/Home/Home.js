@@ -88,6 +88,8 @@ function Home({ selectedCategory, setSelectedCategory }) {
                   description={item.description} 
                   comments={item.comments} 
                   setFetch={setFetch}
+                  selectedSortMethod={selectedSortMethod}
+                  selectedCategory={selectedCategory}
                 />
               </div>
             )

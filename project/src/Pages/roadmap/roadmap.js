@@ -26,6 +26,9 @@ const Plan = (setRoad) => {
           let productdata = res.data;
           setProductData({productdata })
 
+          console.log(productdata) 
+
+
           productdata.map((productRequest)=>{
               if(productRequest.status==='planned'|| productRequest.status==='Planned'){
                   planned.push(productRequest);
@@ -42,12 +45,12 @@ const Plan = (setRoad) => {
         setProgressRequestProduct(progress);
         setLiveRequestProduct(live); 
     }
+
     useEffect(() => {
       groupData()
     }, [])
 
     return(
-
       <>
         <Header />
         <nav>
@@ -128,7 +131,6 @@ const Plan = (setRoad) => {
 
       </>
     );
-    
 }
 
 export default Plan

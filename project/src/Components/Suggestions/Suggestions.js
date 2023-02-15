@@ -6,51 +6,50 @@ import axios from 'axios'
 import { arrowUp } from '../svgs'
 
 
-function Suggestions({id, title, category, status, upvote, description, comments, setFetch}) {
-  // const [stateUpvote, setStateUpvote] = useState(upvote)
-  const [isUpVoted, setIsUpVoted] = useState(false)
-  // const [clicked, setClicked] = useState('')
-  // useEffect(() => {
-  //   window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
-  // }, [clicked])
-  // useEffect(() => {
-  //   window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
-  // }, [isUpVoted])
+function Suggestions({id, title, category, status, upvote, description, comments, setFetch, selectedSortMethod, selectedCategory}) {
+  const [isUpvoted, setIsUpvoted] = useState(false)
 
-  const updateUpVote = (prev) => {
-    // window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
-    // const nextUpvote = prev += 1
+  useEffect(() => {
+    window.localStorage.setItem(id, JSON.stringify(upvote))
     // setStateUpvote(upvote)
-    // console.log(upvote)
-    if(localStorage.getItem(`${id} upvoted`) === 'false') {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, 
-      {
-        upvotes: prev += 1
-      })
-      .then(() => {
-        setFetch(true)
-        setIsUpVoted(true)
-        // window.localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
-      })
-      .then(() => {
-        window.localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
-      })
-      .catch((e) => {
-        console.log(e)
-      })
+    if(localStorage.getItem(`${id} upvoted`)) {
+      localStorage.setItem(`${id} upvoted`, localStorage.getItem(`${id} upvoted`))
     }
     else {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, 
-      {
-        upvotes: prev -1
+      localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+    }
+  }, [])
+
+  useEffect(() => {
+    window.localStorage.setItem(id, localStorage.getItem(id))
+  }, [isUpvoted])
+
+  const updateUpVote = () => {
+    if(localStorage.getItem(`${id} upvoted`) === 'false') {
+      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+        upvotes: upvote + 1
       })
       .then(() => {
-        setFetch(true)
-        setIsUpVoted(false)
+        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
+          setFetch(true)
+        }
+      })
+      // localStorage.setItem(id, JSON.stringify(JSON.parse(localStorage.getItem(id)) + 1))
+      localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
+      setIsUpvoted(true)
+    }
+    else {
+      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+        upvotes: upvote - 1
       })
       .then(() => {
-        window.localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
+          setFetch(true)
+        }
       })
+      // localStorage.setItem(id, JSON.stringify(JSON.parse(localStorage.getItem(id)) - 1))
+      localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
+      setIsUpvoted(false)
     }
   }
 
@@ -58,7 +57,7 @@ function Suggestions({id, title, category, status, upvote, description, comments
   <SuggestionContainer >
     <div className="suggestion-board ">
       <div className="right-components">
-        <div className={`top-arrow ${localStorage.getItem(`${id} upvoted`) === 'true' ? 'clicked' : ''}`} onClick={() => updateUpVote(upvote)} isUpVoted={isUpVoted}>
+        <div className={`top-arrow ${localStorage.getItem(`${id} upvoted`) === 'true' ? 'clicked' : ''}`} onClick={() => updateUpVote(upvote)}>
           {arrowUp}
           <span>{upvote}</span>
         </div>

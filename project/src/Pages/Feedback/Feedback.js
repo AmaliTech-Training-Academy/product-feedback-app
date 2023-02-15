@@ -54,7 +54,7 @@ function Feedback({ type, id }) {
     setTitle('')
     setDetails('')
   }
-
+  
   const handleSubmit = (e) => {
     e.preventDefault()
     setError(validate(title, details))
