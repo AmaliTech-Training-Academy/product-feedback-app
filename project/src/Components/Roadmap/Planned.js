@@ -5,13 +5,6 @@ import { Link } from 'react-router-dom'
 
 const ComponentBox = (props)=> {
 
-  // const [id,setId] = useState('')
-
-  // const roadSet=()=>{
-  //   setId(id)
-  //   console.log(id)
-  
-  // }
     return(
         <> 
         <div className=''>
