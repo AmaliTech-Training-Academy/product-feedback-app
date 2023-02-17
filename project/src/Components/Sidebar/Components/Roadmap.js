@@ -11,7 +11,7 @@ function Roadmap({ filteredData }) {
   const [live, setLive] = useState([]);
 
   useEffect(() => {
-    axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
+    axios.get('http://localhost:8000/productRequests')
     .then(res => {
     setData(res.data)
     setPlanned(res.data.filter(element => element.status.toLowerCase() === 'planned'))

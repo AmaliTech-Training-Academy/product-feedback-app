@@ -8,13 +8,13 @@ const AddComment = ({ id, setRefetch }) => {
   const [comments, setComments]=useState([]);
 
   const commentsFetching = () => {
-    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
+    axios.get(`http://localhost:8000/productRequests/${id}`)
     .then(response => {
       const comment = [response.data.comments ? response.data.comments : []];
       setComments(...comment)
     });
 
-    axios.get(`https://product-feedback-api-hry7.onrender.com/currentUser/`)
+    axios.get(`http://localhost:8000/currentUser`)
     .then(response => {
       setUser(response.data)
     });
@@ -33,7 +33,7 @@ const AddComment = ({ id, setRefetch }) => {
       }
     comments.push(details)
     setCommentInput('')
-    axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+    axios.patch(`http://localhost:8000/productRequests/${id}`, {
         comments: comments
       })
       .then(() => {

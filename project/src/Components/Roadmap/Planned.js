@@ -22,7 +22,7 @@ const ComponentBox = (props)=> {
 
   const handleClick = () => {
     if(localStorage.getItem(`${props.id} upvoted`) === 'false') {
-      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${props.id}`, {
+      axios.patch(`http://localhost:8000/productRequests/${props.id}`, {
         upvotes: props.up + 1
       })
       .then(() => {
@@ -32,7 +32,7 @@ const ComponentBox = (props)=> {
       setIsUpvoted(true)
     }
     else {
-      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${props.id}`, {
+      axios.patch(`http://localhost:8000/productRequests/${props.id}`, {
         upvotes: props.up - 1
       })
       .then(() => {

@@ -6,6 +6,8 @@ import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
 import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 import axios from 'axios'
+import {useSelector, useDispatch } from 'react-redux'
+import { getFeedbacks } from '../../features/feedback/feedbackSlice'
 
 
 function Home() {
@@ -14,6 +16,12 @@ function Home() {
   const [selectedSortMethod, setSelectedSortMethod] = useState('')
   const [fetch, setFetch] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
+
+  const { isLoading, feedbackItems } = useSelector(state => state.feedback)
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getFeedbacks())
+  }, [])
 
   useEffect(() => {
     if(selectedCategory === 'all') {
@@ -52,24 +60,24 @@ function Home() {
     }
   }, [selectedSortMethod])
   
-  const fetchingData = () => {
-    axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
-    .then(res => {
-      setData(res.data)
-      setFilteredData(res.data)
-      setFetch(false)
-    })
-}
+//   const fetchingData = () => {
+//     axios.get('http://localhost:8000/productRequests')
+//     .then(res => {
+//       setData(res.data)
+//       setFilteredData(res.data)
+//       setFetch(false)
+//     })
+// }
 
-  useEffect(() => {
-    fetchingData()
-  }, [])
+  // useEffect(() => {
+  //   fetchingData()
+  // }, [])
 
-  useEffect(() => {
-    if(fetch) {
-      fetchingData()
-    }
-  }, [fetch])
+  // useEffect(() => {
+  //   if(fetch) {
+  //     fetchingData()
+  //   }
+  // }, [fetch])
   return (
     <>
       <MobileNav setSelectedCategory={setSelectedCategory} filteredData={filteredData}/>
@@ -77,7 +85,7 @@ function Home() {
         <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
         <div>
           <Header type='home' data={filteredData} setSelectedSortMethod={setSelectedSortMethod}/>
-          {filteredData.length > 0 ? filteredData.map((item) => {
+          {feedbackItems.length > 0 ? feedbackItems.map((item) => {
             return (
               <div >
                 <Suggestions 

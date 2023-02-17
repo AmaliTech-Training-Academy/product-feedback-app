@@ -6,6 +6,10 @@ main {
   color: #3a4374;
 }
 
+.loading {
+  text-transform: uppercase;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;

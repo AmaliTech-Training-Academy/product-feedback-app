@@ -18,13 +18,13 @@ const FeedbackDetails = ({ setId }) => {
   const {id} = useParams()
   const [commentClicked, setCommentClicked] = useState({})
  
-  const fetching = () => {
-    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
-    .then(response => {
-      setFeed(response.data);
-      setRefetch(false)
-    });
-  }
+  // const fetching = () => {
+  //   axios.get(`http://localhost:8000/productRequests/${id}`)
+  //   .then(response => {
+  //     setFeed(response.data);
+  //     setRefetch(false)
+  //   });
+  // }
 
   const handleClick = (id) => {
     setCommentClicked({
@@ -33,15 +33,15 @@ const FeedbackDetails = ({ setId }) => {
     })
   }
 
-  useEffect(() => {
-    fetching()
-  }, []);
+  // useEffect(() => {
+  //   fetching()
+  // }, []);
 
-  useEffect(() => {
-    if(refetch) {
-      fetching()
-    }  
-  }, [refetch])
+  // useEffect(() => {
+  //   if(refetch) {
+  //     fetching()
+  //   }  
+  // }, [refetch])
 
   const setid = () => {
     setId(id)

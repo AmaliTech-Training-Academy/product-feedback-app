@@ -10,12 +10,12 @@ const Reply = ({ id, commentContent, setRefetch }) => {
   const [commentWanted, setCommentWanted] = useState(null)
   
   useEffect(() => {
-    axios.get(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`)
+    axios.get(`http://localhost:8000/productRequests/${id}`)
       .then(res => {
         setComment(res.data.comments)
       })
 
-    axios.get(`https://product-feedback-api-hry7.onrender.com/currentUser`)
+    axios.get(`http://localhost:8000/currentUser`)
       .then(response => {
       setUser(response.data)
     }); 
@@ -58,7 +58,7 @@ const Reply = ({ id, commentContent, setRefetch }) => {
       }
   
       // console.log(comment)
-      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+      axios.patch(`http://localhost:8000/productRequests/${id}`, {
         comments: comment
       })
       .then(() => {

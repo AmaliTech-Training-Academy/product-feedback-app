@@ -17,7 +17,7 @@ const Plan = (setRoad) => {
    
 
     const groupData=()=>{
-        axios.get('https://product-feedback-api-hry7.onrender.com/productRequests')
+        axios.get('http://localhost:8000/productRequests')
         .then((res)=>{
           let productdata = res.data;
           setPlannedRequestProduct(productdata.filter((ele) => ele.status === 'planned' || ele.status === 'Planned'));

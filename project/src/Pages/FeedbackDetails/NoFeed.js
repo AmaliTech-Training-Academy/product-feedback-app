@@ -5,7 +5,7 @@ const NoFeed = () => {
   return (
     <section className='no-feed'>
         <img src={err} />
-        <h1>No feed yet 
+        <h1 className='loading'>loading
             <span className='dots-container'>
                 <div className='dot '></div>
                 <div className='dot'></div>

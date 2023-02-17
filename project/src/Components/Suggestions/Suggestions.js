@@ -24,7 +24,7 @@ function Suggestions({id, title, category, status, upvote, description, comments
 
   const updateUpVote = () => {
     if(localStorage.getItem(`${id} upvoted`) === 'false') {
-      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+      axios.patch(`http://localhost:8000/productRequests/${id}`, {
         upvotes: upvote + 1
       })
       .then(() => {
@@ -36,7 +36,7 @@ function Suggestions({id, title, category, status, upvote, description, comments
       setIsUpvoted(true)
     }
     else {
-      axios.patch(`https://product-feedback-api-hry7.onrender.com/productRequests/${id}`, {
+      axios.patch(`http://localhost:8000/productRequests/${id}`, {
         upvotes: upvote - 1
       })
       .then(() => {
