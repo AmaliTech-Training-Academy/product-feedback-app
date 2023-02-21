@@ -23,42 +23,42 @@ function Home() {
     dispatch(getFeedbacks())
   }, [])
 
-  useEffect(() => {
-    if(selectedCategory === 'all') {
-      setFilteredData(data)
-    } else {
-      setFilteredData(data.filter(item => item.category === selectedCategory))
-    }
-  }, [selectedCategory])
+  // useEffect(() => {
+  //   if(selectedCategory === 'all') {
+  //     setFilteredData(data)
+  //   } else {
+  //     setFilteredData(data.filter(item => item.category === selectedCategory))
+  //   }
+  // }, [selectedCategory])
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    if(selectedSortMethod === 'Most Upvotes') {
-      const sortedData = [...filteredData];
-      sortedData.sort((a, b) => a.upvotes < b.upvotes ? 1 : -1)
-      setFilteredData(sortedData)
-      // console.log(filteredData)
-    }
-    else if(selectedSortMethod === 'Least Upvotes') {
-      const sortedData = [...filteredData]
-      sortedData.sort((a, b) => a.upvotes > b.upvotes ? 1 : -1)
-      setFilteredData(sortedData)
-    }
-    else if(selectedSortMethod === 'Most Comments') {
-      const dataWithComments = filteredData.filter(item => item.comments)
-      const dataWithoutComments = filteredData.filter(item => !item.comments)
-      dataWithComments.sort((a, b) => a.comments.length < b.comments.length ? 1 : -1)
-      const sortedData = [...dataWithComments, ...dataWithoutComments]
-      setFilteredData(sortedData)
-    }
-    else if(selectedSortMethod === 'Least Comments') {
-      const dataWithComments = filteredData.filter(item => item.comments)
-      const dataWithoutComments = filteredData.filter(item => !item.comments)
-      dataWithComments.sort((a, b) => a.comments.length > b.comments.length ? 1 : -1)
-      const sortedData = [...dataWithoutComments, ...dataWithComments]
-      setFilteredData(sortedData)
-    }
-  }, [selectedSortMethod])
+  //   if(selectedSortMethod === 'Most Upvotes') {
+  //     const sortedData = [...filteredData];
+  //     sortedData.sort((a, b) => a.upvotes < b.upvotes ? 1 : -1)
+  //     setFilteredData(sortedData)
+  //     // console.log(filteredData)
+  //   }
+  //   else if(selectedSortMethod === 'Least Upvotes') {
+  //     const sortedData = [...filteredData]
+  //     sortedData.sort((a, b) => a.upvotes > b.upvotes ? 1 : -1)
+  //     setFilteredData(sortedData)
+  //   }
+  //   else if(selectedSortMethod === 'Most Comments') {
+  //     const dataWithComments = filteredData.filter(item => item.comments)
+  //     const dataWithoutComments = filteredData.filter(item => !item.comments)
+  //     dataWithComments.sort((a, b) => a.comments.length < b.comments.length ? 1 : -1)
+  //     const sortedData = [...dataWithComments, ...dataWithoutComments]
+  //     setFilteredData(sortedData)
+  //   }
+  //   else if(selectedSortMethod === 'Least Comments') {
+  //     const dataWithComments = filteredData.filter(item => item.comments)
+  //     const dataWithoutComments = filteredData.filter(item => !item.comments)
+  //     dataWithComments.sort((a, b) => a.comments.length > b.comments.length ? 1 : -1)
+  //     const sortedData = [...dataWithoutComments, ...dataWithComments]
+  //     setFilteredData(sortedData)
+  //   }
+  // }, [selectedSortMethod])
   
 //   const fetchingData = () => {
 //     axios.get('http://localhost:8000/productRequests')
@@ -82,24 +82,24 @@ function Home() {
     <>
       <MobileNav setSelectedCategory={setSelectedCategory} filteredData={filteredData}/>
       <div className='main-page'>
-        <Sidebar filteredData={filteredData} data={data} setSelectedCategory={setSelectedCategory}/> 
+        <Sidebar /> 
         <div>
-          <Header type='home' data={filteredData} setSelectedSortMethod={setSelectedSortMethod}/>
+          <Header type='home' data={feedbackItems} setSelectedSortMethod={setSelectedSortMethod}/>
           {feedbackItems.length > 0 ? feedbackItems.map((item) => {
             return (
               <div >
                 <Suggestions 
                   item={item} 
-                  id={item.id} 
-                  title={item.title} 
-                  category={item.category} 
-                  status={item.status} 
-                  upvote={item.upvotes} 
-                  description={item.description} 
-                  comments={item.comments} 
-                  setFetch={setFetch}
-                  selectedSortMethod={selectedSortMethod}
-                  selectedCategory={selectedCategory}
+                  // id={item.id} 
+                  // title={item.title} 
+                  // category={item.category} 
+                  // status={item.status} 
+                  // upvote={item.upvotes} 
+                  // description={item.description} 
+                  // comments={item.comments} 
+                  // setFetch={setFetch}
+                  // selectedSortMethod={selectedSortMethod}
+                  // selectedCategory={selectedCategory}
                 />
               </div>
             )

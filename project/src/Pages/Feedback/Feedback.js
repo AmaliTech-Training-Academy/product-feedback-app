@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import FeedbackCategory from '../../Components/Feedback/FeedbackCategory'
 import Head from '../../Components/Feedback/Head'
 import FeedbackTitle from '../../Components/Feedback/FeedbackTitle'
 import UpdateStatus from '../../Components/Feedback/UpdateStatus'
 import Details from '../../Components/Feedback/Details'
 import axios from 'axios'
-import {
-    Container
-} from './FeedbackStyles'
+import { Container } from './FeedbackStyles'
+import { useSelector } from 'react-redux'
 
-function Feedback({ type, id }) {
+function Feedback({ type }) {
   const [option, setOption] = useState('Feature')
   const [detailOption, setDetailOption] = useState('')
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
   const [error, setError] = useState({})
   const [header, setHeader] = useState('')
+  const {id} = useParams()
+  const { feedbackItems } = useSelector(state => state.feedback)
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
-      .then(res => {
-        setTitle(type === "Edit" && res.data.title)
-        setHeader(type === "Edit" && res.data.title)
-        setDetails(type === "Edit" && res.data.description)
-        setOption(type === "Edit" && res.data.category.charAt().toUpperCase() + res.data.category.slice(1))
-        setDetailOption(type === "Edit" && res.data.status.charAt().toUpperCase() + res.data.status.slice(1))
-      })
+    // axios.get(`http://localhost:8000/productRequests/${id}`)
+    //   .then(res => {
+    //     setTitle(type === "Edit" && res.data.title)
+    //     setHeader(type === "Edit" && res.data.title)
+    //     setDetails(type === "Edit" && res.data.description)
+    //     setOption(type === "Edit" && res.data.category.charAt().toUpperCase() + res.data.category.slice(1))
+    //     setDetailOption(type === "Edit" && res.data.status.charAt().toUpperCase() + res.data.status.slice(1))
+    //   })
+      console.log(feedbackItems);
   }, [])
 
   const getTitleValue = (value) => {

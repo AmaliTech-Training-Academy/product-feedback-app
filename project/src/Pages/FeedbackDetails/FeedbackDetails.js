@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./FeedbackDetails.css";
-import axios from "axios";
+// import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
@@ -9,6 +9,7 @@ import { Link, useParams } from "react-router-dom";
 import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 import NoFeed from "./NoFeed";
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
@@ -18,6 +19,8 @@ const FeedbackDetails = ({ setId }) => {
   const {id} = useParams()
   const [commentClicked, setCommentClicked] = useState({})
  
+
+  const { feedbackItems } = useSelector(state => state.feedback)
   // const fetching = () => {
   //   axios.get(`http://localhost:8000/productRequests/${id}`)
   //   .then(response => {
@@ -25,6 +28,12 @@ const FeedbackDetails = ({ setId }) => {
   //     setRefetch(false)
   //   });
   // }
+
+  useEffect(() => {
+    // console.log(feedbackItems.find(ele => ele.id === parseInt(id)))
+    setFeed(feedbackItems.find(ele => ele.id === parseInt(id)))
+  }, [])
+
 
   const handleClick = (id) => {
     setCommentClicked({
@@ -46,7 +55,6 @@ const FeedbackDetails = ({ setId }) => {
   const setid = () => {
     setId(id)
   }
-
   return (
     <main>
       {feed ? (
@@ -55,21 +63,22 @@ const FeedbackDetails = ({ setId }) => {
             <Link to="/">
               <Head />
             </Link>
-            <Link to="/edit-feedback">
+            <Link to={`/edit-feedback/${id}`}>
               <button className="btn btn-primary button-text edit-button" onClick={setid}>
                 Edit Feedback
               </button>
             </Link>
           </section>
           <Suggestions
-            title={feed.title}
-            category={feed.category}
-            status={feed.status}
-            upvote={feed.upvotes}
-            description={feed.description}
-            comments={feed.comments ? feed.comments : undefined}
-            className="suggestion"
-            id={id}
+            item={feed}
+            // title={feed.title}
+            // category={feed.category}
+            // status={feed.status}
+            // upvote={feed.upvotes}
+            // description={feed.description}
+            // comments={feed.comments ? feed.comments : undefined}
+            // className="suggestion"
+            // id={id}
           />
            
           {feed.comments ? (
@@ -143,9 +152,7 @@ const FeedbackDetails = ({ setId }) => {
           ) : <EmptyComment />}
           <AddComment id={id} setRefetch={setRefetch}/>
         </>
-      ) : (
-        <NoFeed/>
-      )}
+      ) : <NoFeed/>}
     </main>
   );
 };

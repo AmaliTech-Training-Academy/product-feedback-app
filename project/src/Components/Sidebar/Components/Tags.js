@@ -1,13 +1,26 @@
 import React, { useState } from 'react'
 import { Tag, All, UI, UX, Enhancement, Bug, Feature } from '../SidebarStyles'
+import { open, close } from '../../../features/mobileNav/mobileNavSlice'
+import { sortCategory } from '../../../features/feedback/feedbackSlice'
+import { useSelector, useDispatch } from 'react-redux'
 
 
-function Tags({isOpen, setIsOpen, setSelectedCategory}) {
+function Tags({setSelectedCategory}) {
   const [isClicked, setIsClicked] = useState('All')
+  const { isOpen } = useSelector(state => state.mobileNav)
+  // const { feedbackItems } = useSelector(state => state.feedback)
+  const dispatch = useDispatch()
+
   const handleClick = (value) => {
     setIsClicked(value)
-    setSelectedCategory(value.toLowerCase())
-    setIsOpen(!isOpen)
+    dispatch(sortCategory(value))
+    // setSelectedCategory(value.toLowerCase())
+    if(isOpen) {
+      dispatch(close())
+    }
+    else {
+      dispatch(open())
+    }
   }
   return (
     <Tag>

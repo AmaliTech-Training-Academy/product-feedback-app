@@ -6,66 +6,66 @@ import axios from 'axios'
 import { arrowUp } from '../svgs'
 
 
-function Suggestions({id, title, category, status, upvote, description, comments, setFetch, selectedSortMethod, selectedCategory}) {
-  const [isUpvoted, setIsUpvoted] = useState(false)
+function Suggestions({item}) {
+  // const [isUpvoted, setIsUpvoted] = useState(false)
 
-  useEffect(() => {
-    if(localStorage.getItem(`${id} upvoted`)) {
-      localStorage.setItem(`${id} upvoted`, localStorage.getItem(`${id} upvoted`))
-    }
-    else {
-      localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
-    }
-  }, [])
+  // useEffect(() => {
+  //   if(localStorage.getItem(`${item.id} upvoted`)) {
+  //     localStorage.setItem(`${item.id} upvoted`, localStorage.getItem(`${item.id} upvoted`))
+  //   }
+  //   else {
+  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(false))
+  //   }
+  // }, [])
 
-  useEffect(() => {
-    window.localStorage.setItem(id, localStorage.getItem(id))
-  }, [isUpvoted])
+  // useEffect(() => {
+  //   window.localStorage.setItem(item.id, localStorage.getItem(item.id))
+  // }, [isUpvoted])
 
-  const updateUpVote = () => {
-    if(localStorage.getItem(`${id} upvoted`) === 'false') {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
-        upvotes: upvote + 1
-      })
-      .then(() => {
-        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
-          setFetch(true)
-        }
-      })
-      localStorage.setItem(`${id} upvoted`, JSON.stringify(true))
-      setIsUpvoted(true)
-    }
-    else {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
-        upvotes: upvote - 1
-      })
-      .then(() => {
-        if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
-          setFetch(true)
-        }
-      })
-      localStorage.setItem(`${id} upvoted`, JSON.stringify(false))
-      setIsUpvoted(false)
-    }
-  }
+  // const updateUpVote = () => {
+  //   if(localStorage.getItem(`${item.id} upvoted`) === 'false') {
+  //     axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+  //       upvotes: upvote + 1
+  //     })
+  //     .then(() => {
+  //       if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
+  //         setFetch(true)
+  //       }
+  //     })
+  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(true))
+  //     setIsUpvoted(true)
+  //   }
+  //   else {
+  //     axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+  //       upvotes: upvote - 1
+  //     })
+  //     .then(() => {
+  //       if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
+  //         setFetch(true)
+  //       }
+  //     })
+  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(false))
+  //     setIsUpvoted(false)
+  //   }
+  // }
 
   return (
   <SuggestionContainer >
     <div className="suggestion-board ">
       <div className="right-components">
-        <div className={`top-arrow ${localStorage.getItem(`${id} upvoted`) === 'true' ? 'clicked' : ''}`} onClick={() => updateUpVote(upvote)}>
+        <div className={`top-arrow ${localStorage.getItem(`${item.id} upvoted`) === 'true' ? 'clicked' : ''}`} >
           {arrowUp}
-          <span>{upvote}</span>
+          <span>{item.upvotes}</span>
         </div>
-        <Link to={`/feedback-detail/${id}`} className="text">
-          <span className='h3'>{title}</span>
-          <span className='body-1'>{description}</span>
-          <Enhancement>{category[0].toUpperCase() + category.slice(1)}</Enhancement>
+        <Link to={`/feedback-detail/${item.id}`} className="text">
+          <span className='h3'>{item.title}</span>
+          <span className='body-1'>{item.description}</span>
+          <Enhancement>{item.category[0].toUpperCase() + item.category.slice(1)}</Enhancement>
         </Link>
       </div>
       <div className="left-components">
         <img src="/assets/shared/icon-comments.svg" alt=''/>
-        <span>{comments ? comments.length : '0'}</span>
+        <span>{item.comments ? item.comments.length : '0'}</span>
       </div>
     </div>
   </SuggestionContainer>

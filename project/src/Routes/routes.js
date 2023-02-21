@@ -9,15 +9,14 @@ import MobileNav from '../Components/Header/Mobile nav/MobileNav'
 
 
 function ProductApp(){
-    const [id, setId] = useState('')
     return(
         <>
         <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/suggestion" element={<Home/>}/>
-            <Route path="/feedback-detail/:id" element={<FeedbackDetails setId={setId}/>}/>
+            <Route path="/feedback-detail/:id" element={<FeedbackDetails />}/>
             <Route path="/new-feedback" element={<Feedback />}/>
-            <Route path="/edit-feedback" element={<EditFeedback id={id}/>}/>
+            <Route path="/edit-feedback/:id" element={<EditFeedback />}/>
             <Route path="/roadmap" element={<Plan />}/>
         </Routes>
         </>

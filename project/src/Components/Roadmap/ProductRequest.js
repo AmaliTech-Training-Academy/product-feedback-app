@@ -8,7 +8,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFet
    
     return(
         <>
-         <div className="plan-st">
+        <div className="plan-st">
         <div className="top-part"> 
            
             <h3>{`${title} (${productRequests.length})`}</h3>
@@ -27,13 +27,12 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFet
                         tag={data.category}
                         up={data.upvotes}
                         comments={data.comments?data.comments.length : '0'}
-                        setFetch={setFetch}
                     />
                     )
 
             })
         }
-      </div>
+        </div>
         </>
     );
 }

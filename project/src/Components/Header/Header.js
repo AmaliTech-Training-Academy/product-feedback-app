@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { sortFeedback } from '../../features/feedback/feedbackSlice'
 import {
   Nav
 } from './HeaderStyles'
@@ -14,11 +16,14 @@ function Header({type, data, setSelectedSortMethod}) {
   const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Select sort method')
 
+  const dispatch = useDispatch()
+
   const handleOption = (name) => {
+    dispatch(sortFeedback(name))
     setOption(name)
-    setSelectedSortMethod(name)
+    // setSelectedSortMethod(name)
     setIsOpen(!isOpen)
-    setSelectedSortMethod(name)
+    // setSelectedSortMethod(name)
   }
 
   const handleClick = () => {
