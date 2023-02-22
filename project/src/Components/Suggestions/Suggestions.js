@@ -11,6 +11,7 @@ import { arrowUp } from '../svgs'
 function Suggestions({item}) {
   const dispatch = useDispatch()
   const { upvoted } = useSelector(state => state.feedback)
+  const singleId = item.id
 
   const handleClick = () => {
     if(upvoted[item.id] === false) {
@@ -78,7 +79,7 @@ function Suggestions({item}) {
   <SuggestionContainer >
     <div className="suggestion-board ">
       <div className="right-components">
-        <div className={`top-arrow ${upvoted[item.id] === 'true' ? 'clicked' : ''}`} onClick={handleClick}>
+        <div className={`top-arrow ${upvoted[item.id] && 'clicked'}`} onClick={handleClick}>
           {arrowUp}
           <span>{item.upvotes}</span>
         </div>

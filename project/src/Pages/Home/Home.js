@@ -21,9 +21,7 @@ function Home() {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getFeedbacks())
-    setTimeout(() => {
-      console.log(upvoted)
-    }, 3000);
+    // console.log(upvoted)
   }, [upvoted])
 
   // useEffect(() => {
