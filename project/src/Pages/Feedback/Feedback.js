@@ -15,20 +15,17 @@ function Feedback({ type }) {
   const [title, setTitle] = useState('')
   const [details, setDetails] = useState('')
   const [error, setError] = useState({})
-  const [header, setHeader] = useState('')
   const {id} = useParams()
-  const { feedbackItems } = useSelector(state => state.feedback)
+  const { feed } = useSelector(state => state.feedback)
 
   useEffect(() => {
-    // axios.get(`http://localhost:8000/productRequests/${id}`)
-    //   .then(res => {
-    //     setTitle(type === "Edit" && res.data.title)
-    //     setHeader(type === "Edit" && res.data.title)
-    //     setDetails(type === "Edit" && res.data.description)
-    //     setOption(type === "Edit" && res.data.category.charAt().toUpperCase() + res.data.category.slice(1))
-    //     setDetailOption(type === "Edit" && res.data.status.charAt().toUpperCase() + res.data.status.slice(1))
-    //   })
-      console.log(feedbackItems);
+    // console.log(feed)
+    if(type === 'Edit' && feed) {
+      setTitle(feed.title)
+      setDetails(feed.description)
+      setOption(feed.category.charAt().toUpperCase() + feed.category.slice(1))
+      setDetailOption(feed.status.charAt().toUpperCase() + feed.status.slice(1))
+    }
   }, [])
 
   const getTitleValue = (value) => {
@@ -100,7 +97,7 @@ function Feedback({ type }) {
         <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><Head /></Link>
         <form className='content' onSubmit={handleSubmit}>
           <img src={type === 'Edit' ? '/assets/shared/icon-edit-feedback.svg' : '/assets/shared/icon-new-feedback.svg'} alt='' className='plus' />
-          <span className='h1 head'>{type === 'Edit' ? `Editing ‘${header}’` : 'Create New Feedback' }</span>
+          <span className='h1 head'>{type === 'Edit' ? `Editing ‘${feed && feed.title}’` : 'Create New Feedback' }</span>
           <FeedbackTitle value={title} getTitleValue={getTitleValue} error={error.title}/>
           <span className='h4 error'>{error.title}</span>
           <FeedbackCategory option={option} setOption={setOption} />

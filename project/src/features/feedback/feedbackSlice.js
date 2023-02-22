@@ -8,6 +8,7 @@ const initialState = {
     planned: [],
     live: [],
     feed: {},
+    upvoted: {},
     isLoading: false
 }
 
@@ -58,7 +59,13 @@ const feedbackSlice = createSlice({
             }
         },
         findSingleFeed: (state, { payload }) => {
-
+            state.feed = state.feedbackItems.find(ele => ele.id === payload)
+        },
+        upvote: (state, { payload }) => {
+            state.upvoted[payload] = true
+        },
+        devote: (state, { payload }) => {
+            state.upvoted[payload] = false
         }
     },
     extraReducers: {
@@ -72,6 +79,14 @@ const feedbackSlice = createSlice({
             state.inProgress = payload.data.filter(ele => ele.status.toLowerCase() === 'in-progress')
             state.planned = payload.data.filter(ele => ele.status.toLowerCase() === 'planned')
             state.live = payload.data.filter(ele => ele.status.toLowerCase() === 'live')
+            payload.data.forEach(ele => {
+                if([ele.id] in state.upvoted) {
+                    state.upvoted[ele.id] = state.upvoted[ele.id]
+                }
+                else {
+                state.upvoted[ele.id] = false     
+                }
+            });
             // localStorage.setItem('data', JSON.stringify(action.payload.data))
         },
         [getFeedbacks.rejected]: (state) => {
@@ -80,6 +95,6 @@ const feedbackSlice = createSlice({
     }
 })
 
-export const { sortFeedback, sortCategory } = feedbackSlice.actions
+export const { sortFeedback, sortCategory, findSingleFeed, upvote, devote } = feedbackSlice.actions
 
 export default feedbackSlice.reducer

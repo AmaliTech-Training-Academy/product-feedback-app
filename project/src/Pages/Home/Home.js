@@ -17,11 +17,14 @@ function Home() {
   const [fetch, setFetch] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('')
 
-  const { isLoading, feedbackItems } = useSelector(state => state.feedback)
+  const { isLoading, feedbackItems, upvoted } = useSelector(state => state.feedback)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getFeedbacks())
-  }, [])
+    setTimeout(() => {
+      console.log(upvoted)
+    }, 3000);
+  }, [upvoted])
 
   // useEffect(() => {
   //   if(selectedCategory === 'all') {

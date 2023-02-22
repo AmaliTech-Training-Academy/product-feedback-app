@@ -1,4 +1,5 @@
 import React from "react";
+
 const TabNavItem = ({ id, title, activeTab, setActiveTab,theStyle}) => {
  
  const handleClick = () => {

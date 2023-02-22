@@ -10,14 +10,16 @@ import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 import NoFeed from "./NoFeed";
 import { useSelector, useDispatch } from 'react-redux'
+import { findSingleFeed } from '../../features/feedback/feedbackSlice'
 
 
 
-const FeedbackDetails = ({ setId }) => {
+const FeedbackDetails = () => {
   const [feed, setFeed] = useState(null);
   const [refetch, setRefetch] = useState(false);
   const {id} = useParams()
   const [commentClicked, setCommentClicked] = useState({})
+  const dispatch = useDispatch()
  
 
   const { feedbackItems } = useSelector(state => state.feedback)
@@ -52,8 +54,8 @@ const FeedbackDetails = ({ setId }) => {
   //   }  
   // }, [refetch])
 
-  const setid = () => {
-    setId(id)
+  const setfeed = () => {
+    dispatch(findSingleFeed(parseInt(id)))
   }
   return (
     <main>
@@ -64,7 +66,7 @@ const FeedbackDetails = ({ setId }) => {
               <Head />
             </Link>
             <Link to={`/edit-feedback/${id}`}>
-              <button className="btn btn-primary button-text edit-button" onClick={setid}>
+              <button className="btn btn-primary button-text edit-button" onClick={setfeed}>
                 Edit Feedback
               </button>
             </Link>

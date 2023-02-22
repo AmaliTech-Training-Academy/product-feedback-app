@@ -1,11 +1,19 @@
-// import React, {useEffect, useState} from 'react'
+import React, { useEffect } from 'react'
 import Feedback from '../Feedback/Feedback'
-// import axios from 'axios'
+import { useDispatch } from 'react-redux'
+import { findSingleFeed } from '../../features/feedback/feedbackSlice'
+import { useParams } from 'react-router'
 
-function EditFeedback({id}) {
+function EditFeedback() {
+  // const { id } = useParams()
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(findSingleFeed(parseInt(id)))
+  // }, [])
   return (
     <>
-        <Feedback type= 'Edit' id={id} />
+        <Feedback type= 'Edit'/>
     </>
   )
 }

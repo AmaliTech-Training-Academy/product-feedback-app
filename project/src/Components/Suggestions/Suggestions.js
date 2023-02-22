@@ -2,11 +2,36 @@ import React, { useState, useEffect } from 'react'
 import { SuggestionContainer } from './SuggestionStyles'
 import { Enhancement } from '../Sidebar/SidebarStyles'
 import { Link } from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+import { upvote, devote } from '../../features/feedback/feedbackSlice'
 import axios from 'axios'
 import { arrowUp } from '../svgs'
 
 
 function Suggestions({item}) {
+  const dispatch = useDispatch()
+  const { upvoted } = useSelector(state => state.feedback)
+
+  const handleClick = () => {
+    if(upvoted[item.id] === false) {
+      axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+          upvotes: item.upvotes + 1
+        })
+        .then(() => {
+          dispatch(upvote(item.id))
+        })
+    }
+    else {
+      axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+        upvotes: item.upvotes - 1
+      })
+      .then(() => {
+        dispatch(devote(item.id))
+      })
+    }
+  }
+
+
   // const [isUpvoted, setIsUpvoted] = useState(false)
 
   // useEffect(() => {
@@ -53,7 +78,7 @@ function Suggestions({item}) {
   <SuggestionContainer >
     <div className="suggestion-board ">
       <div className="right-components">
-        <div className={`top-arrow ${localStorage.getItem(`${item.id} upvoted`) === 'true' ? 'clicked' : ''}`} >
+        <div className={`top-arrow ${upvoted[item.id] === 'true' ? 'clicked' : ''}`} onClick={handleClick}>
           {arrowUp}
           <span>{item.upvotes}</span>
         </div>
