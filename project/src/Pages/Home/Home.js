@@ -8,6 +8,8 @@ import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 import axios from 'axios'
 import {useSelector, useDispatch } from 'react-redux'
 import { getFeedbacks } from '../../features/feedback/feedbackSlice'
+import { closeHeader, openHeader } from '../../features/dropdown/dropdownSlice'
+import { getCurrentUser } from '../../features/user/currentUserSlice'
 
 
 function Home() {
@@ -18,11 +20,23 @@ function Home() {
   const [selectedCategory, setSelectedCategory] = useState('')
 
   const { isLoading, feedbackItems, upvoted } = useSelector(state => state.feedback)
+  const { headerDropdown } = useSelector(state => state.dropdown)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getCurrentUser())
+  }, [])
+
   useEffect(() => {
     dispatch(getFeedbacks())
     // console.log(upvoted)
   }, [upvoted])
+
+  const handleClick = () => {
+    if(headerDropdown) {
+      dispatch(closeHeader())
+    }
+  }
 
   // useEffect(() => {
   //   if(selectedCategory === 'all') {
@@ -82,7 +96,7 @@ function Home() {
   return (
     <>
       <MobileNav setSelectedCategory={setSelectedCategory} filteredData={filteredData}/>
-      <div className='main-page'>
+      <div className='main-page' onClick={handleClick}>
         <Sidebar /> 
         <div>
           <Header type='home' data={feedbackItems} setSelectedSortMethod={setSelectedSortMethod}/>

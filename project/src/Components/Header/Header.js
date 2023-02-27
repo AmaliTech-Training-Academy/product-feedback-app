@@ -1,19 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { sortFeedback } from '../../features/feedback/feedbackSlice'
-import {
-  Nav
-} from './HeaderStyles'
+import { Nav } from './HeaderStyles'
 import {arrowLeft} from '../svgs'
-
-import {
-    arrowDown, arrowUp,
-    // arrowUp
-} from '../../Components/svgs'
+import { openHeader, closeHeader } from '../../features/dropdown/dropdownSlice'
+import { arrowDown, arrowUp } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
 function Header({type, data, setSelectedSortMethod}) {
-  const [isOpen, setIsOpen] = useState(false);
+  const { headerDropdown } = useSelector(state => state.dropdown)
+  // const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Select sort method')
 
   const dispatch = useDispatch()
@@ -21,14 +17,20 @@ function Header({type, data, setSelectedSortMethod}) {
   const handleOption = (name) => {
     dispatch(sortFeedback(name))
     setOption(name)
+    if(headerDropdown) {
+      dispatch(closeHeader())
+    } else dispatch(openHeader())
     // setSelectedSortMethod(name)
-    setIsOpen(!isOpen)
+    // setIsOpen(!isOpen)
     // setSelectedSortMethod(name)
   }
 
   const handleClick = () => {
     if(data.length > 0) {
-      setIsOpen(!isOpen)
+      // setIsOpen(!isOpen)
+      if(headerDropdown) {
+        dispatch(closeHeader())
+      } else dispatch(openHeader())
     }
   }
   return (
@@ -39,9 +41,9 @@ function Header({type, data, setSelectedSortMethod}) {
         <span className='h3 suggestions'>{data.length} Suggestions</span>
         <span className={`h4 ${data < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
             Sort by : <b>{option}</b>
-            {isOpen ? arrowUp : arrowDown}
+            {headerDropdown ? arrowUp : arrowDown}
         </span>
-        {isOpen && <div className='select'>
+        {headerDropdown && <div className='select'>
           <div className='options' onClick={() => handleOption('Most Upvotes')}>
             <span className='body-1 option'>Most Upvotes</span>
             {(option === 'Most Upvotes') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}

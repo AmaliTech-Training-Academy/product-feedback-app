@@ -7,7 +7,6 @@ const initialState = {
     inProgress: [],
     planned: [],
     live: [],
-    feed: {},
     upvoted: {},
     isLoading: false
 }

@@ -1,7 +1,5 @@
 import React from 'react'
-import {
-    Container
-} from './FeedbackStyles'
+import {Container} from './FeedbackStyles'
 
 function Details({value, getDetailsValue, error}) {
   const getDetails = (e) => {

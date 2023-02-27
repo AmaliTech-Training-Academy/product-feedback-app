@@ -7,7 +7,8 @@ import UpdateStatus from '../../Components/Feedback/UpdateStatus'
 import Details from '../../Components/Feedback/Details'
 import axios from 'axios'
 import { Container } from './FeedbackStyles'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { openOptions, closeOptions, openCategory, closeCategory } from '../../features/dropdown/dropdownSlice'
 
 function Feedback({ type }) {
   const [option, setOption] = useState('Feature')
@@ -17,6 +18,8 @@ function Feedback({ type }) {
   const [error, setError] = useState({})
   const {id} = useParams()
   const { feed } = useSelector(state => state.feedback)
+  const dispatch = useDispatch()
+  const { optionsDropdown, categoryDropdown } = useSelector(state => state.dropdown)
 
   useEffect(() => {
     // console.log(feed)
@@ -92,8 +95,18 @@ function Feedback({ type }) {
 
   }
 
+  const handleToggle = () => {
+    if(categoryDropdown) {
+      dispatch(closeCategory())
+    }
+
+    if(optionsDropdown) {
+      dispatch(closeOptions())
+    }
+  }
+
   return (
-    <Container type={type}>
+    <Container type={type} onClick={handleToggle}>
         <Link to={type === 'Edit' ? `/feedback-detail/${id}` : '/'}><Head /></Link>
         <form className='content' onSubmit={handleSubmit}>
           <img src={type === 'Edit' ? '/assets/shared/icon-edit-feedback.svg' : '/assets/shared/icon-new-feedback.svg'} alt='' className='plus' />

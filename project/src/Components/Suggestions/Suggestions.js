@@ -6,9 +6,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import { upvote, devote } from '../../features/feedback/feedbackSlice'
 import axios from 'axios'
 import { arrowUp } from '../svgs'
+import { findSingleFeed } from '../../features/feedback/feedbackSlice'
 
 
 function Suggestions({item}) {
+  const [vote, setVote] = useState(item.upvote)
   const dispatch = useDispatch()
   const { upvoted } = useSelector(state => state.feedback)
   const singleId = item.id
@@ -83,7 +85,7 @@ function Suggestions({item}) {
           {arrowUp}
           <span>{item.upvotes}</span>
         </div>
-        <Link to={`/feedback-detail/${item.id}`} className="text">
+        <Link to={`/feedback-detail/${item.id}`} className="text" onClick={() => dispatch(findSingleFeed(item.id))}>
           <span className='h3'>{item.title}</span>
           <span className='body-1'>{item.description}</span>
           <Enhancement>{item.category[0].toUpperCase() + item.category.slice(1)}</Enhancement>
