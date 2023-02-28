@@ -1,28 +1,22 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { getFeedbacks } from '../../features/feedback/feedbackSlice'
 
 
-const Reply = ({ id, commentContent, setRefetch }) => {
+const Reply = ({ id, commentContent }) => {
+  const { feed } = useSelector(state => state.feedback)
+  const { user } = useSelector(state => state.user)
+  const dispatch = useDispatch()
   const [comment, setComment] = useState(null)
   const [reply, setReply] = useState('')
-  const [user, setUser] = useState(null)
   const [error, setError] = useState('')
-  const [commentWanted, setCommentWanted] = useState(null)
   
   useEffect(() => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
-      .then(res => {
-        setComment(res.data.comments)
-      })
-
-    axios.get(`http://localhost:8000/currentUser`)
-      .then(response => {
-      setUser(response.data)
-    }); 
+    setComment([...feed.comments])
   }, [])
 
   const handleClick = () => {
-    // console.log(comment)
     if(reply) {
       let commentObject;
       comment.map(ele => {
@@ -56,13 +50,12 @@ const Reply = ({ id, commentContent, setRefetch }) => {
           comment[i] = commentObject
         };  
       }
-  
-      // console.log(comment)
+
       axios.patch(`http://localhost:8000/productRequests/${id}`, {
         comments: comment
       })
       .then(() => {
-        setRefetch(true)
+        dispatch(getFeedbacks())
       })
     }
     else {

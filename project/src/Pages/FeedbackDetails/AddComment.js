@@ -1,24 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getFeedbacks } from '../../features/feedback/feedbackSlice'
 
-const AddComment = ({ id, setRefetch }) => {
-  const [user, setUser] = useState(null)
+const AddComment = ({ id }) => {
+  const dispatch = useDispatch()
+  const {user} = useSelector(state => state.user)
+  const {feed} = useSelector(state => state.feedback)
   const [commentInput, setCommentInput]=useState('');
   const [error, setError]=useState('');
   const [comments, setComments]=useState([]);
 
-  const commentsFetching = () => {
-    axios.get(`http://localhost:8000/productRequests/${id}`)
-    .then(response => {
-      const comment = [response.data.comments ? response.data.comments : []];
-      setComments(...comment)
-    });
-
-    axios.get(`http://localhost:8000/currentUser`)
-    .then(response => {
-      setUser(response.data)
-    });
-  }
+  useEffect(() => {
+    if(feed.comments) {
+      setComments([...feed.comments])
+    }
+  }, [])
   
   const handleClick = (e) => {
     e.preventDefault()
@@ -32,12 +29,15 @@ const AddComment = ({ id, setRefetch }) => {
         username: user.username
       }
     comments.push(details)
-    setCommentInput('')
+    console.log(comments);
     axios.patch(`http://localhost:8000/productRequests/${id}`, {
         comments: comments
       })
       .then(() => {
-        setRefetch(true)
+        dispatch(getFeedbacks())
+      })
+      .then(() => {
+        setCommentInput('')
       })
     }
     else {
@@ -46,9 +46,6 @@ const AddComment = ({ id, setRefetch }) => {
 
   }
 
-  useEffect(() => {
-    commentsFetching()
-  }, [])
 
 return (
     <form className="add-comment sections" >

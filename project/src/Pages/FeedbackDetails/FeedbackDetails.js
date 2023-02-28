@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./FeedbackDetails.css";
-// import axios from "axios";
 import AddComment from "./AddComment";
 import Suggestions from "../../Components/Suggestions/Suggestions";
 import Head from "../../Components/Feedback/Head";
@@ -10,58 +9,26 @@ import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 import NoFeed from "./NoFeed";
 import { useSelector, useDispatch } from 'react-redux'
-// import { findSingleFeed } from '../../features/feedback/feedbackSlice'
+import { findSingleFeed } from '../../features/feedback/feedbackSlice'
 
 
 
 const FeedbackDetails = () => {
-  // const [feed, setFeed] = useState(null);
-  const [refetch, setRefetch] = useState(false);
   const {id} = useParams()
   const [commentClicked, setCommentClicked] = useState({})
   const dispatch = useDispatch()
- 
-
-  const { feedbackItems, upvoted, feed } = useSelector(state => state.feedback)
-  // const fetching = () => {
-  //   axios.get(`http://localhost:8000/productRequests/${id}`)
-  //   .then(response => {
-  //     setFeed(response.data);
-  //     setRefetch(false)
-  //   });
-  // }
+  const { feedbackItems, feed } = useSelector(state => state.feedback)
 
   useEffect(() => {
-    // dispatch(findSingleFeed(parseInt(id)))
-    console.log(feed)
-  }, [])
-
-  // useEffect(() => {
-    // console.log(feedbackItems.find(ele => ele.id === parseInt(id)))
-  //   setFeed(feedbackItems.find(ele => ele.id === parseInt(id)))
-  // }, [upvoted])
-
+    dispatch(findSingleFeed(parseInt(id)))
+  }, [feedbackItems])
 
   const handleClick = (id) => {
     setCommentClicked({
-      // ...commentClicked, 
       [`comment${id}`]: Object.keys(commentClicked).includes(`comment${id}`) ? !commentClicked[`comment${id}`] : true
     })
   }
 
-  // useEffect(() => {
-  //   fetching()
-  // }, []);
-
-  // useEffect(() => {
-  //   if(refetch) {
-  //     fetching()
-  //   }  
-  // }, [refetch])
-
-  // const setfeed = () => {
-  //   dispatch(findSingleFeed(parseInt(id)))
-  // }
   return (
     <main>
       {feed ? (
@@ -76,17 +43,7 @@ const FeedbackDetails = () => {
               </button>
             </Link>
           </section>
-          <Suggestions
-            item={feed}
-            // title={feed.title}
-            // category={feed.category}
-            // status={feed.status}
-            // upvote={feed.upvotes}
-            // description={feed.description}
-            // comments={feed.comments ? feed.comments : undefined}
-            // className="suggestion"
-            // id={id}
-          />
+          <Suggestions item={feed}/>
            
           {feed.comments ? (
             <section className="comment sections">
@@ -117,7 +74,7 @@ const FeedbackDetails = () => {
                       <div className="body-2 users-comment">
                         {comment.content}
                       </div>
-                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
+                      {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content}/>}
 
                       {comment.replies && comment.replies.map(reply => {
                               return (
@@ -142,22 +99,19 @@ const FeedbackDetails = () => {
                                       {reply.content}
                                     </div>                                  
                                   </div>
-                                  {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} setRefetch={setRefetch} />}
+                                  {commentClicked[`comment${comment.id}`] && <Reply id={id} commentContent={comment.content} />}
                                 </>
                               )
                             })
                       }
                     </div>
-                  
-                  
-                    {/* {comment.id  !== (feed.comments).length - 1 || <hr />} */}
                   </div>
                 );
               })}
            
             </section>
           ) : <EmptyComment />}
-          <AddComment id={id} setRefetch={setRefetch}/>
+          <AddComment id={id} />
         </>
       ) : <NoFeed/>}
     </main>

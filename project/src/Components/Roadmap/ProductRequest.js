@@ -25,7 +25,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFet
                         title={data.title}
                         text={data.description}
                         tag={data.category}
-                        up={data.upvotes}
+                        upvotes={data.upvotes}
                         comments={data.comments?data.comments.length : '0'}
                     />
                     )

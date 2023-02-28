@@ -1,46 +1,16 @@
 import React from "react";
 import './roadmap.css'
-import {useState,useEffect} from "react";
+import {useState} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
 import Header from "../../Components/Header/Header"
-import axios from 'axios'
 import { useSelector } from 'react-redux'
 
 
-const Plan = (setRoad) => {
-    // const [PlannedRequestProducts, setPlannedRequestProduct] = useState([]);
-    // const [inProgress, setProgressRequestProduct] = useState([]);
-    // const [LiveRequestProducts, setLiveRequestProduct] = useState([]);
+const Plan = () => {
     const [activeTab, setActiveTab] = useState("tab2");
-    // const [fetch, setFetch] = useState(false)
     const { planned, inProgress, live } = useSelector(state => state.feedback)
-   
-
-  //   const groupData=()=>{
-  //       axios.get('http://localhost:8000/productRequests')
-  //       .then((res)=>{
-  //         let productdata = res.data;
-  //         setPlannedRequestProduct(productdata.filter((ele) => ele.status === 'planned' || ele.status === 'Planned'));
-  //         setProgressRequestProduct(productdata.filter((ele) => ele.status === 'in-progress' || ele.status === 'In-Progress'));
-  //         setLiveRequestProduct(productdata.filter((ele) => ele.status === 'live' || ele.status === 'Live')); 
-  //       })
-  //       .then(() => {
-  //         setFetch(false)
-  //       })
-  //   }
-
-  //   useEffect(() => {
-  //     groupData()
-  // },[])
-
-  //   useEffect(() => {
-  //     if(fetch) {
-  //       groupData()
-  //     }
-  // },[fetch])
-   
  
     return(
       <>

@@ -8,7 +8,7 @@ import Details from '../../Components/Feedback/Details'
 import axios from 'axios'
 import { Container } from './FeedbackStyles'
 import { useSelector, useDispatch } from 'react-redux'
-import { openOptions, closeOptions, openCategory, closeCategory } from '../../features/dropdown/dropdownSlice'
+import { closeOptions, closeCategory } from '../../features/dropdown/dropdownSlice'
 
 function Feedback({ type }) {
   const [option, setOption] = useState('Feature')
@@ -20,9 +20,9 @@ function Feedback({ type }) {
   const { feed } = useSelector(state => state.feedback)
   const dispatch = useDispatch()
   const { optionsDropdown, categoryDropdown } = useSelector(state => state.dropdown)
+  const { feedbackItems } = useSelector(state => state.feedback)
 
   useEffect(() => {
-    // console.log(feed)
     if(type === 'Edit' && feed) {
       setTitle(feed.title)
       setDetails(feed.description)
@@ -77,6 +77,7 @@ function Feedback({ type }) {
       }
       else {
         axios.post('http://localhost:8000/productRequests', {
+          id: feedbackItems.length + 1,
           title: title,
           category: option.toLowerCase(),
           upvotes: 0,

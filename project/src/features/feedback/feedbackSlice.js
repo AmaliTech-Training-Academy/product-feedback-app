@@ -72,9 +72,16 @@ const feedbackSlice = createSlice({
             state.isLoading = true
         },
         [getFeedbacks.fulfilled]: (state, {payload}) => {
-            // console.log(action)
             state.feedbackItems = payload.data
-            state.data = payload.data
+            if(state.feedbackItems) {
+                const arr = state.feedbackItems.filter(ele => {
+                    return payload.data.some(ele2 => ele.id === ele2.id)
+                })
+                state.feedbackItems = arr
+            }
+            else {
+                state.data = payload.data
+            }
             state.inProgress = payload.data.filter(ele => ele.status.toLowerCase() === 'in-progress')
             state.planned = payload.data.filter(ele => ele.status.toLowerCase() === 'planned')
             state.live = payload.data.filter(ele => ele.status.toLowerCase() === 'live')

@@ -29,7 +29,6 @@ const currentUserSlice = createSlice({
             state.isLoading = true;
         },
         [getCurrentUser.fulfilled]: (state, { payload }) => {
-            console.log(payload.data)
             state.user = payload.data
         },
         [getCurrentUser.rejected]: (state) => {

@@ -7,9 +7,9 @@ import { openHeader, closeHeader } from '../../features/dropdown/dropdownSlice'
 import { arrowDown, arrowUp } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
-function Header({type, data, setSelectedSortMethod}) {
+function Header({type}) {
+  const { feedbackItems } = useSelector(state => state.feedback)
   const { headerDropdown } = useSelector(state => state.dropdown)
-  // const [isOpen, setIsOpen] = useState(false);
   const [option, setOption] = useState('Select sort method')
 
   const dispatch = useDispatch()
@@ -20,14 +20,10 @@ function Header({type, data, setSelectedSortMethod}) {
     if(headerDropdown) {
       dispatch(closeHeader())
     } else dispatch(openHeader())
-    // setSelectedSortMethod(name)
-    // setIsOpen(!isOpen)
-    // setSelectedSortMethod(name)
   }
 
   const handleClick = () => {
-    if(data.length > 0) {
-      // setIsOpen(!isOpen)
+    if(feedbackItems.length > 0) {
       if(headerDropdown) {
         dispatch(closeHeader())
       } else dispatch(openHeader())
@@ -38,8 +34,8 @@ function Header({type, data, setSelectedSortMethod}) {
         {type == 'home' ?
         <>
         <img src='./assets/suggestions/icon-suggestions.svg' alt='' className='suggestion-image' />
-        <span className='h3 suggestions'>{data.length} Suggestions</span>
-        <span className={`h4 ${data < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
+        <span className='h3 suggestions'>{feedbackItems.length} Suggestions</span>
+        <span className={`h4 ${feedbackItems < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
             Sort by : <b>{option}</b>
             {headerDropdown ? arrowUp : arrowDown}
         </span>

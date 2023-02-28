@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { SuggestionContainer } from './SuggestionStyles'
 import { Enhancement } from '../Sidebar/SidebarStyles'
 import { Link } from 'react-router-dom'
@@ -10,10 +10,8 @@ import { findSingleFeed } from '../../features/feedback/feedbackSlice'
 
 
 function Suggestions({item}) {
-  const [vote, setVote] = useState(item.upvote)
   const dispatch = useDispatch()
   const { upvoted } = useSelector(state => state.feedback)
-  const singleId = item.id
 
   const handleClick = () => {
     if(upvoted[item.id] === false) {
@@ -33,49 +31,6 @@ function Suggestions({item}) {
       })
     }
   }
-
-
-  // const [isUpvoted, setIsUpvoted] = useState(false)
-
-  // useEffect(() => {
-  //   if(localStorage.getItem(`${item.id} upvoted`)) {
-  //     localStorage.setItem(`${item.id} upvoted`, localStorage.getItem(`${item.id} upvoted`))
-  //   }
-  //   else {
-  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(false))
-  //   }
-  // }, [])
-
-  // useEffect(() => {
-  //   window.localStorage.setItem(item.id, localStorage.getItem(item.id))
-  // }, [isUpvoted])
-
-  // const updateUpVote = () => {
-  //   if(localStorage.getItem(`${item.id} upvoted`) === 'false') {
-  //     axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
-  //       upvotes: upvote + 1
-  //     })
-  //     .then(() => {
-  //       if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
-  //         setFetch(true)
-  //       }
-  //     })
-  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(true))
-  //     setIsUpvoted(true)
-  //   }
-  //   else {
-  //     axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
-  //       upvotes: upvote - 1
-  //     })
-  //     .then(() => {
-  //       if(selectedSortMethod === 'Select sort method' || !selectedCategory) {
-  //         setFetch(true)
-  //       }
-  //     })
-  //     localStorage.setItem(`${item.id} upvoted`, JSON.stringify(false))
-  //     setIsUpvoted(false)
-  //   }
-  // }
 
   return (
   <SuggestionContainer >
