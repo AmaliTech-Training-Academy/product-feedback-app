@@ -9,7 +9,7 @@
       "id": 1,
       "title": "Add tags for solutions",
       "category": "enhancement",
-      "upvotes": 197,
+      "upvotes": 194,
       "status": "suggestion",
       "description": "Easier to search for solutions based on a specific stack.",
       "comments": [
@@ -54,6 +54,26 @@
             "image": "/assets/user-images/image-zena.jpg",
             "username": "velvetround"
           }
+        },
+        {
+          "id": 6,
+          "content": "new comment",
+          "user": {
+            "name": "Zena Kelley",
+            "image": "/assets/user-images/image-zena.jpg",
+            "username": "velvetround"
+          },
+          "replies": [
+            {
+              "content": "hey",
+              "replyingTo": "Zena Kelley",
+              "user": {
+                "name": "Zena Kelley",
+                "image": "/assets/user-images/image-zena.jpg",
+                "username": "velvetround"
+              }
+            }
+          ]
         }
       ]
     },
@@ -203,7 +223,7 @@
       "id": 7,
       "title": "More comprehensive reports",
       "category": "feature",
-      "upvotes": 124,
+      "upvotes": 126,
       "status": "planned",
       "description": "It would be great to see a more detailed breakdown of solutions.",
       "comments": [
@@ -250,7 +270,7 @@
       "id": 9,
       "title": "One-click portfolio generation",
       "category": "feature",
-      "upvotes": 62,
+      "upvotes": 60,
       "status": "in-progress",
       "description": "Add ability to create professional looking portfolio from profile.",
       "comments": [
@@ -296,7 +316,7 @@
       "id": 12,
       "title": "Add micro-interactions",
       "category": "enhancement",
-      "upvotes": 71,
+      "upvotes": 72,
       "status": "live",
       "description": "Small animations at specific points can add delight.",
       "comments": [
@@ -343,7 +363,7 @@
     {
       "title": "xoxo",
       "category": "feature",
-      "upvotes": 1,
+      "upvotes": 2,
       "status": "Live",
       "description": "jbjbj",
       "comments": [],

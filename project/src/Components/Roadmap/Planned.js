@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react'
 import '../../Pages/roadmap/roadmap.css'
 import '../../index.css'
 import { Link } from 'react-router-dom'
+import { arrowUp } from '../svgs'
 import axios from 'axios'
 import { upvote, devote } from '../../features/feedback/feedbackSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
-const ComponentBox = ({id, subtitle, border, round, title, text, tag, upvotes, comments})=> {
+const ComponentBox = ({id, subtitle, border, round, title, text, tag, upVotes, comments})=> {
   const dispatch = useDispatch()
   const { upvoted } = useSelector(state => state.feedback)
   const [isUpvoted, setIsUpvoted] = useState(false)
@@ -27,7 +28,7 @@ const ComponentBox = ({id, subtitle, border, round, title, text, tag, upvotes, c
   const handleClick = () => {
     if(upvoted[id] === false) {
       axios.patch(`http://localhost:8000/productRequests/${id}`, {
-          upvotes: upvotes + 1
+          upvotes: upVotes + 1
         })
         .then(() => {
           dispatch(upvote(id))
@@ -35,7 +36,7 @@ const ComponentBox = ({id, subtitle, border, round, title, text, tag, upvotes, c
     }
     else {
       axios.patch(`http://localhost:8000/productRequests/${id}`, {
-        upvotes: upvotes - 1
+        upvotes: upVotes - 1
       })
       .then(() => {
         dispatch(devote(id))
@@ -59,10 +60,10 @@ const ComponentBox = ({id, subtitle, border, round, title, text, tag, upvotes, c
                 <div className='bottom-1'>
               <p className="tag body-3">{tag}</p>
             <div className="last-line">
-                <div className={`up ${localStorage.getItem(`${id} upvoted`) === 'true' ? 'upvoted' : ''}`} onClick={handleClick}>
+                <div className={`up ${upvoted[id] && 'upvoted'}`} onClick={handleClick}>
                   <div className="inner-box-up">
-                  <svg  className="arrow-up"width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" strokeWidth="2" fill="none" fillRule="evenodd"/></svg>
-                  <p className=" up-votes body-3">{upvotes}</p>
+                    {arrowUp}
+                  <p className=" up-votes body-3">{upVotes}</p>
                 </div>
               </div>
               <div className="other-line">

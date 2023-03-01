@@ -5,16 +5,14 @@ import { sortCategory } from '../../../features/feedback/feedbackSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-function Tags({setSelectedCategory}) {
+function Tags() {
   const [isClicked, setIsClicked] = useState('All')
   const { isOpen } = useSelector(state => state.mobileNav)
-  // const { feedbackItems } = useSelector(state => state.feedback)
   const dispatch = useDispatch()
 
   const handleClick = (value) => {
     setIsClicked(value)
     dispatch(sortCategory(value))
-    // setSelectedCategory(value.toLowerCase())
     if(isOpen) {
       dispatch(close())
     }

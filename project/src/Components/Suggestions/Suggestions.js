@@ -6,30 +6,49 @@ import { useSelector, useDispatch } from 'react-redux'
 import { upvote, devote } from '../../features/feedback/feedbackSlice'
 import axios from 'axios'
 import { arrowUp } from '../svgs'
-import { findSingleFeed } from '../../features/feedback/feedbackSlice'
+import { findSingleFeed, saveToFeedback } from '../../features/feedback/feedbackSlice'
 
 
 function Suggestions({item}) {
   const dispatch = useDispatch()
-  const { upvoted } = useSelector(state => state.feedback)
+  const { feedbackItems, upvoted } = useSelector(state => state.feedback)
+  let data = JSON.parse(JSON.stringify(feedbackItems))
 
   const handleClick = () => {
-    if(upvoted[item.id] === false) {
-      axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
-          upvotes: item.upvotes + 1
+    console.log(data)
+    data.map(ele => {
+      if(ele.id === item.id) {
+        Object.keys(ele).map(key => {
+          if(key === 'upvotes') {
+            if(upvoted[item.id] === false) {
+              ele[key] = item.upvotes + 1
+              dispatch(upvote(item.id))
+            } else {
+              ele[key] = item.upvotes - 1
+              dispatch(devote(item.id))
+            }
+          }
         })
-        .then(() => {
-          dispatch(upvote(item.id))
-        })
-    }
-    else {
-      axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
-        upvotes: item.upvotes - 1
-      })
-      .then(() => {
-        dispatch(devote(item.id))
-      })
-    }
+      }
+      return ele
+    })
+
+    // if(upvoted[item.id] === false) {
+    //   axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+    //       upvotes: item.upvotes + 1
+    //     })
+    //     .then(() => {
+    //       dispatch(upvote(item.id))
+    //     })
+    // }
+    // else {
+    //   axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+    //     upvotes: item.upvotes - 1
+    //   })
+    //   .then(() => {
+    //     dispatch(devote(item.id))
+    //   })
+    // }
   }
 
   return (

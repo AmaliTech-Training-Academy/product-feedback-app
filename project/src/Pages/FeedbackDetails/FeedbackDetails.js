@@ -9,7 +9,7 @@ import Reply from "./Reply";
 import EmptyComment from "../../Components/EmptyComment/EmptyComment";
 import NoFeed from "./NoFeed";
 import { useSelector, useDispatch } from 'react-redux'
-import { findSingleFeed } from '../../features/feedback/feedbackSlice'
+import { getFeedbacks, findSingleFeed } from '../../features/feedback/feedbackSlice'
 
 
 
@@ -17,11 +17,15 @@ const FeedbackDetails = () => {
   const {id} = useParams()
   const [commentClicked, setCommentClicked] = useState({})
   const dispatch = useDispatch()
-  const { feedbackItems, feed } = useSelector(state => state.feedback)
+  const { feedbackItems, feed, upvoted } = useSelector(state => state.feedback)
 
   useEffect(() => {
     dispatch(findSingleFeed(parseInt(id)))
   }, [feedbackItems])
+
+  useEffect(() => {
+    dispatch(getFeedbacks())
+  }, [upvoted])
 
   const handleClick = (id) => {
     setCommentClicked({

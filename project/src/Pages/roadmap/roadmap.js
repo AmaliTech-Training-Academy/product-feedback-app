@@ -1,16 +1,22 @@
 import React from "react";
 import './roadmap.css'
-import {useState} from "react";
+import { useState, useEffect} from "react";
 import ProductRequest from "../../Components/Roadmap/ProductRequest";
 import TabNavItem from "../../Components/Roadmap/Tab";
 import TabContent from "../../Components/Roadmap/TabContent";
 import Header from "../../Components/Header/Header"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { getFeedbacks } from '../../features/feedback/feedbackSlice'
 
 
 const Plan = () => {
     const [activeTab, setActiveTab] = useState("tab2");
-    const { planned, inProgress, live } = useSelector(state => state.feedback)
+    const { planned, inProgress, live, upvoted } = useSelector(state => state.feedback)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+      dispatch(getFeedbacks())
+    }, [upvoted])
  
     return(
       <>

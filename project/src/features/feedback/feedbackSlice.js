@@ -27,6 +27,9 @@ const feedbackSlice = createSlice({
     name: 'feedback',
     initialState,
     reducers: {
+        saveToFeedback: (state, { payload }) => {
+            state.feedbackItems = payload
+        },
         sortFeedback: (state, { payload }) => {
             if(payload === 'Most Upvotes') {
                 state.feedbackItems = state.feedbackItems.sort((a, b) => a.upvotes < b.upvotes ? 1 : -1)
@@ -72,7 +75,6 @@ const feedbackSlice = createSlice({
             state.isLoading = true
         },
         [getFeedbacks.fulfilled]: (state, {payload}) => {
-            state.feedbackItems = payload.data
             if(state.feedbackItems) {
                 const arr = state.feedbackItems.filter(ele => {
                     return payload.data.some(ele2 => ele.id === ele2.id)
@@ -80,8 +82,9 @@ const feedbackSlice = createSlice({
                 state.feedbackItems = arr
             }
             else {
-                state.data = payload.data
+                state.feedbackItems = payload.data
             }
+            state.data = payload.data
             state.inProgress = payload.data.filter(ele => ele.status.toLowerCase() === 'in-progress')
             state.planned = payload.data.filter(ele => ele.status.toLowerCase() === 'planned')
             state.live = payload.data.filter(ele => ele.status.toLowerCase() === 'live')
@@ -93,6 +96,7 @@ const feedbackSlice = createSlice({
                 state.upvoted[ele.id] = false     
                 }
             });
+            state.isLoading = false
             // localStorage.setItem('data', JSON.stringify(action.payload.data))
         },
         [getFeedbacks.rejected]: (state) => {
@@ -101,6 +105,6 @@ const feedbackSlice = createSlice({
     }
 })
 
-export const { sortFeedback, sortCategory, findSingleFeed, upvote, devote } = feedbackSlice.actions
+export const { sortFeedback, sortCategory, findSingleFeed, upvote, devote, saveToFeedback } = feedbackSlice.actions
 
 export default feedbackSlice.reducer
