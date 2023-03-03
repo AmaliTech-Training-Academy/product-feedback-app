@@ -4,13 +4,14 @@ import '../../index.css'
 import { Link } from 'react-router-dom'
 import { arrowUp } from '../svgs'
 import axios from 'axios'
-import { upvote, devote } from '../../features/feedback/feedbackSlice'
+import { upvote, devote, saveFeedback } from '../../features/feedback/feedbackSlice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ComponentBox = ({id, subtitle, border, round, title, text, tag, upVotes, comments})=> {
   const dispatch = useDispatch()
-  const { upvoted } = useSelector(state => state.feedback)
+  const { feedbackItems, upvoted } = useSelector(state => state.feedback)
   const [isUpvoted, setIsUpvoted] = useState(false)
+  let data = JSON.parse(JSON.stringify(feedbackItems))
 
   // useEffect(() => {
   //   if(localStorage.getItem(`${id} upvoted`)) {
@@ -26,22 +27,47 @@ const ComponentBox = ({id, subtitle, border, round, title, text, tag, upVotes, c
   // }, [isUpvoted])
 
   const handleClick = () => {
-    if(upvoted[id] === false) {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
-          upvotes: upVotes + 1
+    console.log(data)
+    data.map(ele => {
+      if(ele.id === id) {
+        Object.keys(ele).map(key => {
+          if(key === 'upvotes') {
+            if(upvoted[id] === false) {
+              ele[key] = upVotes + 1
+              dispatch(upvote(id))
+              axios.patch(`http://localhost:8000/productRequests/${id}`, {
+                      upvotes: upVotes + 1
+                    })
+            } else {
+              ele[key] = upVotes - 1
+              dispatch(devote(id))
+              axios.patch(`http://localhost:8000/productRequests/${id}`, {
+                      upvotes: upVotes - 1
+                    })
+            }
+          }
         })
-        .then(() => {
-          dispatch(upvote(id))
-        })
-    }
-    else {
-      axios.patch(`http://localhost:8000/productRequests/${id}`, {
-        upvotes: upVotes - 1
-      })
-      .then(() => {
-        dispatch(devote(id))
-      })
-    }
+      }
+      return ele
+    })
+    dispatch(saveFeedback(data))
+
+    // if(upvoted[id] === false) {
+    //   axios.patch(`http://localhost:8000/productRequests/${id}`, {
+    //       upvotes: upVotes + 1
+    //     })
+    //     .then(() => {
+    //       dispatch(upvote(id))
+    //     })
+    // }
+    // else {
+    //   axios.patch(`http://localhost:8000/productRequests/${id}`, {
+    //     upvotes: upVotes - 1
+    //   })
+    //   .then(() => {
+    //     dispatch(devote(id))
+    //   })
+    // }
   }
 
     return(

@@ -1,17 +1,21 @@
 import React, { useState } from 'react'
 import { Tag, All, UI, UX, Enhancement, Bug, Feature } from '../SidebarStyles'
 import { open, close } from '../../../features/mobileNav/mobileNavSlice'
-import { sortCategory } from '../../../features/feedback/feedbackSlice'
+import { sortCategory, changeSelectedCategory } from '../../../features/feedback/feedbackSlice'
 import { useSelector, useDispatch } from 'react-redux'
 
 
 function Tags() {
-  const [isClicked, setIsClicked] = useState('All')
+  // const [isClicked, setIsClicked] = useState('All')
+  const { categorySelected } = useSelector(state => state.feedback)
   const { isOpen } = useSelector(state => state.mobileNav)
   const dispatch = useDispatch()
 
+  console.log(categorySelected)
+
   const handleClick = (value) => {
-    setIsClicked(value)
+    dispatch(changeSelectedCategory(value))
+    // setIsClicked(value)
     dispatch(sortCategory(value))
     if(isOpen) {
       dispatch(close())
@@ -24,25 +28,25 @@ function Tags() {
     <Tag>
       <div className='tag-container'>
         <div className='upper-tag'>
-          <All type={isClicked} onClick={() => handleClick('All')}>
+          <All type={categorySelected} onClick={() => handleClick('All')}>
             All
           </All>
-          <UI type={isClicked} onClick={() => handleClick('UI')}>
+          <UI type={categorySelected} onClick={() => handleClick('UI')}>
             UI
           </UI>
-          <UX type={isClicked} onClick={() => handleClick('UX')}>
+          <UX type={categorySelected} onClick={() => handleClick('UX')}>
             UX
           </UX>
         </div>
         <div className='middle-tag'>
-          <Enhancement type={isClicked} onClick={() => handleClick('Enhancement')}>
+          <Enhancement type={categorySelected} onClick={() => handleClick('Enhancement')}>
             Enhancement
           </Enhancement>
-          <Bug type={isClicked} onClick={() => handleClick('Bug')}>
+          <Bug type={categorySelected} onClick={() => handleClick('Bug')}>
             Bug
           </Bug>
         </div>
-        <Feature type={isClicked} onClick={() => handleClick('Feature')}>
+        <Feature type={categorySelected} onClick={() => handleClick('Feature')}>
           Feature
         </Feature>
       </div>

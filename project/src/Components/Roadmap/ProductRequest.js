@@ -14,7 +14,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFet
             <h3>{`${title} (${productRequests.length})`}</h3>
             <p>{subtitle}</p>
         </div>
-            {productRequests.map((data, key) => {
+            {productRequests.length !== 0 ? productRequests.map((data, key) => {
                
                     return(
                         <ComponentBox key={key}
@@ -31,7 +31,7 @@ const ProductRequest = ({title, productRequests, subtitle,border1,round1, setFet
                     )
 
             })
-        }
+         : <h1>no feed</h1>}
         </div>
         </>
     );

@@ -6,7 +6,7 @@ import EmptyComponent from '../../Components/EmptyComponent/EmptyComponent'
 import Suggestions from '../../Components/Suggestions/Suggestions'
 import MobileNav from '../../Components/Header/Mobile nav/MobileNav'
 import {useSelector, useDispatch } from 'react-redux'
-import { getFeedbacks } from '../../features/feedback/feedbackSlice'
+import { getFeedbacks, filterFeedbacks } from '../../features/feedback/feedbackSlice'
 import { closeHeader } from '../../features/dropdown/dropdownSlice'
 import { getCurrentUser } from '../../features/user/currentUserSlice'
 import BeatLoader from 'react-spinners/BeatLoader'
@@ -26,12 +26,16 @@ function Home() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getCurrentUser())
-  }, [])
+    if(isLoading) {
+      dispatch(getCurrentUser())
+      dispatch(getFeedbacks())
+    }
+    // console.log(feedbackItems)
+  }, [isLoading])
 
   useEffect(() => {
-    dispatch(getFeedbacks())
-  }, [upvoted])
+    dispatch(filterFeedbacks())
+  }, [feedbackItems])
 
   const handleClick = () => {
     if(headerDropdown) {

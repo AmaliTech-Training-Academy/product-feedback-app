@@ -23,9 +23,9 @@ const FeedbackDetails = () => {
     dispatch(findSingleFeed(parseInt(id)))
   }, [feedbackItems])
 
-  useEffect(() => {
-    dispatch(getFeedbacks())
-  }, [upvoted])
+  // useEffect(() => {
+  //   dispatch(getFeedbacks())
+  // }, [upvoted])
 
   const handleClick = (id) => {
     setCommentClicked({

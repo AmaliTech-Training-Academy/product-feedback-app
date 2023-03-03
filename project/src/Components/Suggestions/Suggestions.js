@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { upvote, devote } from '../../features/feedback/feedbackSlice'
 import axios from 'axios'
 import { arrowUp } from '../svgs'
-import { findSingleFeed, saveToFeedback } from '../../features/feedback/feedbackSlice'
+import { findSingleFeed, saveFeedback } from '../../features/feedback/feedbackSlice'
 
 
 function Suggestions({item}) {
@@ -23,15 +23,22 @@ function Suggestions({item}) {
             if(upvoted[item.id] === false) {
               ele[key] = item.upvotes + 1
               dispatch(upvote(item.id))
+              axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+                      upvotes: item.upvotes + 1
+                    })
             } else {
               ele[key] = item.upvotes - 1
               dispatch(devote(item.id))
+              axios.patch(`http://localhost:8000/productRequests/${item.id}`, {
+                      upvotes: item.upvotes - 1
+                    })
             }
           }
         })
       }
       return ele
     })
+    dispatch(saveFeedback(data))
 
     // if(upvoted[item.id] === false) {
     //   axios.patch(`http://localhost:8000/productRequests/${item.id}`, {

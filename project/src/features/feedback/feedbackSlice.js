@@ -8,7 +8,9 @@ const initialState = {
     planned: [],
     live: [],
     upvoted: {},
-    isLoading: false
+    isLoading: true,
+    categorySelected: 'All',
+    filteringOption: 'Select sort method'
 }
 
 const url = 'http://localhost:8000/productRequests'
@@ -27,8 +29,9 @@ const feedbackSlice = createSlice({
     name: 'feedback',
     initialState,
     reducers: {
-        saveToFeedback: (state, { payload }) => {
+        saveFeedback: (state, { payload }) => {
             state.feedbackItems = payload
+            // state.data = payload
         },
         sortFeedback: (state, { payload }) => {
             if(payload === 'Most Upvotes') {
@@ -54,11 +57,23 @@ const feedbackSlice = createSlice({
         },
         sortCategory: (state, {payload}) => {
             if(payload === 'All') {
-                state.feedbackItems = state.data
+                state.feedbackItems = state.data //filter
+                state.filteringOption = 'Select sort method'
             }
             else {
                 state.feedbackItems = state.data.filter(ele => ele.category === payload.toLowerCase())
             }
+        },
+        changeSelectedCategory: (state, {payload}) => {
+            state.categorySelected = payload
+        },
+        changeFilteringOption: (state, {payload}) => {
+            state.filteringOption = payload
+        },
+        filterFeedbacks: (state) => {
+            state.inProgress = state.feedbackItems.filter(ele => ele.status.toLowerCase() === 'in-progress')
+            state.planned = state.feedbackItems.filter(ele => ele.status.toLowerCase() === 'planned')
+            state.live = state.feedbackItems.filter(ele => ele.status.toLowerCase() === 'live')
         },
         findSingleFeed: (state, { payload }) => {
             state.feed = state.feedbackItems.find(ele => ele.id === payload)
@@ -75,19 +90,17 @@ const feedbackSlice = createSlice({
             state.isLoading = true
         },
         [getFeedbacks.fulfilled]: (state, {payload}) => {
-            if(state.feedbackItems) {
-                const arr = state.feedbackItems.filter(ele => {
-                    return payload.data.some(ele2 => ele.id === ele2.id)
-                })
-                state.feedbackItems = arr
-            }
-            else {
+            // console.log(payload.data)
+            // if(state.feedbackItems) {
+            //     const arr = state.feedbackItems.filter(ele => {
+            //         return payload.data.some(ele2 => ele.id === ele2.id)
+            //     })
+            //     state.feedbackItems = arr
+            // }
+            // else {
                 state.feedbackItems = payload.data
-            }
+            // }
             state.data = payload.data
-            state.inProgress = payload.data.filter(ele => ele.status.toLowerCase() === 'in-progress')
-            state.planned = payload.data.filter(ele => ele.status.toLowerCase() === 'planned')
-            state.live = payload.data.filter(ele => ele.status.toLowerCase() === 'live')
             payload.data.forEach(ele => {
                 if([ele.id] in state.upvoted) {
                     state.upvoted[ele.id] = state.upvoted[ele.id]
@@ -105,6 +118,6 @@ const feedbackSlice = createSlice({
     }
 })
 
-export const { sortFeedback, sortCategory, findSingleFeed, upvote, devote, saveToFeedback } = feedbackSlice.actions
+export const { sortFeedback, sortCategory, filterFeedbacks, findSingleFeed, upvote, devote, saveFeedback, changeSelectedCategory, changeFilteringOption } = feedbackSlice.actions
 
 export default feedbackSlice.reducer

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { sortFeedback } from '../../features/feedback/feedbackSlice'
+import { sortFeedback, changeFilteringOption } from '../../features/feedback/feedbackSlice'
 import { Nav } from './HeaderStyles'
 import {arrowLeft} from '../svgs'
 import { openHeader, closeHeader } from '../../features/dropdown/dropdownSlice'
@@ -8,15 +8,16 @@ import { arrowDown, arrowUp } from '../../Components/svgs'
 import { Link } from 'react-router-dom';
 
 function Header({type}) {
-  const { feedbackItems } = useSelector(state => state.feedback)
+  const { feedbackItems, filteringOption } = useSelector(state => state.feedback)
   const { headerDropdown } = useSelector(state => state.dropdown)
-  const [option, setOption] = useState('Select sort method')
+  // const [option, setOption] = useState('Select sort method')
 
   const dispatch = useDispatch()
 
   const handleOption = (name) => {
     dispatch(sortFeedback(name))
-    setOption(name)
+    dispatch(changeFilteringOption(name))
+    // setOption(name)
     if(headerDropdown) {
       dispatch(closeHeader())
     } else dispatch(openHeader())
@@ -36,25 +37,25 @@ function Header({type}) {
         <img src='./assets/suggestions/icon-suggestions.svg' alt='' className='suggestion-image' />
         <span className='h3 suggestions'>{feedbackItems.length} Suggestions</span>
         <span className={`h4 ${feedbackItems < 1 ? 'inactive' : 'sort'}`} onClick={handleClick}>
-            Sort by : <b>{option}</b>
+            Sort by : <b>{filteringOption}</b>
             {headerDropdown ? arrowUp : arrowDown}
         </span>
         {headerDropdown && <div className='select'>
           <div className='options' onClick={() => handleOption('Most Upvotes')}>
             <span className='body-1 option'>Most Upvotes</span>
-            {(option === 'Most Upvotes') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
+            {(filteringOption === 'Most Upvotes') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
           <div className='options' onClick={() => handleOption('Least Upvotes')}>
             <span className='body-1 option'>Least Upvotes</span>
-            {(option === 'Least Upvotes') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
+            {(filteringOption === 'Least Upvotes') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
           <div className='options' onClick={() => handleOption('Most Comments')}>
             <span className='body-1 option'>Most Comments</span>
-            {(option === 'Most Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
+            {(filteringOption === 'Most Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
           <div className='options' onClick={() => handleOption('Least Comments')}>
             <span className='body-1 option'>Least Comments</span>
-            {(option === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
+            {(filteringOption === 'Least Comments') && <img src='./assets/shared/icon-check.svg' alt=' 'className='check'/>}
           </div>
           </div>}
         </> 
